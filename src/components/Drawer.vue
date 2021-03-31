@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer permanent app class="main-drawer">
+  <v-navigation-drawer app class="main-drawer">
     <avatar :image-url="user.photoUrl" :subtitle="user.fullName">
       <h4 class="pt-2 text-h6 font-weight-bold">{{ user.fullName }}</h4>
       <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
@@ -57,6 +57,7 @@ export default defineComponent({
         ["mdi-timeline-text", "education"],
         ["mdi-timeline-text", "experience"],
         ["mdi-view-list", "portfolio"],
+        ["mdi-post", "posts"],
       ],
     };
   },

@@ -1,21 +1,23 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <h1 class="text-center py-5">Portfolio</h1>
-    <v-row class="col-md-10 mx-auto">
-      <v-col cols="4" v-for="project in projects" :key="project.name">
-        <custom-card
-          :thumbnail-url="project.photoUrl"
-          :title="project.name"
-          :description="project.description"
-          :additional-description="project.additionalDescription"
-          :tags="project.mainTechnologies"
-        >
-          <template v-slot:actions>
-            <v-btn text class="pink--text">See details</v-btn>
-          </template>
-        </custom-card>
-      </v-col>
-    </v-row>
+    <v-col cols="12" md="8" lg="10" class="mx-auto">
+      <v-row>
+        <v-col cols="4" v-for="project in projects" :key="project.name">
+          <custom-card
+            :thumbnail-url="project.photoUrl"
+            :title="project.name"
+            :description="project.description"
+            :additional-description="project.additionalDescription"
+            :tags="project.mainTechnologies"
+          >
+            <template v-slot:actions>
+              <v-btn text class="primary--text">See details</v-btn>
+            </template>
+          </custom-card>
+        </v-col>
+      </v-row>
+    </v-col>
   </v-container>
 </template>
 <script lang="ts">
@@ -75,6 +77,8 @@ export default defineComponent({
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+          additionalDescription:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
           duration: "4m",
@@ -89,6 +93,8 @@ export default defineComponent({
             },
           ],
           description:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+          additionalDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
@@ -111,6 +117,8 @@ export default defineComponent({
             },
           ],
           description:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+          additionalDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
@@ -143,6 +151,8 @@ export default defineComponent({
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+          additionalDescription:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
           duration: "1w",
@@ -157,6 +167,8 @@ export default defineComponent({
             },
           ],
           description:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+          additionalDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
       ],

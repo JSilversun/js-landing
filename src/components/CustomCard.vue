@@ -1,33 +1,31 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card
-      class="rounded-lg"
-      :elevation="hover ? 10 : 0"
+      class="rounded-lg d-flex flex-column full-height"
       outlined
       :class="{ 'on-hover': hover }"
     >
-      <v-img class="card-img" :src="thumbnailUrl"></v-img>
-      <div class="card-body">
-        <v-card-title class="pb-1">{{ title }}</v-card-title>
-
-        <v-card-text class="pb-0">
-          <p>
-            {{ description }}
-          </p>
-          <p class="extra_info">
-            {{ additionalDescription }}
-          </p>
+      <v-img max-height="200" class="card-img" :src="thumbnailUrl" />
+      <v-card-title class="pb-1" :class="{ 'primary--text': hover }">
+        {{ title }}
+      </v-card-title>
+      <v-card-text class="pb-0" v-if="$vuetify.breakpoint.mdAndUp">
+        <p>
+          {{ description }}
+        </p>
+        <p class="extra_info">
+          {{ additionalDescription }}
+        </p>
+      </v-card-text>
+      <div class="card-bottom mt-auto">
+        <v-card-text class="py-0">
+          <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
+            {{ tag }}
+          </v-chip>
         </v-card-text>
-        <div class="card-bottom">
-          <v-card-text class="py-0">
-            <v-chip v-for="tag in tags" :key="tag" class="mr-1" small>
-              {{ tag }}
-            </v-chip>
-          </v-card-text>
-          <v-card-actions class="justify-end">
-            <slot name="actions"></slot>
-          </v-card-actions>
-        </div>
+        <v-card-actions class="justify-end">
+          <slot name="actions"></slot>
+        </v-card-actions>
       </div>
     </v-card>
   </v-hover>
@@ -64,37 +62,53 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-.extra_info {
-  opacity: 0;
-  transition: opacity 200ms;
+@import "~vuetify/src/styles/settings/_variables";
+
+@media #{map-get($display-breakpoints, 'sm-and-down')} {
+  .on-hover {
+    .extra_info {
+      height: 100px;
+    }
+    .card-img {
+      height: 100px;
+    }
+  }
+}
+
+@media #{map-get($display-breakpoints, 'md-only')} {
+  .on-hover {
+    .extra_info {
+      height: 60px;
+    }
+    .card-img {
+      height: 140px;
+    }
+  }
+}
+
+@media #{map-get($display-breakpoints, 'lg-and-up')} {
+  .on-hover {
+    .extra_info {
+      height: 50px;
+    }
+    .card-img {
+      height: 150px;
+    }
+  }
 }
 
 .card-img {
   height: 200px;
-  transition: height 200ms;
+  transition: height 300ms;
 }
-
-.card-body {
-  height: 200px;
-  transition: height 200ms;
+.extra_info {
+  height: 0;
+  opacity: 0;
+  transition: height 300ms, opacity 200ms;
 }
-
-.card-bottom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-}
-
 .on-hover {
   .extra_info {
     opacity: 1;
-  }
-  .v-image {
-    height: 150px;
-  }
-  .card-body {
-    height: 250px;
   }
 }
 </style>
