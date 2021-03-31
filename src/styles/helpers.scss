@@ -1,0 +1,74 @@
+.position-absolute{
+  position: absolute!important;
+}
+.position-relative{
+  position: relative!important;
+}
+.pull-left{
+  left:0 !important;
+}
+.pull-right{
+  right:0 !important;
+}
+
+.capitalize-fl::first-letter {
+  text-transform: uppercase;
+}
+
+.cursor-pointer:hover{
+  cursor: pointer;
+}
+
+.visibility-hidden{
+  visibility: hidden!important;
+}
+
+.rounded{
+  border-radius: 50%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.truncate{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fix-flex-truncate{
+  flex: 1;
+  min-width: 0;
+}
+
+.unset-line-height {
+  line-height: unset!important;
+}
+
+.raw-link{
+  text-decoration: none;
+  font-weight: 500!important;
+  .theme--light.v-application &{
+    color: rgba(0, 0, 0, 0.87);
+  }
+  .theme--dark.v-application &{
+    color: white;
+  }
+}
+
+.center-x-relative{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-x-relative{
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-xy-relative{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
