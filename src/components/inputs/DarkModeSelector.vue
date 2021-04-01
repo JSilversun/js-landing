@@ -16,7 +16,7 @@ export default {
   methods: {
     setDarkMode(isDark: boolean): void {
       vuetify.framework.theme.dark = isDark;
-      localStorage.setItem(THEME_KEY, isDark);
+      localStorage.setItem(THEME_KEY, isDark.toString());
     },
   },
 };

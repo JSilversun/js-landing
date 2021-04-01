@@ -10,7 +10,7 @@ export default defineComponent({
   components: { ImageWave },
   computed: {
     mainColor() {
-      return this.$vuetify.theme.isDark ? "#121212": "#fff";
+      return this.$vuetify.theme.dark ? "#121212" : "#fff";
     },
   },
 });
