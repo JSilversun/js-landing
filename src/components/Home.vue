@@ -1,7 +1,10 @@
 <template>
   <v-container id="home" class="position-relative pa-0" fluid>
-    <v-img :src="homeImage" class="home-image d-flex justify-center" contain />
-    <transparent-image-wave class="position-absolute" style="bottom: 0" />
+    <v-img
+      :src="homeImage"
+      class="home-image d-flex justify-center"
+      style="height: 100vh"
+    />
     <v-theme-provider dark>
       <v-row
         class="position-absolute center-xy-relative white--text text-center"
@@ -19,6 +22,16 @@
             technologies. I'm extremely passionate about creating maintainable
             and efficient software
           </p>
+          <v-btn
+            rounded
+            class="primary mr-2"
+            @click="$vuetify.goTo(`#about_me`)"
+          >
+            About me
+          </v-btn>
+          <v-btn rounded class="accent" @click="$vuetify.goTo(`#portfolio`)">
+            Portfolio
+          </v-btn>
         </v-col>
       </v-row>
     </v-theme-provider>
@@ -33,6 +46,7 @@ export default defineComponent({
   name: "Home",
   components: { TransparentImageWave, ImageWave: TransparentImageWave },
   data: () => ({
+    fab: false,
     user,
     homeImage:
       "https://newtemplate.net/demo/resume/template/side-menu-wave/images/banner-01.jpg",

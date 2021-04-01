@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <drawer />
+    <settings />
     <v-main>
       <router-view />
     </v-main>
@@ -10,13 +11,18 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import Drawer from "@/components/Drawer.vue";
+import Settings from "@/components/Settings.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    Settings,
     Drawer,
   },
-  data: () => ({}),
+  data: () => ({
+    isDefaultSettingOpen: true,
+    fab: false,
+  }),
 });
 </script>
 <style lang="scss">

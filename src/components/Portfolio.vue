@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="grey darken-4">
     <h1 class="text-center py-5">Portfolio</h1>
     <v-col cols="12" md="8" lg="10" class="mx-auto">
       <v-row>

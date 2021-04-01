@@ -10,29 +10,32 @@
             <span class="primary--text">web technologies</span>
           </h2>
           <p class="py-2 subtitle-1">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
-            cupiditate dignissimos dolorum eaque earum exercitationem laborum
-            magnam, nostrum perferendis quas repellendus sed sit ullam vel
-            voluptatum. Ipsam minima saepe totam?
+            As a fullstack developer I have worked in almost every department
+            related to web software development, from database modeling, coding
+            triggers, procedures to structure and maintain frontend
+            architectures and building REST and GraphQL API's.
           </p>
           <div v-for="area in areas" :key="area.name" class="py-3">
-            <span :class="`subtitle-1 font-weight-bold ${area.color}--text`">
+            <div :class="`subtitle-1 font-weight-bold ${area.color}--text`">
               {{ area.name }}
-            </span>
+            </div>
+            <div class="py-2">
+              {{ area.description }}
+            </div>
             <div class="d-flex">
               <div
                 class="pr-5 d-flex flex-column justify-center align-center"
                 v-for="technology in area.technologies"
                 :key="`${area.name}-${technology.name}`"
               >
-                <div class="text--secondary">
+                <div class="text--secondary py-1">
                   {{ technology.name }}
                 </div>
                 <v-progress-circular
                   width="5"
                   :color="area.color"
                   :rotate="-90"
-                  :size="48"
+                  :size="42"
                   :value="technology.progress"
                 >
                   {{ technology.progress }}
@@ -43,27 +46,39 @@
           </div>
         </div>
       </v-col>
-      <v-col cols="6">
+      <v-col cols="6" class="d-flex flex-column justify-center">
         <v-card
           outlined
           class="mb-2"
           :key="organization"
-          v-for="{ organization, period, description } of experienceItems"
+          v-for="{
+            organization,
+            period,
+            description,
+            photos,
+          } of experienceItems"
         >
           <v-card-title> {{ organization }} </v-card-title>
           <v-card-subtitle>{{ period }}</v-card-subtitle>
           <v-card-text>
             {{ description }}
           </v-card-text>
-          <div class="pa-2 d-flex flex-wrap">
-            <v-img
-              v-for="i in 3"
-              :key="i"
-              width="200"
-              src="https://picsum.photos/350/165?random"
-              class="grey darken-4 mr-2 rounded"
-            ></v-img>
-          </div>
+          <v-card-text>
+            <v-row class="mr-1">
+              <v-col
+                v-for="photo in photos"
+                :key="photo"
+                :cols="12 / photos.length"
+                class="pr-0"
+              >
+                <v-img
+                  :src="photo"
+                  class="grey darken-4 rounded"
+                  height="150"
+                ></v-img>
+              </v-col>
+            </v-row>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -78,21 +93,9 @@ export default defineComponent({
     return {
       areas: [
         {
-          name: "Database",
-          color: "indigo",
-          technologies: [
-            {
-              name: "Postgres",
-              progress: 90,
-            },
-            {
-              name: "MySQL",
-              progress: 70,
-            },
-          ],
-        },
-        {
           name: "Backend",
+          description:
+            "I have built several REST API's, for Python I have used Django and for NodeJS, express and loopback. However I have also built and maintain GraphQL API's using hasura and prisma. Besides I'm full stack I have more experience in the backend than any other area.",
           color: "cyan",
           technologies: [
             {
@@ -115,6 +118,8 @@ export default defineComponent({
         },
         {
           name: "Frontend",
+          description:
+            "I'm pretty skilled in the frontend as well using libraries/frameworks like Vue and React, I have built and structure entire frontends using Vue + Vuetify, but for react I have developed specific components using either MobX or Redux.",
           color: "pink",
           technologies: [
             {
@@ -122,8 +127,32 @@ export default defineComponent({
               progress: 90,
             },
             {
+              name: "Vuetify",
+              progress: 90,
+            },
+            {
               name: "React",
               progress: 60,
+            },
+            {
+              name: "CSS",
+              progress: 70,
+            },
+          ],
+        },
+        {
+          name: "Database",
+          description:
+            "As mentioned, I also have modeled relational databases, mostly postgres but some based on MySQL as well, I occasionally code triggers, procedures and views when needed.",
+          color: "purple",
+          technologies: [
+            {
+              name: "Postgres",
+              progress: 90,
+            },
+            {
+              name: "MySQL",
+              progress: 70,
             },
           ],
         },
@@ -137,6 +166,10 @@ export default defineComponent({
           description:
             "I graduated as Cum Laude in December 2020, it was a great honor and experience, I'm sincerely grateful and happy with my university and my professors specifically for teaching me so much!",
           period: "2012 - 2020",
+          photos: [
+            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro1_thumb.jpg?alt=media",
+            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro2_thumb.jpg?alt=media",
+          ],
         },
         {
           logoUrl:
@@ -144,6 +177,10 @@ export default defineComponent({
           organization: "PLUSTEAM C. A.",
           description:
             "I decided to invest in myself so I purchased one year subscription in platzi, until now I have completed 35 courses from Javascript and Vue with ease, I'm looking forward to explore different fields and areas of knowledge with platforms that help students to learn new things on demand",
+          photos: [
+            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb1.jpg?alt=media",
+            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb5.jpg?alt=media",
+          ],
           period: "2020 - 2021",
         },
       ],

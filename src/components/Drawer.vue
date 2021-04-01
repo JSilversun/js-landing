@@ -1,12 +1,11 @@
 <template>
   <v-navigation-drawer app class="main-drawer">
-    <avatar :image-url="user.photoUrl" :subtitle="user.fullName">
-      <h4 class="pt-2 text-h6 font-weight-bold">{{ user.fullName }}</h4>
-      <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
-    </avatar>
-
-    <v-divider />
-
+    <div class="avatar-container">
+      <avatar :image-url="user.photoUrl" :subtitle="user.fullName">
+        <h4 class="pt-2 text-h6 font-weight-bold">{{ user.fullName }}</h4>
+        <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
+      </avatar>
+    </div>
     <v-list>
       <v-list-item
         v-for="[icon, text] in links"
@@ -54,8 +53,8 @@ export default defineComponent({
       links: [
         ["mdi-home", "home"],
         ["mdi-card-account-details", "about_me"],
-        ["mdi-timeline-text", "education"],
-        ["mdi-timeline-text", "experience"],
+        ["mdi-school", "education"],
+        ["mdi-account-hard-hat", "experience"],
         ["mdi-view-list", "portfolio"],
         ["mdi-post", "posts"],
       ],
@@ -82,5 +81,11 @@ export default defineComponent({
 }
 .main-drawer .v-list-item--active::before {
   opacity: 1 !important;
+}
+.v-application .theme--dark .avatar-container {
+  background: var(--v-gray-darken1) !important;
+}
+.v-application .theme--light .avatar-container {
+  background: var(--v-primary-base) !important;
 }
 </style>
