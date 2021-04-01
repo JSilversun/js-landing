@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
+import { isDarkModeSet } from "@/utils/theme";
 
 Vue.use(Vuetify);
 
@@ -20,7 +21,7 @@ const gray = {
 
 export default new Vuetify({
   theme: {
-    dark: true,
+    dark: isDarkModeSet(),
     themes: {
       light: {
         gray,
