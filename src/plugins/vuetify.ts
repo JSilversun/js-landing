@@ -1,6 +1,6 @@
 import Vue from "vue";
+import colors from "vuetify/lib/util/colors";
 import Vuetify from "vuetify/lib/framework";
-import { isDarkModeSet } from "@/utils/theme";
 
 Vue.use(Vuetify);
 
@@ -19,14 +19,21 @@ const gray = {
   lighten8: "#E5E5E5",
 };
 
+const primary = colors.pink;
+const accent = colors.orange;
+
 export default new Vuetify({
   theme: {
-    dark: isDarkModeSet(),
+    dark: true,
     themes: {
       light: {
+        primary,
+        accent,
         gray,
       },
       dark: {
+        primary,
+        accent,
         gray,
       },
     },

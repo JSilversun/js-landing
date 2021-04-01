@@ -8,10 +8,10 @@
     </div>
     <v-list>
       <v-list-item
-        v-for="[icon, text] in links"
+        v-for="[icon, id, text] in links"
         :key="text"
         dense
-        @click="$vuetify.goTo(`#${text}`)"
+        @click="$vuetify.goTo(`#${id}`)"
       >
         <v-list-item-icon>
           <v-icon>{{ icon }}</v-icon>
@@ -51,12 +51,12 @@ export default defineComponent({
     return {
       user: user as User,
       links: [
-        ["mdi-home", "home"],
-        ["mdi-card-account-details", "about_me"],
-        ["mdi-school", "education"],
-        ["mdi-account-hard-hat", "experience"],
-        ["mdi-view-list", "portfolio"],
-        ["mdi-post", "posts"],
+        ["mdi-home", "home", "Home"],
+        ["mdi-card-account-details", "about_me", "About me"],
+        ["mdi-school", "education", "Education"],
+        ["mdi-account-hard-hat", "experience", "Experience"],
+        ["mdi-view-list", "portfolio", "Portfolio"],
+        ["mdi-post", "posts", "Posts"],
       ],
     };
   },

@@ -5,7 +5,9 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import VueTypedJs from "vue-typed-js";
 
+Vue.use(VueTypedJs);
 Vue.use(VueCompositionAPI);
 
 Vue.config.productionTip = false;

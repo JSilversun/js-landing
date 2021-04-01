@@ -9,9 +9,9 @@
           <v-card-title>
             <h1>About me</h1>
           </v-card-title>
-          <v-card-subtitle class="text-h6 py-2"
-            >I'm one women army!</v-card-subtitle
-          >
+          <v-card-subtitle class="text-h6 py-2">
+            I'm one women army!
+          </v-card-subtitle>
           <v-card-text class="subtitle-1">
             A self-driven software engineer. Able to effectively self-manage
             during independent projects, as well as collaborate in a team
