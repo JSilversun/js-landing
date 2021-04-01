@@ -1,5 +1,32 @@
 <template>
-  <v-container fluid class="grey darken-4">
+  <v-container
+    fluid
+    class="grey darken-4 position-relative"
+    v-intersect="{
+      handler: hideItems,
+      options: {
+        threshold: [0.1],
+      },
+    }"
+  >
+    <div
+      style="height: 10px; position: absolute; top: 0"
+      v-intersect="{
+        handler: handleBorderIntersection.bind(null, true),
+        options: {
+          threshold: [0.1],
+        },
+      }"
+    ></div>
+    <div
+      style="height: 10px; position: absolute; bottom: 0"
+      v-intersect="{
+        handler: handleBorderIntersection.bind(null, false),
+        options: {
+          threshold: [0.1],
+        },
+      }"
+    ></div>
     <h1 class="text-center py-5">Education</h1>
     <v-row>
       <v-col cols="10" offset="1">
@@ -11,6 +38,7 @@
               period,
               logoUrl,
               photos,
+              isVisible,
               color = 'primary',
             } in educationItems"
             :key="institution"
@@ -20,7 +48,11 @@
                 <img :src="logoUrl" />
               </v-avatar>
             </template>
-            <v-card outlined>
+            <v-card
+              outlined
+              class="transition-opacity"
+              :style="{ opacity: isVisible ? 1 : 0 }"
+            >
               <v-card-title> {{ institution }} </v-card-title>
               <v-card-subtitle>{{ period }}</v-card-subtitle>
               <v-card-text>
@@ -37,8 +69,8 @@
                     <v-img
                       :src="photo"
                       class="grey darken-4 rounded"
-                      height="150"
-                    ></v-img>
+                      height="120"
+                    />
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -51,14 +83,17 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
+import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 
 export default defineComponent({
   name: "Education",
+  components: { OpacityTransitionIntersection },
   data() {
     return {
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
       educationItems: [
         {
+          isVisible: false,
           color: "white",
           logoUrl:
             "http://4.bp.blogspot.com/-zjOQNrvFY3U/WB4IiTdq6EI/AAAAAAAAAUE/HE_bkYqhAj8vULilPoKXjnH3HreYnIU-ACK4B/s400/logo_unet.gif",
@@ -74,6 +109,7 @@ export default defineComponent({
           ],
         },
         {
+          isVisible: false,
           color: "#EC008C",
           institution: "PluralSight",
           logoUrl:
@@ -87,6 +123,7 @@ export default defineComponent({
           ],
         },
         {
+          isVisible: false,
           logoUrl:
             "https://media.licdn.com/dms/image/C4D0BAQEdL87TMUgWag/company-logo_200_200/0?e=2159024400&v=beta&t=NkHmSn5reOmggy_cCNLcoHh0andWfiNpw6xCySqA9mw",
           institution: "Platzi",
@@ -99,7 +136,40 @@ export default defineComponent({
           ],
         },
       ],
+      isVisible: false,
     };
+  },
+  methods: {
+    setItemsVisibility(indexes: number[]) {
+      const baseDuration = 500;
+      for (let index = 0; index < indexes.length; index++) {
+        setTimeout(() => {
+          this.educationItems[indexes[index]].isVisible = true;
+        }, baseDuration * (Number(index) + 1));
+      }
+    },
+    hideItems(entries) {
+      const { isIntersecting } = entries[0];
+      if (isIntersecting) return;
+      for (const item of this.educationItems) {
+        item.isVisible = false;
+      }
+      this.isVisible = false;
+    },
+    handleBorderIntersection(isUpperBorder, entries) {
+      const { isIntersecting } = entries[0];
+      const shouldShowItems = !this.isVisible && isIntersecting;
+      const indexes = this.educationItems.map((item, index) => index);
+      if (!shouldShowItems) return;
+      const indexesToToggle = isUpperBorder ? indexes : indexes.reverse();
+      this.isVisible = true;
+      this.setItemsVisibility(indexesToToggle);
+    },
   },
 });
 </script>
+<style>
+.transition-opacity {
+  transition: opacity 300ms;
+}
+</style>
