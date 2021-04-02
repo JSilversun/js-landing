@@ -3,7 +3,13 @@
     <h1 class="text-center py-5">Portfolio</h1>
     <v-col cols="12" md="8" lg="10" class="mx-auto">
       <v-row>
-        <v-col cols="4" v-for="project in projects" :key="project.name">
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="project in projects"
+          :key="project.name"
+        >
           <custom-card
             :thumbnail-url="project.photoUrl"
             :title="project.name"

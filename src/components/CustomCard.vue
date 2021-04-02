@@ -1,31 +1,33 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card
-      class="rounded-lg d-flex flex-column full-height"
+      class="custom-card rounded-lg d-flex flex-column full-height"
       outlined
       :class="{ 'on-hover': hover }"
     >
       <v-img max-height="200" class="card-img" :src="thumbnailUrl" />
-      <v-card-title class="pb-1" :class="{ 'primary--text': hover }">
-        {{ title }}
-      </v-card-title>
-      <v-card-text class="pb-0" v-if="$vuetify.breakpoint.mdAndUp">
-        <p>
-          {{ description }}
-        </p>
-        <p class="extra_info">
-          {{ additionalDescription }}
-        </p>
-      </v-card-text>
-      <div class="card-bottom mt-auto">
-        <v-card-text class="py-0">
-          <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
-            {{ tag }}
-          </v-chip>
+      <div class="custom-card__body" style="height: 100%">
+        <v-card-title class="pb-1" :class="{ 'primary--text': hover }">
+          {{ title }}
+        </v-card-title>
+        <v-card-text class="pb-0">
+          <p>
+            {{ description }}
+          </p>
+          <p class="extra_info">
+            {{ additionalDescription }}
+          </p>
         </v-card-text>
-        <v-card-actions class="justify-end">
-          <slot name="actions"></slot>
-        </v-card-actions>
+        <div class="card-bottom mt-auto">
+          <v-card-text class="py-0">
+            <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
+              {{ tag }}
+            </v-chip>
+          </v-card-text>
+          <v-card-actions class="justify-end">
+            <slot name="actions"></slot>
+          </v-card-actions>
+        </div>
       </div>
     </v-card>
   </v-hover>
@@ -63,6 +65,25 @@ export default defineComponent({
 </script>
 <style lang="scss">
 @import "~vuetify/src/styles/settings/_variables";
+.custom-card__body {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.custom-card__body::before {
+  z-index: -1;
+  background: var(--v-gray-darken1);
+  opacity: 0;
+  transition: opacity 200ms;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+.custom-card:hover .custom-card__body::before {
+  opacity: 0.7;
+}
 
 @media #{map-get($display-breakpoints, 'sm-and-down')} {
   .on-hover {

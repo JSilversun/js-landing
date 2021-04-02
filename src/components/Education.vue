@@ -150,7 +150,7 @@ export default defineComponent({
         }, baseDuration * (Number(index) + 1));
       }
     },
-    hideItems(entries) {
+    hideItems(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
       if (isIntersecting || !this.isVisible) return;
       for (const item of this.educationItems) {
@@ -158,7 +158,10 @@ export default defineComponent({
       }
       this.isVisible = false;
     },
-    handleBorderIntersection(isUpperBorder, entries) {
+    handleBorderIntersection(
+      isUpperBorder: boolean,
+      entries: IntersectionObserverEntry[]
+    ) {
       const { isIntersecting } = entries[0];
       const shouldShowItems = !this.isVisible && isIntersecting;
       const indexes = this.educationItems.map((item, index) => index);

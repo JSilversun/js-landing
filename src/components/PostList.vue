@@ -2,7 +2,7 @@
   <v-container>
     <h1 class="text-center py-5">Posts</h1>
     <v-row class="col-md-10 mx-auto">
-      <v-col cols="4" v-for="post in posts" :key="post.name">
+      <v-col cols="12" sm="6" md="4" v-for="post in posts" :key="post.name">
         <custom-card
           :thumbnail-url="post.photoUrl"
           :title="post.name"

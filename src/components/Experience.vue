@@ -1,14 +1,12 @@
 <template>
   <opacity-transition-intersection>
-    <v-container
-      v-intersect="{ handler: setIntersected, options: { threshold: [0.6] } }"
-    >
-      <h1 class="text-center py-5">Experience</h1>
+    <v-container>
+      <section-title>Experience</section-title>
       <v-row class="col-md-10 mx-auto">
-        <v-col cols="6" class="d-flex flex-column justify-center">
+        <v-col cols="12" md="6" class="d-flex flex-column justify-center">
           <div>
-            <h1 class="pt-5 text-h5 primary--text">
-              HAVING 4 YEARS EXPERIENCE
+            <h1 class="pt-5 text-h5 primary--text text-uppercase">
+              having 4 years of experience
             </h1>
             <h2 class="py-3 text-h4">
               I'm specialized in
@@ -20,38 +18,45 @@
               coding triggers, procedures to structure and maintain frontend
               architectures and building REST and GraphQL API's.
             </p>
-            <div v-for="area in areas" :key="area.name" class="py-3">
-              <div :class="`subtitle-1 font-weight-bold ${area.color}--text`">
-                {{ area.name }}
-              </div>
-              <div class="py-2">
-                {{ area.description }}
-              </div>
-              <div class="d-flex">
-                <div
-                  class="pr-5 d-flex flex-column justify-center align-center"
-                  v-for="technology in area.technologies"
-                  :key="`${area.name}-${technology.name}`"
-                >
-                  <div class="text--secondary py-1">
-                    {{ technology.name }}
-                  </div>
-                  <v-progress-circular
-                    width="5"
-                    :color="area.color"
-                    :rotate="-90"
-                    :size="42"
-                    :value="isIntersecting ? technology.progress : 0"
-                  >
-                    {{ technology.progress }}
-                  </v-progress-circular>
+            <div
+              v-intersect="{
+                handler: setIntersected,
+                options: { threshold: [0.05] },
+              }"
+            >
+              <div v-for="area in areas" :key="area.name" class="py-3">
+                <div :class="`subtitle-1 font-weight-bold ${area.color}--text`">
+                  {{ area.name }}
                 </div>
+                <div class="py-2">
+                  {{ area.description }}
+                </div>
+                <div class="d-flex">
+                  <div
+                    class="pr-5 d-flex flex-column justify-center align-center"
+                    v-for="technology in area.technologies"
+                    :key="`${area.name}-${technology.name}`"
+                  >
+                    <div class="text--secondary py-1">
+                      {{ technology.name }}
+                    </div>
+                    <v-progress-circular
+                      width="5"
+                      :color="area.color"
+                      :rotate="-90"
+                      :size="42"
+                      :value="isIntersecting ? technology.progress : 0"
+                    >
+                      {{ technology.progress }}
+                    </v-progress-circular>
+                  </div>
+                </div>
+                <v-divider class="mt-4" />
               </div>
-              <v-divider class="mt-4" />
             </div>
           </div>
         </v-col>
-        <v-col cols="6" class="d-flex flex-column justify-center">
+        <v-col cols="12" md="6" class="d-flex flex-column justify-center">
           <v-card
             outlined
             class="mb-2"
@@ -93,10 +98,12 @@
 <script lang="ts">
 import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import { defineComponent } from "@vue/composition-api";
+import SectionTitle from "@/components/SectionTitle.vue";
 
 export default defineComponent({
   name: "Experience",
   components: {
+    SectionTitle,
     OpacityTransitionIntersection,
   },
   data() {
@@ -198,9 +205,9 @@ export default defineComponent({
     };
   },
   methods: {
-    setIntersected(entries) {
+    setIntersected(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
-      setTimeout(() => (this.isIntersecting = !!isIntersecting), 200);
+      setTimeout(() => (this.isIntersecting = isIntersecting), 400);
     },
   },
 });

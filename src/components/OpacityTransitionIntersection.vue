@@ -36,10 +36,9 @@ export default defineComponent({
     };
   },
   methods: {
-    onIntersect(entries) {
+    onIntersect(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
-      console.log(isIntersecting);
-      this.isVisible = !!isIntersecting;
+      this.isVisible = isIntersecting;
     },
   },
 });
