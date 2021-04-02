@@ -17,7 +17,7 @@
           threshold: [0.5],
         },
       }"
-    ></div>
+    />
     <div
       style="height: 50%; position: absolute; bottom: 0"
       v-intersect="{
@@ -26,11 +26,11 @@
           threshold: [0.5],
         },
       }"
-    ></div>
-    <h1 class="text-center py-5">Education</h1>
+    />
+    <section-title>Education</section-title>
     <v-row>
-      <v-col cols="10" offset="1">
-        <v-timeline>
+      <v-col cols="12" md="10" offset-md="1">
+        <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
           <v-timeline-item
             v-for="{
               institution,
@@ -61,10 +61,11 @@
               <v-card-text>
                 <v-row class="mr-1">
                   <v-col
-                    v-for="photo in photos"
+                    v-for="(photo, index) in photos"
                     :key="photo"
-                    :cols="12 / photos.length"
+                    :cols="12 / maxVisiblePhotos"
                     class="pr-0"
+                    v-show="index < maxVisiblePhotos"
                   >
                     <v-img
                       :src="photo"
@@ -84,10 +85,11 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
+import SectionTitle from "@/components/SectionTitle.vue";
 
 export default defineComponent({
   name: "Education",
-  components: { OpacityTransitionIntersection },
+  components: { OpacityTransitionIntersection, SectionTitle },
   data() {
     return {
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
@@ -164,6 +166,11 @@ export default defineComponent({
       const indexesToToggle = isUpperBorder ? indexes : indexes.reverse();
       this.isVisible = true;
       this.setItemsVisibility(indexesToToggle);
+    },
+  },
+  computed: {
+    maxVisiblePhotos() {
+      return this.$vuetify.breakpoint.smAndDown ? 2 : 3;
     },
   },
 });
