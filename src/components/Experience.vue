@@ -1,96 +1,107 @@
 <template>
-  <v-container>
-    <h1 class="text-center py-5">Experience</h1>
-    <v-row class="col-md-10 mx-auto">
-      <v-col cols="6" class="d-flex flex-column justify-center">
-        <div>
-          <h1 class="pt-5 text-h5 primary--text">HAVING 4 YEARS EXPERIENCE</h1>
-          <h2 class="py-3 text-h4">
-            I'm specialized in
-            <span class="primary--text">web technologies</span>
-          </h2>
-          <p class="py-2 subtitle-1">
-            As a fullstack developer I have worked in almost every department
-            related to web software development, from database modeling, coding
-            triggers, procedures to structure and maintain frontend
-            architectures and building REST and GraphQL API's.
-          </p>
-          <div v-for="area in areas" :key="area.name" class="py-3">
-            <div :class="`subtitle-1 font-weight-bold ${area.color}--text`">
-              {{ area.name }}
-            </div>
-            <div class="py-2">
-              {{ area.description }}
-            </div>
-            <div class="d-flex">
-              <div
-                class="pr-5 d-flex flex-column justify-center align-center"
-                v-for="technology in area.technologies"
-                :key="`${area.name}-${technology.name}`"
-              >
-                <div class="text--secondary py-1">
-                  {{ technology.name }}
-                </div>
-                <v-progress-circular
-                  width="5"
-                  :color="area.color"
-                  :rotate="-90"
-                  :size="42"
-                  :value="technology.progress"
-                >
-                  {{ technology.progress }}
-                </v-progress-circular>
+  <opacity-transition-intersection>
+    <v-container
+      v-intersect="{ handler: setIntersected, options: { threshold: [0.6] } }"
+    >
+      <h1 class="text-center py-5">Experience</h1>
+      <v-row class="col-md-10 mx-auto">
+        <v-col cols="6" class="d-flex flex-column justify-center">
+          <div>
+            <h1 class="pt-5 text-h5 primary--text">
+              HAVING 4 YEARS EXPERIENCE
+            </h1>
+            <h2 class="py-3 text-h4">
+              I'm specialized in
+              <span class="primary--text">web technologies</span>
+            </h2>
+            <p class="py-2 subtitle-1">
+              As a fullstack developer I have worked in almost every department
+              related to web software development, from database modeling,
+              coding triggers, procedures to structure and maintain frontend
+              architectures and building REST and GraphQL API's.
+            </p>
+            <div v-for="area in areas" :key="area.name" class="py-3">
+              <div :class="`subtitle-1 font-weight-bold ${area.color}--text`">
+                {{ area.name }}
               </div>
+              <div class="py-2">
+                {{ area.description }}
+              </div>
+              <div class="d-flex">
+                <div
+                  class="pr-5 d-flex flex-column justify-center align-center"
+                  v-for="technology in area.technologies"
+                  :key="`${area.name}-${technology.name}`"
+                >
+                  <div class="text--secondary py-1">
+                    {{ technology.name }}
+                  </div>
+                  <v-progress-circular
+                    width="5"
+                    :color="area.color"
+                    :rotate="-90"
+                    :size="42"
+                    :value="isIntersecting ? technology.progress : 0"
+                  >
+                    {{ technology.progress }}
+                  </v-progress-circular>
+                </div>
+              </div>
+              <v-divider class="mt-4" />
             </div>
-            <v-divider class="mt-4" />
           </div>
-        </div>
-      </v-col>
-      <v-col cols="6" class="d-flex flex-column justify-center">
-        <v-card
-          outlined
-          class="mb-2"
-          :key="organization"
-          v-for="{
-            organization,
-            period,
-            description,
-            photos,
-          } of experienceItems"
-        >
-          <v-card-title> {{ organization }} </v-card-title>
-          <v-card-subtitle>{{ period }}</v-card-subtitle>
-          <v-card-text>
-            {{ description }}
-          </v-card-text>
-          <v-card-text>
-            <v-row class="mr-1">
-              <v-col
-                v-for="photo in photos"
-                :key="photo"
-                :cols="12 / photos.length"
-                class="pr-0"
-              >
-                <v-img
-                  :src="photo"
-                  class="grey darken-4 rounded"
-                  height="150"
-                ></v-img>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        </v-col>
+        <v-col cols="6" class="d-flex flex-column justify-center">
+          <v-card
+            outlined
+            class="mb-2"
+            :key="organization"
+            v-for="{
+              organization,
+              period,
+              description,
+              photos,
+            } of experienceItems"
+          >
+            <v-card-title> {{ organization }} </v-card-title>
+            <v-card-subtitle>{{ period }}</v-card-subtitle>
+            <v-card-text>
+              {{ description }}
+            </v-card-text>
+            <v-card-text>
+              <v-row class="mr-1">
+                <v-col
+                  v-for="photo in photos"
+                  :key="photo"
+                  :cols="12 / photos.length"
+                  class="pr-0"
+                >
+                  <v-img
+                    :src="photo"
+                    class="grey darken-4 rounded"
+                    height="150"
+                  ></v-img>
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </opacity-transition-intersection>
 </template>
 <script lang="ts">
+import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   name: "Experience",
+  components: {
+    OpacityTransitionIntersection,
+  },
   data() {
     return {
+      isIntersecting: false,
       areas: [
         {
           name: "Backend",
@@ -185,6 +196,12 @@ export default defineComponent({
         },
       ],
     };
+  },
+  methods: {
+    setIntersected(entries) {
+      const { isIntersecting } = entries[0];
+      setTimeout(() => (this.isIntersecting = !!isIntersecting), 200);
+    },
   },
 });
 </script>
