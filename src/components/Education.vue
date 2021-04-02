@@ -10,7 +10,7 @@
     }"
   >
     <div
-      style="height: 30%; position: absolute; top: 0"
+      style="height: 50%; position: absolute; top: 0"
       v-intersect="{
         handler: handleBorderIntersection.bind(null, true),
         options: {
@@ -19,7 +19,7 @@
       }"
     ></div>
     <div
-      style="height: 20%; position: absolute; bottom: 0"
+      style="height: 50%; position: absolute; bottom: 0"
       v-intersect="{
         handler: handleBorderIntersection.bind(null, false),
         options: {
@@ -141,7 +141,6 @@ export default defineComponent({
   },
   methods: {
     setItemsVisibility(indexes: number[]) {
-      console.log("visible");
       const baseDuration = 400;
       for (let index = 0; index < indexes.length; index++) {
         setTimeout(() => {
@@ -152,7 +151,6 @@ export default defineComponent({
     hideItems(entries) {
       const { isIntersecting } = entries[0];
       if (isIntersecting || !this.isVisible) return;
-      console.log("hidding", isIntersecting);
       for (const item of this.educationItems) {
         item.isVisible = false;
       }
