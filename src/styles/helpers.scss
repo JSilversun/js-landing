@@ -1,12 +1,14 @@
 .position-absolute{
   position: absolute!important;
 }
+
 .position-relative{
   position: relative!important;
 }
 .pull-left{
   left:0 !important;
 }
+
 .pull-right{
   right:0 !important;
 }
@@ -36,6 +38,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .fix-flex-truncate{
   flex: 1;
   min-width: 0;
@@ -72,3 +75,10 @@
   transform: translate(-50%, -50%);
 }
 
+.full-width {
+  width: 100%;
+}
+
+.full-height-viewport {
+  height: 100vh;
+}

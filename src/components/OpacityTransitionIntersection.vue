@@ -22,7 +22,7 @@ export default defineComponent({
     options: {
       type: Object,
       default: () => ({
-        threshold: [0.4],
+        threshold: [0.1],
       }),
     },
     duration: {
@@ -38,6 +38,7 @@ export default defineComponent({
   methods: {
     onIntersect(entries) {
       const { isIntersecting } = entries[0];
+      console.log(isIntersecting);
       this.isVisible = !!isIntersecting;
     },
   },

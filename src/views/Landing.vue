@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <v-container fluid class="pa-0">
-      <home id="home" class="mb-10" />
-      <about-me id="about_me" class="mt-10" />
-      <education id="education" class="mt-10" />
-      <experience id="experience" class="mt-10" />
-      <portfolio id="portfolio" class="mt-10" />
-      <post-list id="posts" class="mt-10" />
-    </v-container>
-  </div>
+  <v-container fluid class="pa-0">
+    <home id="home" class="mb-10" />
+    <about-me id="about_me" class="mt-10" />
+    <education id="education" class="mt-10" />
+    <experience id="experience" class="mt-10" />
+    <portfolio id="portfolio" class="mt-10" />
+    <post-list id="posts" class="mt-10" />
+  </v-container>
 </template>
 
 <script lang="ts">
