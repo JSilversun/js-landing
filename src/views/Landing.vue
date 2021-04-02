@@ -1,11 +1,11 @@
 <template>
   <v-container fluid class="pa-0">
-    <home id="home" class="mb-10" />
-    <about-me id="about_me" class="mt-10" />
-    <education id="education" class="mt-10" />
-    <experience id="experience" class="mt-10" />
-    <portfolio id="portfolio" class="mt-10" />
-    <post-list id="posts" class="mt-10" />
+    <home id="home" />
+    <about-me id="about_me" />
+    <education id="education" />
+    <experience id="experience" />
+    <portfolio id="portfolio" />
+    <post-list id="posts" />
   </v-container>
 </template>
 
