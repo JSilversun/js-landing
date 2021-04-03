@@ -6,13 +6,8 @@
         <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
       </avatar>
     </div>
-    <v-list>
-      <v-list-item
-        v-for="[icon, id, text] in links"
-        :key="text"
-        dense
-        @click="$vuetify.goTo(`#${id}`)"
-      >
+    <v-list v-model="jsnow">
+      <v-list-item v-for="[icon, to, text] in links" :key="text" dense :to="to">
         <v-list-item-icon>
           <v-icon>{{ icon }}</v-icon>
         </v-list-item-icon>
@@ -51,12 +46,12 @@ export default defineComponent({
     return {
       user: user as User,
       links: [
-        ["mdi-home", "home", "Home"],
-        ["mdi-card-account-details", "about_me", "About me"],
-        ["mdi-school", "education", "Education"],
-        ["mdi-account-hard-hat", "experience", "Experience"],
-        ["mdi-view-list", "portfolio", "Portfolio"],
-        ["mdi-post", "posts", "Posts"],
+        ["mdi-home", "/#home", "Home"],
+        ["mdi-card-account-details", "/#about_me", "About me"],
+        ["mdi-school", "/#education", "Education"],
+        ["mdi-account-hard-hat", "/#experience", "Experience"],
+        ["mdi-view-list", "/#portfolio", "Portfolio"],
+        ["mdi-post", "/#posts", "Posts"],
       ],
     };
   },
@@ -69,6 +64,7 @@ export default defineComponent({
   border-radius: 4px;
   transition: 200ms;
 }
+
 .main-drawer .v-list-item::before {
   margin-top: 7.5px;
   opacity: 0 !important;
@@ -79,13 +75,11 @@ export default defineComponent({
   height: 25px;
   border: 2.5px solid var(--v-primary-base);
 }
+
 .main-drawer .v-list-item--active::before {
   opacity: 1 !important;
 }
-.v-application .theme--dark .avatar-container {
-  background: var(--v-gray-darken1) !important;
-}
-.v-application .theme--light .avatar-container {
-  background: var(--v-primary-base) !important;
+.v-application .v-list-item--active .v-list-item__icon {
+  color: var(--v-primary-base);
 }
 </style>

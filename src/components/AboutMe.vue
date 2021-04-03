@@ -24,6 +24,7 @@
           sm="10"
           offset-sm="1"
           md="6"
+          lg="4"
           offset-md="0"
           class="d-flex align-center"
         >
