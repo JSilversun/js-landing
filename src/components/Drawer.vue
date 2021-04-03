@@ -1,19 +1,27 @@
 <template>
-  <v-navigation-drawer app class="main-drawer">
+  <v-navigation-drawer app class="main-drawer" v-scroll="onScroll">
     <div class="avatar-container">
       <avatar :image-url="user.photoUrl" :subtitle="user.fullName">
         <h4 class="pt-2 text-h6 font-weight-bold">{{ user.fullName }}</h4>
         <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
       </avatar>
     </div>
-    <v-list v-model="jsnow">
-      <v-list-item v-for="[icon, to, text] in links" :key="text" dense :to="to">
+    <v-list>
+      <v-list-item
+        v-for="({ icon, to, title }, index) in links"
+        :class="{
+          'v-list-item--active': index === activeLinkIndex,
+        }"
+        :key="title"
+        dense
+        @click.prevent.stop="onClick(to)"
+      >
         <v-list-item-icon>
           <v-icon>{{ icon }}</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>{{ text }}</v-list-item-title>
+          <v-list-item-title>{{ title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -44,16 +52,102 @@ export default defineComponent({
   components: { Avatar },
   data() {
     return {
+      timeout: null as null | number,
       user: user as User,
+      offsets: [] as number[],
+      isScrolling: false,
       links: [
-        ["mdi-home", "/#home", "Home"],
-        ["mdi-card-account-details", "/#about_me", "About me"],
-        ["mdi-school", "/#education", "Education"],
-        ["mdi-account-hard-hat", "/#experience", "Experience"],
-        ["mdi-view-list", "/#portfolio", "Portfolio"],
-        ["mdi-post", "/#posts", "Posts"],
-      ],
+        {
+          icon: "mdi-home",
+          to: "#home",
+          title: "Home",
+        },
+        {
+          icon: "mdi-card-account-details",
+          to: "#about_me",
+          title: "About me",
+        },
+        {
+          icon: "mdi-school",
+          to: "#education",
+          title: "Education",
+        },
+        {
+          icon: "mdi-account-hard-hat",
+          to: "#experience",
+          title: "Experience",
+        },
+        {
+          icon: "mdi-view-list",
+          to: "#portfolio",
+          title: "Portfolio",
+        },
+        {
+          icon: "mdi-post",
+          to: "#posts",
+          title: "Posts",
+        },
+      ] as { icon: string; to: string; title: string }[],
+      activeLinkIndex: 0,
     };
+  },
+  methods: {
+    async onClick(hash: string) {
+      this.isScrolling = true;
+      await this.$vuetify.goTo(hash);
+      this.isScrolling = false;
+      await this.setActiveHash();
+    },
+    setOffsets() {
+      const offsets = [];
+      const links = this.links.slice().reverse();
+      for (const item of links) {
+        const section = document.getElementById(item.to.slice(1));
+        if (!section) continue;
+        offsets.push(section.offsetTop - 20);
+      }
+      this.offsets = offsets;
+    },
+    async findActiveLinkIndex(): Promise<number> {
+      const { offsetTop, offsetHeight } = document.documentElement;
+      const currentOffset = window.pageYOffset || offsetTop || 0;
+      if (currentOffset === 0 && !this.$route.hash) return 0;
+      const activeOffsetIndex = this.offsets.findIndex(
+        (offset) => offset < currentOffset
+      );
+      let activeLinkIndex =
+        activeOffsetIndex > -1
+          ? this.offsets.length - 1 - activeOffsetIndex
+          : 0;
+
+      const isLastLink = currentOffset + window.innerHeight === offsetHeight;
+      return isLastLink ? this.links.length - 1 : activeLinkIndex;
+    },
+    async setActiveHash() {
+      if (this.offsets.length !== this.links.length) this.setOffsets();
+      if (this.$vuetify.breakpoint.mobile || this.isScrolling) return;
+      this.activeLinkIndex = await this.findActiveLinkIndex();
+    },
+    onScroll() {
+      if (this.timeout) clearTimeout(this.timeout);
+      this.timeout = setTimeout(this.setActiveHash, 20);
+    },
+  },
+  watch: {
+    activeLinkIndex: {
+      immediate: true,
+      async handler(activeLinkIndex) {
+        const { to: hash } = this.links[activeLinkIndex];
+        if (hash === this.$route.hash || this.isScrolling) return;
+        await this.$router.replace({
+          path: this.$route.hash,
+          hash,
+        });
+      },
+    },
+  },
+  mounted() {
+    this.setActiveHash();
   },
 });
 </script>
@@ -79,6 +173,7 @@ export default defineComponent({
 .main-drawer .v-list-item--active::before {
   opacity: 1 !important;
 }
+
 .v-application .v-list-item--active .v-list-item__icon {
   color: var(--v-primary-base);
 }
