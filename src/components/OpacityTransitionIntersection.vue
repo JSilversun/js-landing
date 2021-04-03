@@ -25,10 +25,6 @@ export default defineComponent({
         threshold: [0.1],
       }),
     },
-    duration: {
-      type: String,
-      default: "800 ms",
-    },
   },
   data() {
     return {
@@ -43,7 +39,3 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-.transition-container {
-}
-</style>

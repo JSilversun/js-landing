@@ -1,12 +1,12 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card
-      class="custom-card rounded-lg d-flex flex-column full-height"
+      class="custom-card rounded-lg full-height d-flex flex-column"
       outlined
       :class="{ 'on-hover': hover }"
     >
       <v-img max-height="200" class="card-img" :src="thumbnailUrl" />
-      <div class="custom-card__body" style="height: 100%">
+      <div class="custom-card__body d-flex flex-column flex-grow-1">
         <v-card-title class="pb-1" :class="{ 'primary--text': hover }">
           {{ title }}
         </v-card-title>
@@ -18,7 +18,8 @@
             {{ additionalDescription }}
           </p>
         </v-card-text>
-        <div class="card-bottom mt-auto">
+        <v-spacer />
+        <div class="card-bottom">
           <v-card-text class="py-0">
             <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
               {{ tag }}

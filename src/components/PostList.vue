@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <h1 class="text-center py-5">Posts</h1>
     <v-row class="col-md-10 mx-auto">
       <v-col cols="12" sm="6" md="4" v-for="post in posts" :key="post.name">

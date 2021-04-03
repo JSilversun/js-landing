@@ -1,46 +1,28 @@
 <template>
-  <v-container
-    fluid
-    class="grey darken-4 position-relative"
-    v-intersect="{
-      handler: hideItems,
-      options: {
-        threshold: [0.1],
-      },
-    }"
-  >
-    <div
-      style="height: 50%; position: absolute; top: 0"
-      v-intersect="{
-        handler: handleBorderIntersection.bind(null, true),
-        options: {
-          threshold: [0.5],
-        },
-      }"
-    />
-    <div
-      style="height: 50%; position: absolute; bottom: 0"
-      v-intersect="{
-        handler: handleBorderIntersection.bind(null, false),
-        options: {
-          threshold: [0.5],
-        },
-      }"
-    />
+  <v-container fluid class="grey darken-4 position-relative">
     <section-title>Education</section-title>
     <v-row>
       <v-col cols="12" md="10" offset-md="1">
-        <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
+        <v-timeline
+          :dense="$vuetify.breakpoint.mdAndDown"
+          v-intersect="{
+            handler: handleContainerIntersection,
+            threshold: [0.1],
+          }"
+        >
           <v-timeline-item
-            v-for="{
-              institution,
-              description,
-              period,
-              logoUrl,
-              photos,
-              isVisible,
-              color = 'primary',
-            } in educationItems"
+            v-for="(
+              {
+                institution,
+                description,
+                period,
+                logoUrl,
+                photos,
+                isVisible,
+                color = 'primary',
+              },
+              index
+            ) in educationItems"
             :key="institution"
           >
             <template v-slot:icon>
@@ -51,6 +33,12 @@
             <v-card
               outlined
               class="transition-opacity"
+              v-intersect="{
+                handler: handleItemIntersection.bind(null, index),
+                options: {
+                  threshold: [0.5],
+                },
+              }"
               :style="{ opacity: isVisible ? 1 : 0 }"
             >
               <v-card-title> {{ institution }} </v-card-title>
@@ -63,7 +51,7 @@
                   <v-col
                     v-for="(photo, index) in photos"
                     :key="photo"
-                    :cols="12 / maxVisiblePhotos"
+                    :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
                     class="pr-0"
                     v-show="index < maxVisiblePhotos"
                   >
@@ -139,36 +127,46 @@ export default defineComponent({
         },
       ],
       isVisible: false,
+      isAnimating: false,
+      itemsQueue: [] as number[],
     };
   },
   methods: {
-    setItemsVisibility(indexes: number[]) {
-      const baseDuration = 400;
-      for (let index = 0; index < indexes.length; index++) {
-        setTimeout(() => {
-          this.educationItems[indexes[index]].isVisible = true;
-        }, baseDuration * (Number(index) + 1));
-      }
+    showItem() {
+      const index = this.itemsQueue.shift();
+      if (index === undefined) throw "Items queue is empty";
+      setTimeout(() => {
+        this.educationItems[index].isVisible = true;
+        if (this.itemsQueue.length > 0) {
+          this.showItem();
+        } else {
+          this.isAnimating = false;
+          this.isVisible = true;
+        }
+      }, 400);
     },
-    hideItems(entries: IntersectionObserverEntry[]) {
+    handleContainerIntersection(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
-      if (isIntersecting || !this.isVisible) return;
-      for (const item of this.educationItems) {
-        item.isVisible = false;
-      }
-      this.isVisible = false;
+      if (!isIntersecting && this.isVisible) this.hideItems();
     },
-    handleBorderIntersection(
-      isUpperBorder: boolean,
+    handleItemIntersection(
+      index: number,
       entries: IntersectionObserverEntry[]
     ) {
       const { isIntersecting } = entries[0];
-      const shouldShowItems = !this.isVisible && isIntersecting;
-      const indexes = this.educationItems.map((item, index) => index);
-      if (!shouldShowItems) return;
-      const indexesToToggle = isUpperBorder ? indexes : indexes.reverse();
-      this.isVisible = true;
-      this.setItemsVisibility(indexesToToggle);
+      if (!isIntersecting) return;
+      this.itemsQueue.push(index);
+      if (this.isAnimating) return;
+      this.isAnimating = true;
+      this.showItem();
+    },
+    hideItems() {
+      this.isVisible = false;
+      this.isAnimating = false;
+      this.itemsQueue = [];
+      for (const item of this.educationItems) {
+        item.isVisible = false;
+      }
     },
   },
   computed: {

@@ -1,7 +1,7 @@
 <template>
-  <opacity-transition-intersection>
-    <v-container fluid class="about_me my-5">
-      <section-title>About me</section-title>
+  <v-container fluid class="about_me my-5">
+    <section-title>About me</section-title>
+    <opacity-transition-intersection>
       <v-row
         :class="{
           'my-5': $vuetify.breakpoint.mdAndUp,
@@ -55,51 +55,52 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row :no-gutters="$vuetify.breakpoint.mdAndDown">
-        <v-col
-          cols="12"
-          sm="10"
-          md="8"
-          lg="12"
-          xl="10"
-          offset-lg="0"
-          offset-sm="1"
-          offset-md="2"
-          offset-xl="1"
-          :class="{
-            'my-10': $vuetify.breakpoint.mdAndUp,
-          }"
-        >
-          <v-row class="mx-auto">
-            <v-col
-              cols="12"
-              sm="6"
-              lg="3"
-              v-for="{ icon, title, description, color } in items"
-              :key="title"
-            >
-              <v-card outlined class="rounded-lg full-height">
-                <v-card-text
-                  class="d-flex flex-column justify-center align-center"
-                  :class="{
-                    'pa-0': $vuetify.breakpoint.xsOnly,
-                  }"
-                >
-                  <v-icon :color="color" x-large class="py-5">
-                    {{ icon }}
-                  </v-icon>
-                  <v-card-title class="py-0">{{ title }}</v-card-title>
-                  <v-card-text class="text-center">
-                    {{ description }}
-                  </v-card-text>
+    </opacity-transition-intersection>
+
+    <v-row :no-gutters="$vuetify.breakpoint.mdAndDown">
+      <v-col
+        cols="12"
+        sm="10"
+        md="8"
+        lg="12"
+        xl="10"
+        offset-lg="0"
+        offset-sm="1"
+        offset-md="2"
+        offset-xl="1"
+        :class="{
+          'my-10': $vuetify.breakpoint.mdAndUp,
+        }"
+      >
+        <v-row class="mx-auto">
+          <v-col
+            cols="12"
+            sm="6"
+            lg="3"
+            v-for="{ icon, title, description, color } in items"
+            :key="title"
+          >
+            <v-card outlined class="rounded-lg full-height">
+              <v-card-text
+                class="d-flex flex-column justify-center align-center"
+                :class="{
+                  'pa-0': $vuetify.breakpoint.xsOnly,
+                }"
+              >
+                <v-icon :color="color" x-large class="py-5">
+                  {{ icon }}
+                </v-icon>
+                <v-card-title class="py-0">{{ title }}</v-card-title>
+                <v-card-text class="text-center">
+                  {{ description }}
                 </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-    </v-container>
-  </opacity-transition-intersection>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script lang="ts">
 import SectionTitle from "@/components/SectionTitle.vue";
