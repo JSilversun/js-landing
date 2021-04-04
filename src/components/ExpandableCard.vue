@@ -15,7 +15,7 @@
             {{ description }}
           </p>
           <p class="extra_info">
-            {{ additionalDescription }}
+            {{ hiddenExtraDescription }}
           </p>
         </v-card-text>
         <v-spacer />
@@ -50,7 +50,7 @@ export default defineComponent({
     description: {
       type: String,
     },
-    additionalDescription: {
+    hiddenExtraDescription: {
       type: String,
       default: "",
     },

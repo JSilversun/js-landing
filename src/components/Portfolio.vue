@@ -10,17 +10,7 @@
           v-for="project in projects"
           :key="project.name"
         >
-          <expandable-card
-            :thumbnail-url="project.photoUrl"
-            :title="project.name"
-            :description="project.description"
-            :additional-description="project.additionalDescription"
-            :tags="project.mainTechnologies"
-          >
-            <template v-slot:actions>
-              <v-btn text class="primary--text">See details</v-btn>
-            </template>
-          </expandable-card>
+          <project-detail v-bind="project" width="80%" />
         </v-col>
       </v-row>
     </v-col>
@@ -29,10 +19,11 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import ExpandableCard from "@/components/ExpandableCard.vue";
+import ProjectDetail from "@/components/ProjectDetail.vue";
 
 export default defineComponent({
   name: "Portfolio",
-  components: { ExpandableCard },
+  components: { ProjectDetail, ExpandableCard },
   data() {
     return {
       projects: [
@@ -42,13 +33,31 @@ export default defineComponent({
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
           name: "MarketPlace Photologo",
           mainTechnologies: ["Django", "Pytest", "Postgres", "React", "Saleor"],
+          photos: [
+            {
+              title: "Some title 1",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+            {
+              title: "Some title 2",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+          ],
           areas: [
             {
               name: "DevOps",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+              color: "orange",
               technologies: ["Jenkins"],
             },
             {
               name: "Backend",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+              color: "cyan",
               technologies: [
                 "Django",
                 "Pytest",
@@ -61,57 +70,105 @@ export default defineComponent({
             },
             {
               name: "Frontend",
+              color: "pink",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
               technologies: ["React", "MobX"],
             },
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
-          additionalDescription:
+          hiddenExtraDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
+          name: "RankCountry",
           duration: "4m",
           photoUrl:
             "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/projects%2Frank-country%2Frank-country.png?alt=media",
-          name: "RankCountry",
+          photos: [
+            {
+              title: "Some title 1",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+            {
+              title: "Some title 2",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+          ],
           mainTechnologies: ["NodeJS", "Loopback 3", "ForestAdmin"],
           areas: [
             {
               name: "Backend",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+              color: "cyan",
               technologies: ["NodeJS", "Loopback 3", "ForestAdmin", "REST"],
             },
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
-          additionalDescription:
+          hiddenExtraDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
+          name: "Endeavour Mining - Access Manager",
           duration: "4m",
           photoUrl:
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
-          name: "Endeavour Mining - Access Manager",
+          photos: [
+            {
+              title: "Some title 1",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+            {
+              title: "Some title 2",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+          ],
           mainTechnologies: ["NodeJS", "Loopback 3", "Passport"],
           areas: [
             {
               name: "Backend",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+              color: "cyan",
               technologies: ["NodeJS", "TypeORM", "Inversify", "REST"],
             },
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
-          additionalDescription:
+          hiddenExtraDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
+          name: "Endeavour Mining - Reconciliation",
           duration: "8m",
+          photos: [
+            {
+              title: "Some title 1",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+            {
+              title: "Some title 2",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+          ],
           photoUrl:
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
-          name: "Endeavour Mining - Reconciliation",
           mainTechnologies: ["NodeJS", "Express", "TypeORM", "Bull", "Redis"],
           areas: [
             {
               name: "Backend",
+              color: "cyan",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
               technologies: [
                 "NodeJS",
                 "TypeORM",
@@ -124,18 +181,33 @@ export default defineComponent({
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
-          additionalDescription:
+          hiddenExtraDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
+          name: "+Tracker",
+          photos: [
+            {
+              title: "Some title 1",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+            {
+              title: "Some title 2",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+          ],
           duration: "1y",
           photoUrl:
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
-          name: "+Tracker",
           mainTechnologies: ["VueJS", "Vuetify", "Hasura", "Firebase"],
           areas: [
             {
               name: "Frontend",
+              color: "pink",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
               technologies: [
                 "VueJS",
                 "Vuex",
@@ -146,6 +218,9 @@ export default defineComponent({
             },
             {
               name: "Backend",
+              color: "cyan",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
               technologies: [
                 "NodeJS",
                 "TypeScript",
@@ -157,24 +232,39 @@ export default defineComponent({
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
-          additionalDescription:
+          hiddenExtraDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
         {
+          name: "Personal Landing",
+          photos: [
+            {
+              title: "Some title 1",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+            {
+              title: "Some title 2",
+              photo:
+                "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+            },
+          ],
           duration: "1w",
           photoUrl:
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
-          name: "Personal Landing",
           mainTechnologies: ["VueJS", "Firebase"],
           areas: [
             {
               name: "Frontend",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
+              color: "pink",
               technologies: ["VueJS", "Firebase", "CSS"],
             },
           ],
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
-          additionalDescription:
+          hiddenExtraDescription:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         },
       ],

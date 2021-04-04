@@ -5,6 +5,7 @@ import Vuetify from "vuetify/lib/framework";
 Vue.use(Vuetify);
 
 const gray = {
+  darken4: "#121212",
   darken3: "#212121",
   darken2: "#303030",
   darken1: "#424242",

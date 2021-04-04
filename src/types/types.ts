@@ -11,3 +11,5 @@ export interface SocialMedia {
   url: string;
   icon: string;
 }
+
+export type PartialRecord<K extends keyof any, T> = Partial<Record<K, T>>;
