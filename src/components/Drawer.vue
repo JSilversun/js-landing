@@ -14,7 +14,7 @@
         }"
         :key="title"
         dense
-        @click.prevent.stop="onClick(to)"
+        @click.prevent.stop="onClick(to, index)"
       >
         <v-list-item-icon>
           <v-icon>{{ icon }}</v-icon>
@@ -92,11 +92,13 @@ export default defineComponent({
     };
   },
   methods: {
-    async onClick(hash: string) {
-      this.isScrolling = true;
-      await this.$vuetify.goTo(hash);
-      this.isScrolling = false;
-      await this.setActiveHash();
+    async onClick(hash: string, index: number) {
+      this.activeLinkIndex = index;
+      await this.$nextTick(async () => {
+        this.isScrolling = true;
+        await this.$vuetify.goTo(hash);
+        this.isScrolling = false;
+      });
     },
     setOffsets() {
       const offsets = [];
