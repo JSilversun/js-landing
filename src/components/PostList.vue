@@ -3,7 +3,7 @@
     <h1 class="text-center py-5">Posts</h1>
     <v-row class="col-md-10 mx-auto">
       <v-col cols="12" sm="6" md="4" v-for="post in posts" :key="post.name">
-        <custom-card
+        <expandable-card
           :thumbnail-url="post.photoUrl"
           :title="post.name"
           :description="post.description"
@@ -13,19 +13,19 @@
           <template v-slot:actions>
             <v-btn text class="pink--text">See details</v-btn>
           </template>
-        </custom-card>
+        </expandable-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import CustomCard from "@/components/CustomCard.vue";
+import ExpandableCard from "@/components/ExpandableCard.vue";
 
 export default defineComponent({
   name: "PostList",
   components: {
-    CustomCard,
+    ExpandableCard,
   },
   data() {
     return {

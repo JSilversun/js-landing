@@ -50,7 +50,16 @@
               </v-simple-table>
             </v-card-text>
             <v-card-text class="my-4">
-              <v-btn rounded class="px-5" color="primary">Resume</v-btn>
+              <v-btn
+                rounded
+                class="px-5"
+                color="primary"
+                link
+                target="_blank"
+                :href="cvUrl"
+              >
+                Resume
+              </v-btn>
             </v-card-text>
           </v-card>
         </v-col>
@@ -166,6 +175,8 @@ export default defineComponent({
       ],
       imageUrl:
         "https://webtechnologybd.com/template/duck//images/about-image.jpg",
+      cvUrl:
+        "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/cv.pdf?alt=media",
     };
   },
 });

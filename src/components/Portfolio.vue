@@ -10,7 +10,7 @@
           v-for="project in projects"
           :key="project.name"
         >
-          <custom-card
+          <expandable-card
             :thumbnail-url="project.photoUrl"
             :title="project.name"
             :description="project.description"
@@ -20,7 +20,7 @@
             <template v-slot:actions>
               <v-btn text class="primary--text">See details</v-btn>
             </template>
-          </custom-card>
+          </expandable-card>
         </v-col>
       </v-row>
     </v-col>
@@ -28,11 +28,11 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import CustomCard from "@/components/CustomCard.vue";
+import ExpandableCard from "@/components/ExpandableCard.vue";
 
 export default defineComponent({
   name: "Portfolio",
-  components: { CustomCard },
+  components: { ExpandableCard },
   data() {
     return {
       projects: [

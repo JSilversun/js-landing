@@ -1,12 +1,12 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card
-      class="custom-card rounded-lg full-height d-flex flex-column"
+      class="expandable-card rounded-lg full-height d-flex flex-column"
       outlined
       :class="{ 'on-hover': hover }"
     >
       <v-img max-height="200" class="card-img" :src="thumbnailUrl" />
-      <div class="custom-card__body d-flex flex-column flex-grow-1">
+      <div class="expandable-card__body d-flex flex-column flex-grow-1">
         <v-card-title class="pb-1" :class="{ 'primary--text': hover }">
           {{ title }}
         </v-card-title>
@@ -37,7 +37,7 @@
 import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
-  name: "CustomCard",
+  name: "ExpandableCard",
   props: {
     thumbnailUrl: {
       type: String,
@@ -66,12 +66,12 @@ export default defineComponent({
 </script>
 <style lang="scss">
 @import "~vuetify/src/styles/settings/_variables";
-.custom-card__body {
+.expandable-card__body {
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
-.custom-card__body::before {
+.expandable-card__body::before {
   z-index: -1;
   background: var(--v-gray-darken1);
   opacity: 0;
@@ -82,7 +82,7 @@ export default defineComponent({
   height: 100%;
   margin-top: 0;
 }
-.custom-card:hover .custom-card__body::before {
+.expandable-card:hover .expandable-card__body::before {
   opacity: 0.7;
 }
 
