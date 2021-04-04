@@ -59,7 +59,7 @@
         <v-col cols="12" md="6" class="d-flex flex-column justify-center">
           <v-card
             outlined
-            class="mb-2"
+            class="mb-2 hoverable-card"
             :key="organization"
             v-for="{
               organization,

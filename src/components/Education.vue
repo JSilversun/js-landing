@@ -41,28 +41,30 @@
               }"
               :style="{ opacity: isVisible ? 1 : 0 }"
             >
-              <v-card-title> {{ institution }} </v-card-title>
-              <v-card-subtitle>{{ period }}</v-card-subtitle>
-              <v-card-text>
-                {{ description }}
-              </v-card-text>
-              <v-card-text>
-                <v-row class="mr-1">
-                  <v-col
-                    v-for="(photo, index) in photos"
-                    :key="photo"
-                    :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
-                    class="pr-0"
-                    v-show="index < maxVisiblePhotos"
-                  >
-                    <v-img
-                      :src="photo"
-                      class="grey darken-4 rounded"
-                      height="120"
-                    />
-                  </v-col>
-                </v-row>
-              </v-card-text>
+              <div class="hoverable-card">
+                <v-card-title> {{ institution }} </v-card-title>
+                <v-card-subtitle>{{ period }}</v-card-subtitle>
+                <v-card-text>
+                  {{ description }}
+                </v-card-text>
+                <v-card-text>
+                  <v-row class="mr-1">
+                    <v-col
+                      v-for="(photo, index) in photos"
+                      :key="photo"
+                      :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
+                      class="pr-0"
+                      v-show="index < maxVisiblePhotos"
+                    >
+                      <v-img
+                        :src="photo"
+                        class="grey darken-4 rounded"
+                        height="120"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </div>
             </v-card>
           </v-timeline-item>
         </v-timeline>

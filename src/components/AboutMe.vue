@@ -90,20 +90,22 @@
             :key="title"
           >
             <v-card outlined class="rounded-lg full-height">
-              <v-card-text
-                class="d-flex flex-column justify-center align-center"
-                :class="{
-                  'pa-0': $vuetify.breakpoint.xsOnly,
-                }"
-              >
-                <v-icon :color="color" x-large class="py-5">
-                  {{ icon }}
-                </v-icon>
-                <v-card-title class="py-0">{{ title }}</v-card-title>
-                <v-card-text class="text-center">
-                  {{ description }}
+              <div class="hoverable-card">
+                <v-card-text
+                  class="d-flex flex-column justify-center align-center"
+                  :class="{
+                    'pa-0': $vuetify.breakpoint.xsOnly,
+                  }"
+                >
+                  <v-icon :color="color" x-large class="py-5">
+                    {{ icon }}
+                  </v-icon>
+                  <v-card-title class="py-0">{{ title }}</v-card-title>
+                  <v-card-text class="text-center">
+                    {{ description }}
+                  </v-card-text>
                 </v-card-text>
-              </v-card-text>
+              </div>
             </v-card>
           </v-col>
         </v-row>
