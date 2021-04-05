@@ -13,7 +13,7 @@
       />
     </template>
     <v-card class="d-flex flex-column" max-height="90vh">
-      <v-card-title>
+      <v-card-title class="d-flex flex-nowrap align-start text-break">
         <span class="pa-0">{{ title }}</span>
         <v-spacer />
         <v-btn icon @click="isOpen = false">
