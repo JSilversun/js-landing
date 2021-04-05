@@ -192,7 +192,7 @@ export default defineComponent({
           this.isAnimating = false;
           this.isVisible = true;
         }
-      }, 100);
+      }, 300);
     },
     handleContainerIntersection(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
@@ -227,6 +227,6 @@ export default defineComponent({
 </script>
 <style>
 .transition-opacity {
-  transition: opacity 300ms;
+  transition: opacity 100ms;
 }
 </style>
