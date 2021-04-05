@@ -192,7 +192,7 @@ export default defineComponent({
           this.isAnimating = false;
           this.isVisible = true;
         }
-      }, 400);
+      }, 100);
     },
     handleContainerIntersection(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];

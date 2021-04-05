@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <h1 class="text-center py-5">Posts</h1>
-    <v-row class="col-md-10 mx-auto">
+    <v-row class="col-md-10 mx-auto pa-0">
       <v-col cols="12" sm="6" md="4" v-for="post in posts" :key="post.name">
         <expandable-card
           :thumbnail-url="post.photoUrl"

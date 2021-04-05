@@ -2,7 +2,7 @@
   <opacity-transition-intersection>
     <v-container>
       <section-title>Experience</section-title>
-      <v-row class="col-md-10 mx-auto">
+      <v-row class="col-md-10 mx-auto pa-0">
         <v-col cols="12" md="6" class="d-flex flex-column justify-center">
           <div>
             <h1 class="pt-5 text-h5 primary--text text-uppercase">
