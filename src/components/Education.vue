@@ -50,14 +50,18 @@
                 <v-card-text>
                   <v-row class="mr-1">
                     <v-col
-                      v-for="(photo, index) in photos"
-                      :key="photo"
+                      v-for="(
+                        { thumbnailUrl, imageUrl, title }, index
+                      ) in photos"
+                      :key="title"
                       :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
                       class="pr-0"
                       v-show="index < maxVisiblePhotos"
                     >
-                      <v-img
-                        :src="photo"
+                      <expandable-image
+                        :title="title"
+                        :image-url="imageUrl"
+                        :thumbnail-url="thumbnailUrl"
                         class="grey darken-4 rounded"
                         height="120"
                       />
@@ -76,10 +80,11 @@
 import { defineComponent } from "@vue/composition-api";
 import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import SectionTitle from "@/components/SectionTitle.vue";
+import ExpandableImage from "@/components/ExpandableImage.vue";
 
 export default defineComponent({
   name: "Education",
-  components: { OpacityTransitionIntersection, SectionTitle },
+  components: { ExpandableImage, OpacityTransitionIntersection, SectionTitle },
   data() {
     return {
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
@@ -95,9 +100,27 @@ export default defineComponent({
           degree: "Bachelor's degree, Computer Software Engineering",
           period: "2012 - 2020",
           photos: [
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_thumb.jpg?alt=media",
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_thumb.jpg?alt=media",
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_thumb.jpg?alt=media",
+            {
+              title: "Getting my degree in the middle of a pandemic",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_thumb.jpg?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_thumb.jpg?alt=media",
+            },
+            {
+              title: "Getting Cum Laude award",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_thumb.jpg?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_thumb.jpg?alt=media",
+            },
+            {
+              title: "Celebrating graduation without a mask, finally",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_thumb.jpg?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_thumb.jpg?alt=media",
+            },
           ],
         },
         {
@@ -110,8 +133,20 @@ export default defineComponent({
             "I had a hard time getting used to PluralSight courses however I believe their platform is impressive and I love their tests",
           period: "Aug 2020 - Nov 2020",
           photos: [
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fjavascript.jpeg?alt=media",
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fvue.jpeg?alt=media",
+            {
+              title: "PluralSight Javascript score",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fjavascript.jpeg?alt=media",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fjavascript.jpeg?alt=media",
+            },
+            {
+              title: "PluralSight Vue score",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fvue.jpeg?alt=media",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fvue.jpeg?alt=media",
+            },
           ],
         },
         {
@@ -123,8 +158,20 @@ export default defineComponent({
             "I decided to invest in myself so I purchased one year subscription in platzi, until now I have completed 35 courses from Javascript and Vue with ease, I'm looking forward to explore different fields and areas of knowledge with platforms that help students to learn new things on demand",
           period: "2020 - 2021",
           photos: [
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fjavascript-thumb.png?alt=media",
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fsoftware-architecture_thumb.png?alt=media",
+            {
+              title: "Platzi diploma for Javascript Career (over 30 courses)",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fjavascript-thumb.png?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fjavascript-thumb.png?alt=media",
+            },
+            {
+              title: "Platzi diploma for software architecture",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fsoftware-architecture_thumb.png?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fsoftware-architecture_thumb.png?alt=media",
+            },
           ],
         },
       ],

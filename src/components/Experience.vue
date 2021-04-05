@@ -76,16 +76,18 @@
             <v-card-text>
               <v-row class="mr-1">
                 <v-col
-                  v-for="photo in photos"
-                  :key="photo"
+                  v-for="{ imageUrl, thumbnailUrl, title } in photos"
+                  :key="title"
                   :cols="12 / photos.length"
                   class="pr-0"
                 >
-                  <v-img
-                    :src="photo"
+                  <expandable-image
+                    :title="title"
+                    :image-url="imageUrl"
+                    :thumbnail-url="thumbnailUrl"
                     class="grey darken-4 rounded"
                     height="150"
-                  ></v-img>
+                  ></expandable-image>
                 </v-col>
               </v-row>
             </v-card-text>
@@ -99,10 +101,12 @@
 import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import { defineComponent } from "@vue/composition-api";
 import SectionTitle from "@/components/SectionTitle.vue";
+import ExpandableImage from "@/components/ExpandableImage.vue";
 
 export default defineComponent({
   name: "Experience",
   components: {
+    ExpandableImage,
     SectionTitle,
     OpacityTransitionIntersection,
   },
@@ -185,8 +189,20 @@ export default defineComponent({
             "I graduated as Cum Laude in December 2020, it was a great honor and experience, I'm sincerely grateful and happy with my university and my professors specifically for teaching me so much!",
           period: "2012 - 2020",
           photos: [
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro1_thumb.jpg?alt=media",
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro2_thumb.jpg?alt=media",
+            {
+              title: "Coffee meeting with coworkers",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro1_thumb.jpg?alt=media",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro1_thumb.jpg?alt=media",
+            },
+            {
+              title: "End of the year party in Tiendas Ciro S. A.",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro2_thumb.jpg?alt=media",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fciro2_thumb.jpg?alt=media",
+            },
           ],
         },
         {
@@ -196,8 +212,20 @@ export default defineComponent({
           description:
             "I decided to invest in myself so I purchased one year subscription in platzi, until now I have completed 35 courses from Javascript and Vue with ease, I'm looking forward to explore different fields and areas of knowledge with platforms that help students to learn new things on demand",
           photos: [
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb1.jpg?alt=media",
-            "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb5.jpg?alt=media",
+            {
+              title: "Celebrating a coworker's birthday",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb1.jpg?alt=media",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb1.jpg?alt=media",
+            },
+            {
+              title: "Celebrating 2 years in the company",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb5.jpg?alt=media",
+              imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fplusteam_thumb5.jpg?alt=media",
+            },
           ],
           period: "2020 - 2021",
         },
