@@ -38,7 +38,7 @@
           :key="name"
           icon
           link
-          :to="url"
+          :href="url"
           target="_blank"
         >
           <v-icon>{{ icon }}</v-icon>
