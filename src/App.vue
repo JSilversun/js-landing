@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <drawer />
+    <app-bar />
     <v-main>
       <router-view />
     </v-main>
@@ -10,10 +11,12 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import Drawer from "@/components/Drawer.vue";
+import AppBar from "@/components/AppBar.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    AppBar,
     Drawer,
   },
   data: () => ({}),

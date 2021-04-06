@@ -1,5 +1,11 @@
 <template>
-  <v-navigation-drawer app class="main-drawer" v-scroll="onScroll">
+  <v-navigation-drawer
+    app
+    class="main-drawer"
+    @input="setDrawer"
+    v-scroll="onScroll"
+    :value="isExpanded || !$vuetify.breakpoint.mobile"
+  >
     <div class="avatar-container">
       <avatar :image-url="user.photoUrl" :subtitle="user.fullName">
         <h4 class="pt-2 text-h6 font-weight-bold">{{ user.fullName }}</h4>
@@ -42,6 +48,7 @@
   </v-navigation-drawer>
 </template>
 <script lang="ts">
+import { mapMutations, mapState } from "vuex";
 import { defineComponent } from "@vue/composition-api";
 import Avatar from "@/components/core/Avatar.vue";
 import user from "@/data/user.json";
@@ -91,7 +98,18 @@ export default defineComponent({
       activeLinkIndex: 0,
     };
   },
+  computed: {
+    ...mapState("app", ["isExpanded"]),
+    drawer() {
+      return this.isExpanded || this.$vuetify.breakpoint.mobile;
+    },
+  },
   methods: {
+    ...mapMutations("app", ["TOGGLE_DRAWER"]),
+    setDrawer(isExpanded: boolean) {
+      if (this.isExpanded === isExpanded) return;
+      this.TOGGLE_DRAWER();
+    },
     async onClick(hash: string, index: number) {
       this.activeLinkIndex = index;
       await this.$nextTick(async () => {
