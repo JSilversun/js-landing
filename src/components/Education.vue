@@ -1,80 +1,62 @@
 <template>
-  <v-container fluid class="grey darken-4 position-relative">
-    <section-title>Education</section-title>
-    <v-row>
-      <v-col cols="12" md="10" offset-md="1">
-        <v-timeline
-          :dense="$vuetify.breakpoint.mdAndDown"
-          v-intersect="{
-            handler: handleContainerIntersection,
-            threshold: [0.1],
-          }"
-        >
-          <v-timeline-item
-            v-for="(
-              {
+  <opacity-transition-intersection>
+    <v-container fluid class="grey darken-4 position-relative">
+      <section-title>Education</section-title>
+      <v-row>
+        <v-col cols="12" md="10" offset-md="1">
+          <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
+            <v-timeline-item
+              v-for="{
                 institution,
                 description,
                 period,
                 logoUrl,
                 photos,
-                isVisible,
                 color = 'primary',
-              },
-              index
-            ) in educationItems"
-            :key="institution"
-          >
-            <template v-slot:icon>
-              <v-avatar size="32" :color="color">
-                <img :src="logoUrl" />
-              </v-avatar>
-            </template>
-            <v-card
-              outlined
-              class="transition-opacity"
-              v-intersect="{
-                handler: handleItemIntersection.bind(null, index),
-                options: {
-                  threshold: [0.5],
-                },
-              }"
-              :style="{ opacity: isVisible ? 1 : 0 }"
+              } in educationItems"
+              :key="institution"
             >
-              <div class="hoverable-card">
-                <v-card-title> {{ institution }} </v-card-title>
-                <v-card-subtitle>{{ period }}</v-card-subtitle>
-                <v-card-text>
-                  {{ description }}
-                </v-card-text>
-                <v-card-text>
-                  <v-row class="mr-1">
-                    <v-col
-                      v-for="(
-                        { thumbnailUrl, imageUrl, title }, index
-                      ) in photos"
-                      :key="title"
-                      :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
-                      class="pr-0"
-                      v-show="index < maxVisiblePhotos"
-                    >
-                      <expandable-image
-                        :title="title"
-                        :image-url="imageUrl"
-                        :thumbnail-url="thumbnailUrl"
-                        class="grey darken-4 rounded"
-                        height="120"
-                      />
-                    </v-col>
-                  </v-row>
-                </v-card-text>
-              </div>
-            </v-card>
-          </v-timeline-item>
-        </v-timeline>
-      </v-col>
-    </v-row>
-  </v-container>
+              <template v-slot:icon>
+                <v-avatar size="32" :color="color">
+                  <img :src="logoUrl" />
+                </v-avatar>
+              </template>
+              <v-card outlined class="transition-opacity">
+                <div class="hoverable-card">
+                  <v-card-title> {{ institution }} </v-card-title>
+                  <v-card-subtitle>{{ period }}</v-card-subtitle>
+                  <v-card-text>
+                    {{ description }}
+                  </v-card-text>
+                  <v-card-text>
+                    <v-row class="mr-1">
+                      <v-col
+                        v-for="(
+                          { thumbnailUrl, imageUrl, title }, index
+                        ) in photos"
+                        :key="title"
+                        :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
+                        class="pr-0"
+                        v-show="index < maxVisiblePhotos"
+                      >
+                        <expandable-image
+                          :title="title"
+                          :image-url="imageUrl"
+                          :thumbnail-url="thumbnailUrl"
+                          class="grey darken-4 rounded"
+                          height="120"
+                        />
+                      </v-col>
+                    </v-row>
+                  </v-card-text>
+                </div>
+              </v-card>
+            </v-timeline-item>
+          </v-timeline>
+        </v-col>
+      </v-row>
+    </v-container>
+  </opacity-transition-intersection>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
@@ -90,7 +72,6 @@ export default defineComponent({
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
       educationItems: [
         {
-          isVisible: false,
           color: "white",
           logoUrl:
             "http://4.bp.blogspot.com/-zjOQNrvFY3U/WB4IiTdq6EI/AAAAAAAAAUE/HE_bkYqhAj8vULilPoKXjnH3HreYnIU-ACK4B/s400/logo_unet.gif",
@@ -124,7 +105,6 @@ export default defineComponent({
           ],
         },
         {
-          isVisible: false,
           color: "#EC008C",
           institution: "PluralSight",
           logoUrl:
@@ -150,7 +130,6 @@ export default defineComponent({
           ],
         },
         {
-          isVisible: false,
           logoUrl:
             "https://media.licdn.com/dms/image/C4D0BAQEdL87TMUgWag/company-logo_200_200/0?e=2159024400&v=beta&t=NkHmSn5reOmggy_cCNLcoHh0andWfiNpw6xCySqA9mw",
           institution: "Platzi",
@@ -175,48 +154,7 @@ export default defineComponent({
           ],
         },
       ],
-      isVisible: false,
-      isAnimating: false,
-      itemsQueue: [] as number[],
     };
-  },
-  methods: {
-    showItem() {
-      const index = this.itemsQueue.shift();
-      if (index === undefined) throw "Items queue is empty";
-      setTimeout(() => {
-        this.educationItems[index].isVisible = true;
-        if (this.itemsQueue.length > 0) {
-          this.showItem();
-        } else {
-          this.isAnimating = false;
-          this.isVisible = true;
-        }
-      }, 300);
-    },
-    handleContainerIntersection(entries: IntersectionObserverEntry[]) {
-      const { isIntersecting } = entries[0];
-      if (!isIntersecting && this.isVisible) this.hideItems();
-    },
-    handleItemIntersection(
-      index: number,
-      entries: IntersectionObserverEntry[]
-    ) {
-      const { isIntersecting } = entries[0];
-      if (!isIntersecting) return;
-      this.itemsQueue.push(index);
-      if (this.isAnimating) return;
-      this.isAnimating = true;
-      this.showItem();
-    },
-    hideItems() {
-      this.isVisible = false;
-      this.isAnimating = false;
-      this.itemsQueue = [];
-      for (const item of this.educationItems) {
-        item.isVisible = false;
-      }
-    },
   },
   computed: {
     maxVisiblePhotos() {
@@ -227,6 +165,6 @@ export default defineComponent({
 </script>
 <style>
 .transition-opacity {
-  transition: opacity 100ms;
+  transition: opacity 400ms;
 }
 </style>
