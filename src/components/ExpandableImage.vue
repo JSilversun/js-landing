@@ -21,7 +21,16 @@
         </v-btn>
       </v-card-title>
       <v-card-text class="flex-grow-1 d-flex flex-column justify-center">
-        <v-img :src="imageUrl" min-height="80vh" max-height="80vh" contain />
+        <v-img :src="imageUrl" min-height="80vh" max-height="80vh" contain>
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="primary"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
       </v-card-text>
     </v-card>
   </v-dialog>

@@ -103,23 +103,23 @@ export default defineComponent({
             {
               title: "Getting my degree in the middle of a pandemic",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_thumb.jpg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_optimized.jpeg?alt=media",
               thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_thumb.jpg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto1_thumb.jpeg?alt=media",
             },
             {
               title: "Getting Cum Laude award",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_thumb.jpg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_optimized.jpeg?alt=media",
               thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_thumb.jpg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto2_thumb.jpeg?alt=media",
             },
             {
               title: "Celebrating graduation without a mask, finally",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_thumb.jpg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_optimized.jpeg?alt=media",
               thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_thumb.jpg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Funet%2Fphoto3_thumb.jpeg?alt=media",
             },
           ],
         },
@@ -135,17 +135,17 @@ export default defineComponent({
           photos: [
             {
               title: "PluralSight Javascript score",
-              thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fjavascript.jpeg?alt=media",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fjavascript.jpeg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fpluralsight_javascript_optimized.jpeg?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fpluralsight_javascript_thumb.jpeg?alt=media",
             },
             {
               title: "PluralSight Vue score",
-              thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fvue.jpeg?alt=media",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fvue.jpeg?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fpluralsight_vue_optimized.jpeg?alt=media",
+              thumbnailUrl:
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fpluralsight%2Fpluralsight_vue_thumb.jpeg?alt=media",
             },
           ],
         },
@@ -161,16 +161,16 @@ export default defineComponent({
             {
               title: "Platzi diploma for Javascript Career (over 30 courses)",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fjavascript-thumb.png?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fplatzi_javascript_career_optimized.jpeg?alt=media",
               thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fjavascript-thumb.png?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fplatzi_javascript_career_thumb.jpeg?alt=media",
             },
             {
               title: "Platzi diploma for software architecture",
               imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fsoftware-architecture_thumb.png?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fplatzi_software_architecture_optimized.jpeg?alt=media",
               thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fsoftware-architecture_thumb.png?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/education%2Fplatzi%2Fplatzi_software_architecture_thumb.jpeg?alt=media",
             },
           ],
         },
