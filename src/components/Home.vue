@@ -1,34 +1,39 @@
 <template>
   <v-theme-provider dark>
     <v-container
-      class="white--text d-flex justify-center align-center text-center full-height-viewport"
+      fluid
+      class="white--text align-center full-height-viewport position-relative gray darken-2"
     >
-      <v-img
-        id="home-img"
-        src="https://newtemplate.net/demo/resume/template/side-menu-wave/images/banner-01.jpg"
-      />
-      <v-row>
+      <v-row class="full-height">
         <v-col
+          class="d-flex flex-column justify-center"
           cols="12"
           sm="10"
           lg="8"
-          xl="6"
-          offset-xl="3"
-          offset-lg="2"
+          xl="4"
+          offset-lg="1"
           offset-sm="1"
           style="z-index: 1"
         >
-          <v-slide-x-transition appear>
-            <h2
+          <span class="text-h6"> Hey there! </span>
+          <h2 class="text-h2 font-weight-bold">
+            I'm
+            <span class="primary--text">
+              {{ user.fullName }}
+            </span>
+          </h2>
+          <v-scroll-x-transition appear>
+            <p
+              class="py-4 mb-0"
               :class="{
-                'text-h4': $vuetify.breakpoint.mdAndUp,
-                'text-h6': $vuetify.breakpoint.smAndDown,
+                'text-h6': $vuetify.breakpoint.mdAndUp,
+                'subtitle-1': $vuetify.breakpoint.smAndDown,
               }"
             >
-              Hey there! My name is
-              <v-chip class="grey darken-2" label>{{ user.fullName }}</v-chip>
-            </h2>
-          </v-slide-x-transition>
+              I specialize in building web applications. I'm extremely
+              passionate about creating maintainable and efficient software
+            </p>
+          </v-scroll-x-transition>
           <vue-typed-js
             :strings="[
               'Software Engineer',
@@ -40,56 +45,37 @@
             :type-speed="50"
             :back-speed="30"
           >
-            <h1
-              :class="{
-                'text-h2': $vuetify.breakpoint.mdAndUp,
-                'text-h4': $vuetify.breakpoint.smAndDown,
-              }"
-            >
+            <h1 class="text-h4">
               <span
                 :class="{
                   'd-block': $vuetify.breakpoint.xsOnly,
                 }"
               >
-                I'm a
               </span>
               <span class="font-weight-bold typing"></span>
             </h1>
           </vue-typed-js>
-          <v-scroll-x-transition appear>
-            <p
-              class="py-4"
-              :class="{
-                'text-h6': $vuetify.breakpoint.mdAndUp,
-                'subtitle-1': $vuetify.breakpoint.smAndDown,
-              }"
-            >
-              I specialize in building web applications. I'm extremely
-              passionate about creating maintainable and efficient software
-            </p>
-          </v-scroll-x-transition>
-
-          <v-slide-x-reverse-transition appear>
+          <div class="mt-3">
             <v-btn
-              rounded
-              class="primary mr-2"
-              @click="$vuetify.goTo(`#about_me`)"
+              v-for="{ icon, name, url } of user.socialLinks"
+              :key="name"
+              icon
+              link
+              :href="url"
+              target="_blank"
             >
-              About me
+              <v-icon>{{ icon }}</v-icon>
             </v-btn>
-          </v-slide-x-reverse-transition>
-          <v-slide-x-reverse-transition appear>
-            <v-btn
-              rounded
-              text
-              class="white black--text"
-              @click="$vuetify.goTo(`#portfolio`)"
-            >
-              Portfolio
-            </v-btn>
-          </v-slide-x-reverse-transition>
+          </div>
         </v-col>
       </v-row>
+      <v-img
+        class="position-absolute hero-img"
+        src="@/assets/hero5.jpg"
+        height="100vh"
+        style="bottom: 0; right: 0"
+      />
+      <div class="hero-filter" />
     </v-container>
   </v-theme-provider>
 </template>
@@ -106,6 +92,12 @@ export default defineComponent({
     TransparentImageWave,
     ImageWave: TransparentImageWave,
   },
+  props: {
+    index: {
+      type: Number,
+      required: true,
+    },
+  },
   data: () => ({
     fab: false,
     user,
@@ -115,26 +107,12 @@ export default defineComponent({
 });
 </script>
 <style>
-#home-img,
-#home-img::before {
+.hero-filter {
+  background: rgba(30, 37, 74, 0.8);
+  position: absolute;
   height: 100vh;
   width: 100%;
-}
-
-#home-img {
-  position: absolute;
-}
-
-#home-img::before {
-  content: "";
-  background-repeat: no-repeat;
   top: 0;
   left: 0;
-  background-image: linear-gradient(
-    to right,
-    var(--v-primary-darken4) 0%,
-    var(--v-primary-darken3) 100%
-  );
-  opacity: 0.5;
 }
 </style>

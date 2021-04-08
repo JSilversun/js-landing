@@ -4,7 +4,7 @@
     class="main-drawer"
     @input="setDrawer"
     v-scroll="onScroll"
-    :value="isExpanded || !$vuetify.breakpoint.mobile"
+    :value="isExpanded"
   >
     <div class="avatar-container">
       <avatar :image-url="user.photoUrl" :subtitle="user.fullName">

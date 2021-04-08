@@ -1,5 +1,9 @@
 <template>
-  <v-app-bar app v-if="$vuetify.breakpoint.mobile" hide-on-scroll>
+  <v-app-bar
+    app
+    class="transparent elevation-0"
+    style="position: fixed"
+  >
     <v-app-bar-nav-icon @click="TOGGLE_DRAWER" />
   </v-app-bar>
 </template>

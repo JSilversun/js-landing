@@ -176,7 +176,7 @@ export default defineComponent({
         },
       ],
       imageUrl:
-        "https://webtechnologybd.com/template/duck//images/about-image.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/profile%2Fabout_me3_optimized.jpeg?alt=media",
       cvUrl:
         "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/cv.pdf?alt=media",
     };
