@@ -2,6 +2,7 @@
   <v-navigation-drawer
     app
     class="main-drawer"
+    temporary
     @input="setDrawer"
     :value="isExpanded"
   >
@@ -18,7 +19,7 @@
       highlight-first-item
       @itemchanged="onItemActive"
     >
-      <v-list>
+      <v-list class="px-4">
         <v-list-item
           v-for="{ icon, to, title } in links"
           class="scrollactive-item"
@@ -30,7 +31,7 @@
           :key="title"
           dense
         >
-          <v-list-item-icon>
+          <v-list-item-icon class="mr-5">
             <v-icon>{{ icon }}</v-icon>
           </v-list-item-icon>
 
@@ -76,7 +77,7 @@ export default defineComponent({
           title: "Home",
         },
         {
-          icon: "mdi-card-account-details",
+          icon: "mdi-language-javascript",
           to: "#about_me",
           title: "About me",
         },
@@ -86,17 +87,17 @@ export default defineComponent({
           title: "Education",
         },
         {
-          icon: "mdi-account-hard-hat",
+          icon: "mdi-briefcase-variant",
           to: "#experience",
           title: "Experience",
         },
         {
-          icon: "mdi-view-list",
+          icon: "mdi-view-carousel",
           to: "#portfolio",
           title: "Portfolio",
         },
         {
-          icon: "mdi-post",
+          icon: "mdi-view-split-vertical",
           to: "#posts",
           title: "Posts",
         },

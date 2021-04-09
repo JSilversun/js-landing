@@ -4,10 +4,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import "@animxyz/core";
 import VueTypedJs from "vue-typed-js";
 import VueScrollActive from "vue-scrollactive";
 import VueAnimXYZ from "@animxyz/vue";
-import "@animxyz/core";
 
 Vue.use(VueScrollActive);
 Vue.use(VueAnimXYZ);

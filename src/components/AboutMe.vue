@@ -124,32 +124,32 @@ export default defineComponent({
     return {
       items: [
         {
-          icon: "mdi-puzzle",
+          icon: "mdi-function-variant",
           title: "Problem Solver",
-          color: "purple lighten-1",
+          color: "primary",
           description:
-            "I always come up with innovative solutions to the problems I face frameworks or languages",
+            "I come up with innovative solutions to the problems that I face",
         },
         {
-          icon: "mdi-iframe-braces-outline",
-          color: "pink",
+          icon: "mdi-code-braces",
+          color: "primary",
           title: "Tech Enthusiast",
           description:
-            "I always come up with innovative solutions to the problems I face frameworks or languages",
+            "I feel comfortable learning to use new languages or tools to improve my workflow",
         },
         {
-          icon: "mdi-school",
-          color: "cyan",
+          icon: "mdi-bookshelf",
+          color: "primary",
           title: "Self-taught",
           description:
-            "I always come up with innovative solutions to the problems I face frameworks or languages",
+            "I'm curious and I love investing in my learning, I'm constantly learning new things on my own",
         },
         {
-          icon: "mdi-medal",
+          icon: "mdi-speedometer",
           title: "Dedicated",
-          color: "orange",
+          color: "primary",
           description:
-            "I always come up with innovative solutions to the problems I face frameworks or languages",
+            "I give all my effort to surpass my own limits and be the best version of myself I can be",
         },
       ],
       profileRows: [
