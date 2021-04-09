@@ -2,21 +2,28 @@
   <v-theme-provider dark>
     <v-container
       fluid
-      class="white--text align-center full-height-viewport position-relative gray darken-2"
+      class="px-5 white--text align-center full-height-viewport position-relative gray darken-2"
     >
       <v-row class="full-height">
         <v-col
           class="d-flex flex-column justify-center"
-          cols="12"
-          sm="10"
-          lg="8"
+          cols="10"
+          sm="6"
+          lg="5"
           xl="4"
           offset-lg="1"
-          offset-sm="1"
+          offset="1"
           style="z-index: 1"
         >
-          <span class="text-h6"> Hey there! </span>
-          <h2 class="text-h2 font-weight-bold">
+          <span class="text-h6 py-2"> Hey there! </span>
+          <h2
+            class="font-weight-bold"
+            :class="{
+              'text-h2': $vuetify.breakpoint.lgAndUp,
+              'text-h3': $vuetify.breakpoint.mdOnly,
+              'text-h4': $vuetify.breakpoint.smAndDown,
+            }"
+          >
             I'm
             <span class="primary--text">
               {{ user.fullName }}
@@ -45,7 +52,12 @@
             :type-speed="50"
             :back-speed="30"
           >
-            <h1 class="text-h4">
+            <h1
+              :class="{
+                'text-h4': $vuetify.breakpoint.lgAndUp,
+                'text-h5': $vuetify.breakpoint.mdAndDown,
+              }"
+            >
               <span
                 :class="{
                   'd-block': $vuetify.breakpoint.xsOnly,
@@ -55,7 +67,7 @@
               <span class="font-weight-bold typing"></span>
             </h1>
           </vue-typed-js>
-          <div class="mt-3">
+          <div class="mt-4">
             <v-btn
               v-for="{ icon, name, url } of user.socialLinks"
               :key="name"
@@ -71,6 +83,7 @@
       </v-row>
       <v-img
         class="position-absolute hero-img"
+        v-if="$vuetify.breakpoint.smAndUp"
         src="@/assets/hero5.jpg"
         height="100vh"
         style="bottom: 0; right: 0"

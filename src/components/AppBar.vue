@@ -1,10 +1,6 @@
 <template>
-  <v-app-bar
-    app
-    class="transparent elevation-0"
-    style="position: fixed"
-  >
-    <v-app-bar-nav-icon @click="TOGGLE_DRAWER" />
+  <v-app-bar app class="transparent elevation-0" style="position: fixed">
+    <v-app-bar-nav-icon class="primary--text" @click="TOGGLE_DRAWER" />
   </v-app-bar>
 </template>
 <script lang="ts">
