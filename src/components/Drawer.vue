@@ -3,7 +3,6 @@
     app
     class="main-drawer"
     @input="setDrawer"
-    v-scroll="onScroll"
     :value="isExpanded"
   >
     <div class="avatar-container">
@@ -12,25 +11,28 @@
         <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
       </avatar>
     </div>
-    <v-list>
-      <v-list-item
-        v-for="({ icon, to, title }, index) in links"
-        :class="{
-          'v-list-item--active': index === activeLinkIndex,
-        }"
-        :key="title"
-        dense
-        @click.prevent.stop="onClick(to, index)"
-      >
-        <v-list-item-icon>
-          <v-icon>{{ icon }}</v-icon>
-        </v-list-item-icon>
+    <scrollactive
+      active-class="v-list-item--active"
+    >
+      <v-list>
+        <v-list-item
+          v-for="{ icon, to, title } in links"
+          class="scrollactive-item"
+          :data-destination-id="to"
+          :href="to"
+          :key="title"
+          dense
+        >
+          <v-list-item-icon>
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
 
-        <v-list-item-content>
-          <v-list-item-title>{{ title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+          <v-list-item-content>
+            <v-list-item-title>{{ title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </scrollactive>
     <template v-slot:append>
       <div class="d-flex justify-center my-4">
         <v-btn
@@ -59,10 +61,7 @@ export default defineComponent({
   components: { Avatar },
   data() {
     return {
-      timeout: null as null | number,
       user: user as User,
-      offsets: [] as number[],
-      isScrolling: false,
       links: [
         {
           icon: "mdi-home",
@@ -95,7 +94,6 @@ export default defineComponent({
           title: "Posts",
         },
       ] as { icon: string; to: string; title: string }[],
-      activeLinkIndex: 0,
     };
   },
   computed: {
@@ -110,64 +108,6 @@ export default defineComponent({
       if (this.isExpanded === isExpanded) return;
       this.TOGGLE_DRAWER();
     },
-    async onClick(hash: string, index: number) {
-      this.activeLinkIndex = index;
-      await this.$nextTick(async () => {
-        this.isScrolling = true;
-        await this.$vuetify.goTo(hash);
-        this.isScrolling = false;
-      });
-    },
-    setOffsets() {
-      const offsets = [];
-      const links = this.links.slice().reverse();
-      for (const item of links) {
-        const section = document.getElementById(item.to.slice(1));
-        if (!section) continue;
-        offsets.push(section.offsetTop - 20);
-      }
-      this.offsets = offsets;
-    },
-    async findActiveLinkIndex(): Promise<number> {
-      const { offsetTop, offsetHeight } = document.documentElement;
-      const currentOffset = window.pageYOffset || offsetTop || 0;
-      if (currentOffset === 0 && !this.$route.hash) return 0;
-      const activeOffsetIndex = this.offsets.findIndex(
-        (offset) => offset < currentOffset
-      );
-      let activeLinkIndex =
-        activeOffsetIndex > -1
-          ? this.offsets.length - 1 - activeOffsetIndex
-          : 0;
-
-      const isLastLink = currentOffset + window.innerHeight === offsetHeight;
-      return isLastLink ? this.links.length - 1 : activeLinkIndex;
-    },
-    async setActiveHash() {
-      if (this.offsets.length !== this.links.length) this.setOffsets();
-      if (this.$vuetify.breakpoint.mobile || this.isScrolling) return;
-      this.activeLinkIndex = await this.findActiveLinkIndex();
-    },
-    onScroll() {
-      if (this.timeout) clearTimeout(this.timeout);
-      this.timeout = setTimeout(this.setActiveHash, 20);
-    },
-  },
-  watch: {
-    activeLinkIndex: {
-      immediate: true,
-      async handler(activeLinkIndex) {
-        const { to: hash } = this.links[activeLinkIndex];
-        if (hash === this.$route.hash || this.isScrolling) return;
-        await this.$router.replace({
-          path: this.$route.hash,
-          hash,
-        });
-      },
-    },
-  },
-  mounted() {
-    this.setActiveHash();
   },
 });
 </script>

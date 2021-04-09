@@ -3,6 +3,12 @@
     <v-container
       fluid
       class="px-5 white--text align-center full-height-viewport position-relative gray darken-2"
+      v-intersect="{
+        handler: setHomeVisibility,
+        options: {
+          threshold: [0.2],
+        },
+      }"
     >
       <v-row class="full-height">
         <v-col
@@ -97,6 +103,7 @@ import { defineComponent } from "@vue/composition-api";
 import user from "@/data/user.json";
 import TransparentImageWave from "@/components/TransparentImageWave.vue";
 import TypingText from "@/components/TypingText.vue";
+import { mapMutations } from "vuex";
 
 export default defineComponent({
   name: "Home",
@@ -105,23 +112,26 @@ export default defineComponent({
     TransparentImageWave,
     ImageWave: TransparentImageWave,
   },
-  props: {
-    index: {
-      type: Number,
-      required: true,
-    },
-  },
   data: () => ({
     fab: false,
     user,
     homeImage:
       "https://newtemplate.net/demo/resume/template/side-menu-wave/images/banner-01.jpg",
   }),
+  methods: {
+    ...mapMutations("app", ["SET_HOME_VISIBILITY"]),
+    setHomeVisibility(entries: IntersectionObserverEntry[]) {
+      const { isIntersecting } = entries[0];
+      this.SET_HOME_VISIBILITY(isIntersecting);
+    },
+  },
 });
 </script>
-<style>
+<style lang="scss">
+@import "~@/styles/variables.scss";
 .hero-filter {
-  background: rgba(30, 37, 74, 0.8);
+  background: $accent-hero !important;
+  opacity: 0.8;
   position: absolute;
   height: 100vh;
   width: 100%;
