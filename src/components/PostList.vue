@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <h1 class="text-center py-5">Posts</h1>
-    <v-row class="col-md-10 mx-auto pa-0">
+    <card-list-transition class="row col-md-10 mx-auto pa-0">
       <v-col cols="12" sm="6" md="4" v-for="post in posts" :key="post.name">
         <expandable-card
           :thumbnail-url="post.photoUrl"
@@ -15,17 +15,19 @@
           </template>
         </expandable-card>
       </v-col>
-    </v-row>
+    </card-list-transition>
   </v-container>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import ExpandableCard from "@/components/ExpandableCard.vue";
+import CardListTransition from "@/CardListTrasition.vue";
 
 export default defineComponent({
   name: "PostList",
   components: {
     ExpandableCard,
+    CardListTransition,
   },
   data() {
     return {

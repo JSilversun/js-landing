@@ -11,31 +11,29 @@
       }"
     >
       <v-row class="full-height">
-        <v-col
-          class="d-flex flex-column justify-center"
-          cols="10"
-          sm="6"
-          lg="5"
-          xl="4"
-          offset-lg="1"
-          offset="1"
-          style="z-index: 1"
-        >
-          <span class="text-h6 py-2"> Hey there! </span>
-          <h2
-            class="font-weight-bold"
-            :class="{
-              'text-h2': $vuetify.breakpoint.lgAndUp,
-              'text-h3': $vuetify.breakpoint.mdOnly,
-              'text-h4': $vuetify.breakpoint.smAndDown,
-            }"
+        <xyz-transition appear duration="auto" xyz="fade left duration-10">
+          <v-col
+            class="d-flex flex-column justify-center"
+            cols="10"
+            sm="6"
+            lg="5"
+            xl="4"
+            offset-lg="1"
+            offset="1"
+            style="z-index: 1"
           >
-            I'm
-            <span class="primary--text">
-              {{ user.fullName }}
-            </span>
-          </h2>
-          <v-scroll-x-transition appear>
+            <span class="text-h6 py-2"> Hey there! </span>
+            <h2
+              class="font-weight-bold"
+              :class="{
+                'text-h2': $vuetify.breakpoint.lgAndUp,
+                'text-h3': $vuetify.breakpoint.mdOnly,
+                'text-h4': $vuetify.breakpoint.smAndDown,
+              }"
+            >
+              I'm
+              <span class="primary--text"> {{ user.fullName }} </span>
+            </h2>
             <p
               class="py-4 mb-0"
               :class="{
@@ -46,55 +44,50 @@
               I specialize in building web applications. I'm extremely
               passionate about creating maintainable and efficient software
             </p>
-          </v-scroll-x-transition>
-          <vue-typed-js
-            :strings="[
-              'Software Engineer',
-              'Fullstack Developer',
-              'Problem Solver',
-            ]"
-            loop
-            class="d-inline-block"
-            :type-speed="50"
-            :back-speed="30"
-          >
-            <h1
-              :class="{
-                'text-h4': $vuetify.breakpoint.lgAndUp,
-                'text-h5': $vuetify.breakpoint.mdAndDown,
-              }"
+            <vue-typed-js
+              :strings="[
+                'Software Engineer',
+                'Fullstack Developer',
+                'Problem Solver',
+              ]"
+              loop
+              class="d-inline-block"
+              :type-speed="50"
+              :back-speed="30"
             >
-              <span
+              <h1
                 :class="{
-                  'd-block': $vuetify.breakpoint.xsOnly,
+                  'text-h4': $vuetify.breakpoint.lgAndUp,
+                  'text-h5': $vuetify.breakpoint.mdAndDown,
                 }"
               >
-              </span>
-              <span class="font-weight-bold typing"></span>
-            </h1>
-          </vue-typed-js>
-          <div class="mt-4">
-            <v-btn
-              v-for="{ icon, name, url } of user.socialLinks"
-              :key="name"
-              icon
-              link
-              :href="url"
-              target="_blank"
-            >
-              <v-icon>{{ icon }}</v-icon>
-            </v-btn>
-          </div>
-        </v-col>
+                <span class="font-weight-bold typing" />
+              </h1>
+            </vue-typed-js>
+            <div class="mt-4">
+              <v-btn
+                v-for="{ icon, name, url } of user.socialLinks"
+                :key="name"
+                icon
+                link
+                :href="url"
+                target="_blank"
+              >
+                <v-icon>{{ icon }}</v-icon>
+              </v-btn>
+            </div>
+          </v-col>
+        </xyz-transition>
+
+        <v-img
+          class="position-absolute hero-img"
+          v-if="$vuetify.breakpoint.smAndUp"
+          src="@/assets/hero5.jpg"
+          height="100vh"
+          style="bottom: 0; right: 0"
+        />
+        <div class="hero-filter" />
       </v-row>
-      <v-img
-        class="position-absolute hero-img"
-        v-if="$vuetify.breakpoint.smAndUp"
-        src="@/assets/hero5.jpg"
-        height="100vh"
-        style="bottom: 0; right: 0"
-      />
-      <div class="hero-filter" />
     </v-container>
   </v-theme-provider>
 </template>
@@ -133,6 +126,7 @@ export default defineComponent({
 </script>
 <style lang="scss">
 @import "~@/styles/variables.scss";
+
 .hero-filter {
   background: $accent-hero !important;
   opacity: 0.8;

@@ -128,7 +128,7 @@ export default defineComponent({
           title: "Problem Solver",
           color: "primary",
           description:
-            "I come up with innovative solutions to the problems that I face",
+            "I come up with innovative solutions to the problems I face",
         },
         {
           icon: "mdi-code-braces",
