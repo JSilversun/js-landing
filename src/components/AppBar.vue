@@ -12,7 +12,8 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import { mapMutations, mapState } from "vuex";
+import { mapMutations } from "vuex";
+import { useNamespacedState } from "vuex-composition-helpers";
 
 export default defineComponent({
   name: "AppBar",
@@ -21,12 +22,16 @@ export default defineComponent({
       isVisible: false,
     };
   },
+  setup() {
+    return {
+      ...useNamespacedState("app", ["isHomeVisible"]),
+    };
+  },
   methods: {
     ...mapMutations("app", ["TOGGLE_DRAWER"]),
   },
   computed: {
-    ...mapState("app", ["isHomeVisible"]),
-    background() {
+    background(): string {
       return !this.$vuetify.breakpoint.mobile || this.isHomeVisible
         ? "transparent"
         : "";

@@ -103,7 +103,6 @@ import { defineComponent } from "@vue/composition-api";
 import user from "@/data/user.json";
 import TransparentImageWave from "@/components/TransparentImageWave.vue";
 import TypingText from "@/components/TypingText.vue";
-import { mapMutations } from "vuex";
 
 export default defineComponent({
   name: "Home",
@@ -119,10 +118,9 @@ export default defineComponent({
       "https://newtemplate.net/demo/resume/template/side-menu-wave/images/banner-01.jpg",
   }),
   methods: {
-    ...mapMutations("app", ["SET_HOME_VISIBILITY"]),
     setHomeVisibility(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
-      this.SET_HOME_VISIBILITY(isIntersecting);
+      this.$store.commit("SET_HOME_VISIBILITY", isIntersecting);
     },
   },
 });
