@@ -12,13 +12,20 @@
       </avatar>
     </div>
     <scrollactive
+      ref="scrollActive"
       active-class="v-list-item--active"
+      :modify-url="false"
+      highlight-first-item
+      @itemchanged="onItemActive"
     >
       <v-list>
         <v-list-item
           v-for="{ icon, to, title } in links"
           class="scrollactive-item"
-          :data-destination-id="to"
+          :class="{
+            'v-list-item--active': $route.hash === to,
+          }"
+          :data-destination-hash="to"
           :href="to"
           :key="title"
           dense
@@ -108,6 +115,20 @@ export default defineComponent({
       if (this.isExpanded === isExpanded) return;
       this.TOGGLE_DRAWER();
     },
+    async goToHash(hash: string) {
+      if (this.$route.hash === hash) return;
+      await this.$router.replace({
+        path: hash,
+        hash,
+      });
+    },
+    async onItemActive(event: any, currentItem: HTMLElement): Promise<void> {
+      if (!currentItem.dataset.destinationHash) return;
+      await this.goToHash(currentItem.dataset.destinationHash);
+    },
+  },
+  async mounted() {
+    await this.goToHash(this.links[0].to);
   },
 });
 </script>

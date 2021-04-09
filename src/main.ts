@@ -6,9 +6,11 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import VueTypedJs from "vue-typed-js";
 import VueScrollActive from "vue-scrollactive";
+import VueAnimXYZ from "@animxyz/vue";
+import "@animxyz/core";
 
 Vue.use(VueScrollActive);
-
+Vue.use(VueAnimXYZ);
 Vue.use(VueTypedJs);
 Vue.use(VueCompositionAPI);
 

@@ -2,7 +2,13 @@
   <v-container fluid class="grey darken-4">
     <h1 class="text-center py-5">Portfolio</h1>
     <v-col cols="12" md="10" class="mx-auto">
-      <v-row>
+      <xyz-transition-group
+        :appear-visible="{
+          threshold: [threshold],
+        }"
+        class="row"
+        xyz="fade stagger-2"
+      >
         <v-col
           cols="12"
           sm="6"
@@ -10,9 +16,9 @@
           v-for="project in projects"
           :key="project.name"
         >
-          <project-detail v-bind="project" width="80%" />
+          <project-detail v-bind="project" />
         </v-col>
-      </v-row>
+      </xyz-transition-group>
     </v-col>
   </v-container>
 </template>
@@ -20,6 +26,8 @@
 import { defineComponent } from "@vue/composition-api";
 import ExpandableCard from "@/components/ExpandableCard.vue";
 import ProjectDetail from "@/components/ProjectDetail.vue";
+import { PartialRecord } from "@/types/types";
+import { BreakpointName } from "vuetify/types/services/breakpoint";
 
 export default defineComponent({
   name: "Portfolio",
@@ -269,6 +277,16 @@ export default defineComponent({
         },
       ],
     };
+  },
+  computed: {
+    threshold() {
+      const defaultThreshold = 0.5;
+      const thresholds: PartialRecord<BreakpointName, number> = {
+        xs: 0.1,
+        sm: 0.1,
+      };
+      return thresholds[this.$vuetify.breakpoint.name] || defaultThreshold;
+    },
   },
 });
 </script>

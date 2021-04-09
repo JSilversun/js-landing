@@ -103,7 +103,6 @@ import { defineComponent } from "@vue/composition-api";
 import user from "@/data/user.json";
 import TransparentImageWave from "@/components/TransparentImageWave.vue";
 import TypingText from "@/components/TypingText.vue";
-import { mapMutations } from "vuex";
 import { useNamespacedMutations } from "vuex-composition-helpers";
 
 export default defineComponent({

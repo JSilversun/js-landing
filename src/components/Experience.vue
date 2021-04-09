@@ -1,5 +1,5 @@
 <template>
-  <opacity-transition-intersection>
+  <xyz-transition appear-visible xyz="fade">
     <v-container fluid>
       <section-title>Experience</section-title>
       <v-row>
@@ -102,10 +102,9 @@
         </v-col>
       </v-row>
     </v-container>
-  </opacity-transition-intersection>
+  </xyz-transition>
 </template>
 <script lang="ts">
-import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import { defineComponent } from "@vue/composition-api";
 import SectionTitle from "@/components/SectionTitle.vue";
 import ExpandableImage from "@/components/ExpandableImage.vue";
@@ -115,7 +114,6 @@ export default defineComponent({
   components: {
     ExpandableImage,
     SectionTitle,
-    OpacityTransitionIntersection,
   },
   data() {
     return {

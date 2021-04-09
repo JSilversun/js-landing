@@ -1,23 +1,21 @@
 <template>
   <v-container fluid class="about_me my-5">
     <section-title>About me</section-title>
-    <opacity-transition-intersection>
+    <xyz-transition appear-visible duration="auto">
       <v-row
         :class="{
           'my-5': $vuetify.breakpoint.mdAndUp,
         }"
+        xyz="fade stagger-2"
       >
         <v-col
-          class="d-flex"
-          :class="{
-            'justify-end': $vuetify.breakpoint.mdAndUp,
-            'justify-center': $vuetify.breakpoint.smAndDown,
-          }"
-          cols="12"
-          md="4"
-          offset-md="1"
+          class="d-flex justify-center"
+          cols="10"
+          offset="1"
+          md="2"
+          offset-md="3"
         >
-          <v-img :src="imageUrl" max-width="300" class="rounded-xl" />
+          <v-img :src="imageUrl" min-height="500" class="rounded-xl" />
         </v-col>
         <v-col
           cols="12"
@@ -64,63 +62,64 @@
           </v-card>
         </v-col>
       </v-row>
-    </opacity-transition-intersection>
-
-    <v-row :no-gutters="$vuetify.breakpoint.mdAndDown">
-      <v-col
-        cols="12"
-        sm="10"
-        md="8"
-        lg="12"
-        xl="10"
-        offset-lg="0"
-        offset-sm="1"
-        offset-md="2"
-        offset-xl="1"
-        :class="{
-          'my-10': $vuetify.breakpoint.mdAndUp,
-        }"
-      >
-        <v-row class="mx-auto">
-          <v-col
-            cols="12"
-            sm="6"
-            lg="3"
-            v-for="{ icon, title, description, color } in items"
-            :key="title"
-          >
-            <v-card outlined class="rounded-lg full-height">
-              <div class="hoverable-card">
-                <v-card-text
-                  class="d-flex flex-column justify-center align-center"
-                  :class="{
-                    'pa-0': $vuetify.breakpoint.xsOnly,
-                  }"
-                >
-                  <v-icon :color="color" x-large class="py-5">
-                    {{ icon }}
-                  </v-icon>
-                  <v-card-title class="py-0">{{ title }}</v-card-title>
-                  <v-card-text class="text-center">
-                    {{ description }}
+    </xyz-transition>
+    <xyz-transition :appear-visible="{ threshold: [0.4] }">
+      <v-row :no-gutters="$vuetify.breakpoint.mdAndDown">
+        <v-col
+          cols="12"
+          sm="10"
+          md="8"
+          lg="12"
+          xl="10"
+          offset-lg="0"
+          offset-sm="1"
+          offset-md="2"
+          offset-xl="1"
+          :class="{
+            'my-10': $vuetify.breakpoint.mdAndUp,
+          }"
+          xyz="fade down"
+        >
+          <v-row class="mx-auto">
+            <v-col
+              cols="12"
+              sm="6"
+              lg="3"
+              v-for="{ icon, title, description, color } in items"
+              :key="title"
+            >
+              <v-card outlined class="rounded-lg full-height xyz-nested">
+                <div class="hoverable-card">
+                  <v-card-text
+                    class="d-flex flex-column justify-center align-center"
+                    :class="{
+                      'pa-0': $vuetify.breakpoint.xsOnly,
+                    }"
+                  >
+                    <v-icon :color="color" x-large class="py-5">
+                      {{ icon }}
+                    </v-icon>
+                    <v-card-title class="py-0">{{ title }}</v-card-title>
+                    <v-card-text class="text-center">
+                      {{ description }}
+                    </v-card-text>
                   </v-card-text>
-                </v-card-text>
-              </div>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
+                </div>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </xyz-transition>
   </v-container>
 </template>
 <script lang="ts">
 import SectionTitle from "@/components/SectionTitle.vue";
-import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   name: "AboutMe",
-  components: { SectionTitle, OpacityTransitionIntersection },
+  components: { SectionTitle },
   data() {
     return {
       items: [

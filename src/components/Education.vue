@@ -1,6 +1,6 @@
 <template>
-  <opacity-transition-intersection>
-    <v-container fluid class="grey darken-4 position-relative">
+  <xyz-transition appear-visible xyz="fade">
+    <v-container fluid class="grey darken-4">
       <section-title>Education</section-title>
       <v-row>
         <v-col cols="12" md="10" offset-md="1">
@@ -56,17 +56,16 @@
         </v-col>
       </v-row>
     </v-container>
-  </opacity-transition-intersection>
+  </xyz-transition>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import OpacityTransitionIntersection from "@/components/OpacityTransitionIntersection.vue";
 import SectionTitle from "@/components/SectionTitle.vue";
 import ExpandableImage from "@/components/ExpandableImage.vue";
 
 export default defineComponent({
   name: "Education",
-  components: { ExpandableImage, OpacityTransitionIntersection, SectionTitle },
+  components: { ExpandableImage, SectionTitle },
   data() {
     return {
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
