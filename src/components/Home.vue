@@ -103,6 +103,8 @@ import { defineComponent } from "@vue/composition-api";
 import user from "@/data/user.json";
 import TransparentImageWave from "@/components/TransparentImageWave.vue";
 import TypingText from "@/components/TypingText.vue";
+import { mapMutations } from "vuex";
+import { useNamespacedMutations } from "vuex-composition-helpers";
 
 export default defineComponent({
   name: "Home",
@@ -110,6 +112,11 @@ export default defineComponent({
     TypingText,
     TransparentImageWave,
     ImageWave: TransparentImageWave,
+  },
+  setup() {
+    return {
+      ...useNamespacedMutations("app", ["SET_HOME_VISIBILITY"]),
+    };
   },
   data: () => ({
     fab: false,
@@ -120,7 +127,7 @@ export default defineComponent({
   methods: {
     setHomeVisibility(entries: IntersectionObserverEntry[]) {
       const { isIntersecting } = entries[0];
-      this.$store.commit("SET_HOME_VISIBILITY", isIntersecting);
+      this.SET_HOME_VISIBILITY(isIntersecting);
     },
   },
 });
