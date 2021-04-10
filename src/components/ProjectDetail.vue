@@ -29,7 +29,9 @@
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-card-title>
-      <v-card-subtitle class="py-1"> 1y </v-card-subtitle>
+      <v-card-subtitle class="py-1" v-if="durationMilliseconds">
+        {{ $filters.humanizeDuration(durationMilliseconds) }}
+      </v-card-subtitle>
       <v-container fluid class="pt-0">
         <v-row>
           <v-col cols="12" md="4">
@@ -87,8 +89,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "@vue/composition-api";
-import { PhotoDetail, ProjectArea } from "@/types/project";
 import ExpandableCard from "@/components/ExpandableCard.vue";
+import { DateRangeData, PhotoDetail, ProjectArea } from "@/types/project";
 import { BreakpointName } from "vuetify/types/services/breakpoint";
 import { PartialRecord } from "@/types/types";
 
@@ -113,6 +115,9 @@ export default defineComponent({
     hiddenExtraDescription: {
       type: String,
       required: true,
+    },
+    timeRange: {
+      type: Object as PropType<DateRangeData>,
     },
     photos: {
       type: Array as PropType<PhotoDetail[]>,
@@ -142,6 +147,14 @@ export default defineComponent({
         sm: 300,
       };
       return heights[this.$vuetify.breakpoint.name] || defaultHeight;
+    },
+    durationMilliseconds(): number | null {
+      if (!this.timeRange) return null;
+      const endDate = this.timeRange.endDate
+        ? new Date(this.timeRange.endDate)
+        : new Date();
+      const startDate = new Date(this.timeRange.startDate);
+      return endDate.getTime() - startDate.getTime();
     },
   },
 });

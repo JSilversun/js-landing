@@ -4,6 +4,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import "./filters";
 import "@animxyz/core";
 import VueTypedJs from "vue-typed-js";
 import VueScrollActive from "vue-scrollactive";

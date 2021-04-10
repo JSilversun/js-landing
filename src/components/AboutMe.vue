@@ -1,11 +1,7 @@
 <template>
   <v-container fluid class="about_me my-5">
     <section-title>About me</section-title>
-    <xyz-transition
-      appear-visible
-      duration="auto"
-      xyz="fade stagger-6"
-    >
+    <xyz-transition appear-visible duration="auto" xyz="fade stagger-6">
       <div>
         <v-row
           :class="{
@@ -18,9 +14,12 @@
             sm="6"
             offset="1"
             md="4"
+            lg="3"
+            xl="2"
             offset-sm="3"
-            offset-lg="2"
+            offset-lg="3"
             offset-md="1"
+            offset-xl="3"
           >
             <v-img :src="imageUrl" min-height="500" class="rounded-xl" />
           </v-col>

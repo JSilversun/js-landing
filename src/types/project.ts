@@ -3,9 +3,14 @@ export interface PhotoDetail {
   title: string;
 }
 
-export interface TypePeriod {
-  start: Date;
-  end: Date;
+export interface DateRangeData {
+  startDate: string;
+  endDate?: string;
+}
+
+export interface DateRange {
+  startDate: Date;
+  endDate?: Date;
 }
 
 export interface ProjectArea {

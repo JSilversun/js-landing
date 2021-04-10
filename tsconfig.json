@@ -16,7 +16,6 @@
       "vuetify",
       "webpack-env",
       "jest",
-      "@animxyz"
     ],
     "paths": {
       "@/*": [

@@ -29,10 +29,13 @@ export default defineComponent({
     return {
       projects: [
         {
-          duration: "1y",
+          name: "MarketPlace Photologo",
+          timeRange: {
+            startDate: "10/24/2018",
+            endDate: "12/22/2020",
+          },
           photoUrl:
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
-          name: "MarketPlace Photologo",
           mainTechnologies: ["Django", "Pytest", "Postgres", "React", "Saleor"],
           photos: [
             {
@@ -84,7 +87,10 @@ export default defineComponent({
         },
         {
           name: "RankCountry",
-          duration: "4m",
+          timeRange: {
+            startDate: "03/16/2019",
+            endDate: "11/27/2019",
+          },
           photoUrl:
             "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/projects%2Frank-country%2Frank-country.png?alt=media",
           photos: [
@@ -116,6 +122,10 @@ export default defineComponent({
         },
         {
           name: "Endeavour Mining - Access Manager",
+          timeRange: {
+            startDate: "09/30/2019",
+            endDate: "08/25/2020",
+          },
           duration: "4m",
           photoUrl:
             "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
@@ -148,7 +158,10 @@ export default defineComponent({
         },
         {
           name: "Endeavour Mining - Reconciliation",
-          duration: "8m",
+          timeRange: {
+            startDate: "01/17/2020",
+            endDate: "06/12/2020",
+          },
           photos: [
             {
               title: "Some title 1",
@@ -187,6 +200,10 @@ export default defineComponent({
         },
         {
           name: "+Tracker",
+          timeRange: {
+            startDate: "12/29/2019",
+            endDate: "04/06/2021",
+          },
           photos: [
             {
               title: "Some title 1",
@@ -238,6 +255,10 @@ export default defineComponent({
         },
         {
           name: "Personal Landing",
+          timeRange: {
+            startDate: "03/21/2021",
+            endDate: "04/10/2021",
+          },
           photos: [
             {
               title: "Some title 1",
