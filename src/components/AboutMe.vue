@@ -1,14 +1,27 @@
 <template>
   <v-container fluid class="about_me my-5">
     <section-title>About me</section-title>
-    <xyz-transition appear-visible duration="auto" xyz="fade right stagger-6">
+    <xyz-transition
+      appear-visible
+      duration="auto"
+      xyz="fade stagger-6"
+      :v-xyz="{
+        right: !$vuetify.breakpoint.mobile,
+      }"
+    >
       <div>
         <v-row
           :class="{
             'my-5': $vuetify.breakpoint.mdAndUp,
           }"
         >
-          <v-col cols="10" offset="1" md="2" offset-md="3" class="xyz-nested">
+          <v-col
+            cols="10"
+            offset="1"
+            md="2"
+            offset-md="3"
+            class="xyz-nested d-flex"
+          >
             <v-img :src="imageUrl" v-bind="mainSize" class="rounded-xl" />
           </v-col>
           <v-col
