@@ -5,53 +5,59 @@
       <v-row>
         <v-col cols="12" md="10" offset-md="1">
           <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
-            <v-timeline-item
-              v-for="{
-                institution,
-                description,
-                period,
-                logoUrl,
-                photos,
-                color = 'primary',
-              } in educationItems"
-              :key="institution"
+            <xyz-transition-group
+              xyz="fade down stagger"
+              duration="3"
+              appear-visible
             >
-              <template v-slot:icon>
-                <v-avatar size="32" :color="color">
-                  <img :src="logoUrl" />
-                </v-avatar>
-              </template>
-              <v-card outlined class="transition-opacity">
-                <div class="hoverable-card">
-                  <v-card-title> {{ institution }} </v-card-title>
-                  <v-card-subtitle>{{ period }}</v-card-subtitle>
-                  <v-card-text>
-                    {{ description }}
-                  </v-card-text>
-                  <v-card-text>
-                    <v-row class="mr-1">
-                      <v-col
-                        v-for="(
-                          { thumbnailUrl, imageUrl, title }, index
-                        ) in photos"
-                        :key="title"
-                        :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
-                        class="pr-0"
-                        v-show="index < maxVisiblePhotos"
-                      >
-                        <expandable-image
-                          :title="title"
-                          :image-url="imageUrl"
-                          :thumbnail-url="thumbnailUrl"
-                          class="grey darken-4 rounded"
-                          height="120"
-                        />
-                      </v-col>
-                    </v-row>
-                  </v-card-text>
-                </div>
-              </v-card>
-            </v-timeline-item>
+              <v-timeline-item
+                v-for="{
+                  institution,
+                  description,
+                  period,
+                  logoUrl,
+                  photos,
+                  color = 'primary',
+                } in educationItems"
+                :key="institution"
+              >
+                <template v-slot:icon>
+                  <v-avatar size="32" :color="color">
+                    <img :src="logoUrl" />
+                  </v-avatar>
+                </template>
+                <v-card outlined class="transition-opacity">
+                  <div class="hoverable-card">
+                    <v-card-title> {{ institution }} </v-card-title>
+                    <v-card-subtitle>{{ period }}</v-card-subtitle>
+                    <v-card-text>
+                      {{ description }}
+                    </v-card-text>
+                    <v-card-text>
+                      <v-row class="mr-1">
+                        <v-col
+                          v-for="(
+                            { thumbnailUrl, imageUrl, title }, index
+                          ) in photos"
+                          :key="title"
+                          :cols="12 / Math.min(maxVisiblePhotos, photos.length)"
+                          class="pr-0"
+                          v-show="index < maxVisiblePhotos"
+                        >
+                          <expandable-image
+                            :title="title"
+                            :image-url="imageUrl"
+                            :thumbnail-url="thumbnailUrl"
+                            class="grey darken-4 rounded"
+                            height="120"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </div>
+                </v-card>
+              </v-timeline-item>
+            </xyz-transition-group>
           </v-timeline>
         </v-col>
       </v-row>

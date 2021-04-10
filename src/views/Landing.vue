@@ -6,6 +6,7 @@
     <experience id="experience" />
     <portfolio id="portfolio" />
     <post-list id="posts" />
+    <main-footer />
   </v-container>
 </template>
 
@@ -17,10 +18,12 @@ import AboutMe from "@/components/AboutMe.vue";
 import Home from "@/components/Home.vue";
 import { defineComponent } from "@vue/composition-api";
 import PostList from "@/components/PostList.vue";
+import MainFooter from "@/components/Footer.vue";
 
 export default defineComponent({
   name: "Landing",
   components: {
+    MainFooter,
     PostList,
     Portfolio,
     Experience,

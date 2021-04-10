@@ -60,41 +60,43 @@
             </div>
           </v-col>
           <v-col cols="12" md="6" class="d-flex flex-column justify-center">
-            <v-card
-              outlined
-              class="mb-2 hoverable-card"
-              :key="organization"
-              v-for="{
-                organization,
-                period,
-                description,
-                photos,
-              } of experienceItems"
-            >
-              <v-card-title> {{ organization }} </v-card-title>
-              <v-card-subtitle>{{ period }}</v-card-subtitle>
-              <v-card-text>
-                {{ description }}
-              </v-card-text>
-              <v-card-text>
-                <v-row class="mr-1">
-                  <v-col
-                    v-for="{ imageUrl, thumbnailUrl, title } in photos"
-                    :key="title"
-                    :cols="12 / photos.length"
-                    class="pr-0"
-                  >
-                    <expandable-image
-                      :title="title"
-                      :image-url="imageUrl"
-                      :thumbnail-url="thumbnailUrl"
-                      class="grey darken-4 rounded"
-                      height="150"
-                    />
-                  </v-col>
-                </v-row>
-              </v-card-text>
-            </v-card>
+            <card-list-transition>
+              <v-card
+                outlined
+                class="mb-2 hoverable-card"
+                :key="organization"
+                v-for="{
+                  organization,
+                  period,
+                  description,
+                  photos,
+                } of experienceItems"
+              >
+                <v-card-title> {{ organization }} </v-card-title>
+                <v-card-subtitle>{{ period }}</v-card-subtitle>
+                <v-card-text>
+                  {{ description }}
+                </v-card-text>
+                <v-card-text>
+                  <v-row class="mr-1">
+                    <v-col
+                      v-for="{ imageUrl, thumbnailUrl, title } in photos"
+                      :key="title"
+                      :cols="12 / photos.length"
+                      class="pr-0"
+                    >
+                      <expandable-image
+                        :title="title"
+                        :image-url="imageUrl"
+                        :thumbnail-url="thumbnailUrl"
+                        class="grey darken-4 rounded"
+                        height="150"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </v-card>
+            </card-list-transition>
           </v-col>
         </v-row>
       </v-col>
@@ -105,10 +107,12 @@
 import { defineComponent } from "@vue/composition-api";
 import SectionTitle from "@/components/SectionTitle.vue";
 import ExpandableImage from "@/components/ExpandableImage.vue";
+import CardListTransition from "@/CardListTrasition.vue";
 
 export default defineComponent({
   name: "Experience",
   components: {
+    CardListTransition,
     ExpandableImage,
     SectionTitle,
   },

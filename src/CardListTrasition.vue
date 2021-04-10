@@ -3,7 +3,7 @@
     :appear-visible="{
       threshold: [threshold],
     }"
-    xyz="fade stagger-2"
+    xyz="fade down stagger"
     v-bind="$attrs"
   >
     <slot />
