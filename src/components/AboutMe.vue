@@ -5,9 +5,6 @@
       appear-visible
       duration="auto"
       xyz="fade stagger-6"
-      :v-xyz="{
-        right: !$vuetify.breakpoint.mobile,
-      }"
     >
       <div>
         <v-row
@@ -16,13 +13,16 @@
           }"
         >
           <v-col
+            class="d-flex justify-center xyz-nested"
             cols="10"
+            sm="6"
             offset="1"
-            md="2"
-            offset-md="3"
-            class="xyz-nested d-flex"
+            md="4"
+            offset-sm="3"
+            offset-lg="2"
+            offset-md="1"
           >
-            <v-img :src="imageUrl" v-bind="mainSize" class="rounded-xl" />
+            <v-img :src="imageUrl" min-height="500" class="rounded-xl" />
           </v-col>
           <v-col
             cols="12"
@@ -188,21 +188,6 @@ export default defineComponent({
       cvUrl:
         "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/cv.pdf?alt=media",
     };
-  },
-  computed: {
-    mainSize() {
-      const defaultSize = {
-        width: 280,
-        height: 500,
-      };
-      const sizes: PartialRecord<BreakpointName, Record<string, number>> = {
-        sm: {
-          width: 200,
-          height: 500,
-        },
-      };
-      return sizes[this.$vuetify.breakpoint.name] || defaultSize;
-    },
   },
 });
 </script>
