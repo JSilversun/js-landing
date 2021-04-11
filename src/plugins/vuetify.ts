@@ -42,4 +42,7 @@ export default new Vuetify({
       customProperties: true,
     },
   },
+  icons: {
+    iconfont: "mdiSvg",
+  },
 });

@@ -123,6 +123,12 @@
 import SectionTitle from "@/components/SectionTitle.vue";
 import { defineComponent } from "@vue/composition-api";
 import buildUrl from "cloudinary-build-url";
+import {
+  mdiBookshelf,
+  mdiCodeBraces,
+  mdiFunctionVariant,
+  mdiSpeedometer,
+} from "@mdi/js";
 
 export default defineComponent({
   name: "AboutMe",
@@ -131,28 +137,28 @@ export default defineComponent({
     return {
       items: [
         {
-          icon: "mdi-function-variant",
+          icon: mdiFunctionVariant,
           title: "Problem Solver",
           color: "primary",
           description:
             "I come up with innovative solutions to the problems I face",
         },
         {
-          icon: "mdi-code-braces",
+          icon: mdiCodeBraces,
           color: "primary",
           title: "Tech Enthusiast",
           description:
             "I feel comfortable learning to use new languages or tools to improve my workflow",
         },
         {
-          icon: "mdi-bookshelf",
+          icon: mdiBookshelf,
           color: "primary",
           title: "Self-taught",
           description:
             "I'm curious and I love investing in my learning, I'm constantly learning new things on my own",
         },
         {
-          icon: "mdi-speedometer",
+          icon: mdiSpeedometer,
           title: "Dedicated",
           color: "primary",
           description:
