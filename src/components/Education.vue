@@ -29,7 +29,7 @@
                 <v-card outlined class="transition-opacity">
                   <div class="hoverable-card">
                     <v-card-title> {{ institution }} </v-card-title>
-                    <v-card-subtitle>{{ period }}</v-card-subtitle>
+                    <v-card-subtitle class="pb-0">{{ period }}</v-card-subtitle>
                     <v-card-text>
                       {{ description }}
                     </v-card-text>
@@ -46,7 +46,7 @@
                             :title="title"
                             :image-id="imageId"
                             class="grey darken-4 rounded"
-                            height="120"
+                            height="150"
                           />
                         </v-col>
                       </v-row>

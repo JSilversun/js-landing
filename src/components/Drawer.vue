@@ -15,6 +15,7 @@
     <scrollactive
       ref="scrollActive"
       active-class="v-list-item--active"
+      scroll-offset="0"
       :modify-url="false"
       highlight-first-item
       @itemchanged="onItemActive"

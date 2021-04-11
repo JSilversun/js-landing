@@ -2,7 +2,7 @@
   <v-theme-provider dark>
     <v-container
       fluid
-      class="px-5 white--text align-center full-height-viewport position-relative gray darken-2"
+      class="px-5 white--text align-center full-height-viewport position-relative gray darken-1"
       v-intersect="{
         handler: setHomeVisibility,
         options: {
