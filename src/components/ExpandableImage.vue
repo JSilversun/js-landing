@@ -34,6 +34,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
+import buildUrl from "cloudinary-build-url";
 
 export default defineComponent({
   name: "ExpandableImage",
@@ -42,11 +43,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    thumbnailUrl: {
-      type: String,
-      required: true,
-    },
-    imageUrl: {
+    imageId: {
       type: String,
       required: true,
     },
@@ -55,6 +52,27 @@ export default defineComponent({
     return {
       isOpen: false,
     };
+  },
+  computed: {
+    thumbnailUrl() {
+      return buildUrl(this.imageId, {
+        transformations: {
+          resize: {
+            height: 320,
+            type: "thumb",
+          },
+        },
+      });
+    },
+    imageUrl() {
+      return buildUrl(this.imageId, {
+        transformations: {
+          resize: {
+            height: 1280,
+          },
+        },
+      });
+    },
   },
 });
 </script>

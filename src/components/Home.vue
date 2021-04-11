@@ -82,7 +82,7 @@
         <v-img
           class="position-absolute hero-img"
           v-if="$vuetify.breakpoint.smAndUp"
-          src="@/assets/hero5.jpg"
+          :src="homeImage"
           height="100vh"
           style="bottom: 0; right: 0"
         />
@@ -97,6 +97,7 @@ import user from "@/data/user.json";
 import TransparentImageWave from "@/components/TransparentImageWave.vue";
 import TypingText from "@/components/TypingText.vue";
 import { useNamespacedMutations } from "vuex-composition-helpers";
+import buildUrl from "cloudinary-build-url";
 
 export default defineComponent({
   name: "Home",
@@ -113,8 +114,13 @@ export default defineComponent({
   data: () => ({
     fab: false,
     user,
-    homeImage:
-      "https://newtemplate.net/demo/resume/template/side-menu-wave/images/banner-01.jpg",
+    homeImage: buildUrl("landing/profile/hero_ueddah", {
+      transformations: {
+        resize: {
+          width: 1920,
+        },
+      },
+    }),
   }),
   methods: {
     setHomeVisibility(entries: IntersectionObserverEntry[]) {

@@ -80,15 +80,14 @@
                 <v-card-text>
                   <v-row class="mr-1">
                     <v-col
-                      v-for="{ imageUrl, thumbnailUrl, title } in photos"
+                      v-for="{ imageId, title } in photos"
                       :key="title"
                       :cols="12 / photos.length"
                       class="pr-0"
                     >
                       <expandable-image
                         :title="title"
-                        :image-url="imageUrl"
-                        :thumbnail-url="thumbnailUrl"
+                        :image-id="imageId"
                         class="grey darken-4 rounded"
                         height="150"
                       />
@@ -197,17 +196,11 @@ export default defineComponent({
           photos: [
             {
               title: "Coffee meeting with coworkers",
-              thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fcoffee_coworkers_thumb.jpeg?alt=media",
-              imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fcoffee_coworkers_optimized.jpeg?alt=media",
+              imageId: "landing/experience/ciro/coffee_coworkers_qiijph",
             },
             {
               title: "End of the year party in Tiendas Ciro S. A.",
-              thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fparty_end_of_year_thumb.jpeg?alt=media",
-              imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fciro%2Fparty_end_of_year_optimized.jpeg?alt=media",
+              imageId: "landing/experience/ciro/party_end_of_year_fjodf6",
             },
           ],
         },
@@ -220,17 +213,11 @@ export default defineComponent({
           photos: [
             {
               title: "Celebrating a coworker's birthday",
-              thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fcoworker_birthday_thumb.jpeg?alt=media",
-              imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fcoworker_birthday_optimized.jpeg?alt=media",
+              imageId: "landing/experience/plusteam/coworker_birthday_znmqjf",
             },
             {
               title: "Celebrating 2 years in the company",
-              thumbnailUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fcelebration_2_years_thumb.jpeg?alt=media",
-              imageUrl:
-                "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/experience%2Fplusteam%2Fcelebration_2_years_optimized.jpeg?alt=media",
+              imageId: "landing/experience/plusteam/celebration_2_years_mtdz2j",
             },
           ],
           period: "2020 - 2021",

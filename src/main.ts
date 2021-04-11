@@ -3,6 +3,7 @@ import VueCompositionAPI from "@vue/composition-api";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import "./plugins/cloudinary";
 import vuetify from "./plugins/vuetify";
 import "./filters";
 import "@animxyz/core";

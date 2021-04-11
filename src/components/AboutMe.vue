@@ -122,8 +122,7 @@
 <script lang="ts">
 import SectionTitle from "@/components/SectionTitle.vue";
 import { defineComponent } from "@vue/composition-api";
-import { PartialRecord } from "@/types/types";
-import { BreakpointName } from "vuetify/types/services/breakpoint";
+import buildUrl from "cloudinary-build-url";
 
 export default defineComponent({
   name: "AboutMe",
@@ -182,8 +181,13 @@ export default defineComponent({
           value: "Spanish, English",
         },
       ],
-      imageUrl:
-        "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/profile%2Fabout_me3_optimized.jpeg?alt=media",
+      imageUrl: buildUrl("landing/profile/about_me", {
+        transformations: {
+          resize: {
+            height: 600,
+          },
+        },
+      }),
       cvUrl:
         "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/cv.pdf?alt=media",
     };
