@@ -17,7 +17,7 @@
         <span class="pa-0">{{ title }}</span>
         <v-spacer />
         <v-btn icon @click="isOpen = false">
-          <v-icon>mdi-close</v-icon>
+          <v-icon>$mdi-close</v-icon>
         </v-btn>
       </v-card-title>
       <v-card-text class="flex-grow-1 d-flex flex-column justify-center">
@@ -54,7 +54,7 @@ export default defineComponent({
     };
   },
   computed: {
-    thumbnailUrl() {
+    thumbnailUrl(): string {
       return buildUrl(this.imageId, {
         transformations: {
           resize: {
@@ -64,7 +64,7 @@ export default defineComponent({
         },
       });
     },
-    imageUrl() {
+    imageUrl(): string {
       return buildUrl(this.imageId, {
         transformations: {
           resize: {

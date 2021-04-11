@@ -1,6 +1,7 @@
 import Vue from "vue";
 import colors from "vuetify/lib/util/colors";
 import Vuetify from "vuetify/lib/framework";
+import { ICONS } from "@/icons";
 
 Vue.use(Vuetify);
 
@@ -44,5 +45,6 @@ export default new Vuetify({
   },
   icons: {
     iconfont: "mdiSvg",
+    values: ICONS,
   },
 });

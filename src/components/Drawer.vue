@@ -63,14 +63,6 @@ import { defineComponent } from "@vue/composition-api";
 import Avatar from "@/components/core/Avatar.vue";
 import user from "@/data/user.json";
 import { User } from "@/types/types";
-import {
-  mdiBriefcaseVariant,
-  mdiHome,
-  mdiLanguageJavascript,
-  mdiSchool,
-  mdiViewCarousel,
-  mdiViewSplitVertical,
-} from "@mdi/js";
 
 export default defineComponent({
   name: "Drawer",
@@ -80,32 +72,32 @@ export default defineComponent({
       user: user as User,
       links: [
         {
-          icon: mdiHome,
+          icon: "$mdi-home",
           to: "#home",
           title: "Home",
         },
         {
-          icon: mdiLanguageJavascript,
+          icon: "$mdi-language-javascript",
           to: "#about_me",
           title: "About me",
         },
         {
-          icon: mdiSchool,
+          icon: "$mdi-school",
           to: "#education",
           title: "Education",
         },
         {
-          icon: mdiBriefcaseVariant,
+          icon: "$mdi-briefcase-variant",
           to: "#experience",
           title: "Experience",
         },
         {
-          icon: mdiViewCarousel,
+          icon: "$mdi-view-carousel",
           to: "#portfolio",
           title: "Portfolio",
         },
         {
-          icon: mdiViewSplitVertical,
+          icon: "$mdi-view-split-vertical",
           to: "#posts",
           title: "Posts",
         },

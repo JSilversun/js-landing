@@ -26,7 +26,7 @@
         </p>
         <v-spacer />
         <v-btn icon @click="isOpen = false">
-          <v-icon>mdi-close</v-icon>
+          <v-icon>$mdi-close</v-icon>
         </v-btn>
       </v-card-title>
       <v-card-subtitle class="py-1" v-if="durationMilliseconds">
@@ -64,7 +64,7 @@
                 <v-carousel
                   v-model="activeSlideIndex"
                   cycle
-                  delimiter-icon="mdi-minus"
+                  delimiter-icon="$mdi-minus"
                   :height="carouselHeight"
                   hide-delimiters
                   class="position-relative"

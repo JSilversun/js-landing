@@ -28,8 +28,8 @@
     >
       <template v-slot:activator>
         <v-btn dark fab>
-          <v-icon v-if="isSettingsOpen">mdi-close</v-icon>
-          <v-icon v-else>mdi-cog</v-icon>
+          <v-icon v-if="isSettingsOpen">$mdi-close</v-icon>
+          <v-icon v-else>$mdi-cog</v-icon>
         </v-btn>
       </template>
     </v-speed-dial>

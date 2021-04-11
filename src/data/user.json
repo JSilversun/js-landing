@@ -5,17 +5,17 @@
   "username": "jsilversun",
   "socialLinks": [
     {
-      "icon": "mdi-github",
+      "icon": "$mdi-github",
       "name": "github",
       "url": "https://github.com/JSilversun"
     },
     {
-      "icon": "mdi-gitlab",
+      "icon": "$mdi-gitlab",
       "name": "gitlab",
       "url": "https://gitlab.com/jsilversun"
     },
     {
-      "icon": "mdi-linkedin",
+      "icon": "$mdi-linkedin",
       "name": "linkedin",
       "url": "https://www.linkedin.com/in/jsilversun/"
     }

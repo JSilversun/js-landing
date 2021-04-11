@@ -93,23 +93,21 @@
                 :key="title"
                 class="xyz-nested"
               >
-                <v-card outlined class="rounded-lg full-height">
-                  <div class="hoverable-card">
-                    <v-card-text
-                      class="d-flex flex-column justify-center align-center"
-                      :class="{
-                        'pa-0': $vuetify.breakpoint.xsOnly,
-                      }"
-                    >
-                      <v-icon :color="color" x-large class="py-5">
-                        {{ icon }}
-                      </v-icon>
-                      <v-card-title class="py-0">{{ title }}</v-card-title>
-                      <v-card-text class="text-center">
-                        {{ description }}
-                      </v-card-text>
+                <v-card outlined class="rounded-lg full-height hoverable-card">
+                  <v-card-text
+                    class="d-flex flex-column justify-center align-center"
+                    :class="{
+                      'pa-0': $vuetify.breakpoint.xsOnly,
+                    }"
+                  >
+                    <v-icon :color="color" x-large class="my-5">
+                      {{ icon }}
+                    </v-icon>
+                    <v-card-title class="py-0">{{ title }}</v-card-title>
+                    <v-card-text class="text-center">
+                      {{ description }}
                     </v-card-text>
-                  </div>
+                  </v-card-text>
                 </v-card>
               </v-col>
             </v-row>
@@ -123,12 +121,6 @@
 import SectionTitle from "@/components/SectionTitle.vue";
 import { defineComponent } from "@vue/composition-api";
 import buildUrl from "cloudinary-build-url";
-import {
-  mdiBookshelf,
-  mdiCodeBraces,
-  mdiFunctionVariant,
-  mdiSpeedometer,
-} from "@mdi/js";
 
 export default defineComponent({
   name: "AboutMe",
@@ -137,28 +129,28 @@ export default defineComponent({
     return {
       items: [
         {
-          icon: mdiFunctionVariant,
+          icon: "$mdi-function-variant",
           title: "Problem Solver",
           color: "primary",
           description:
             "I come up with innovative solutions to the problems I face",
         },
         {
-          icon: mdiCodeBraces,
+          icon: "$mdi-code-braces",
           color: "primary",
           title: "Tech Enthusiast",
           description:
             "I feel comfortable learning to use new languages or tools to improve my workflow",
         },
         {
-          icon: mdiBookshelf,
+          icon: "$mdi-bookshelf",
           color: "primary",
           title: "Self-taught",
           description:
             "I'm curious and I love investing in my learning, I'm constantly learning new things on my own",
         },
         {
-          icon: mdiSpeedometer,
+          icon: "$mdi-speedometer",
           title: "Dedicated",
           color: "primary",
           description:
