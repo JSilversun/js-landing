@@ -4,6 +4,11 @@ export interface User {
   photoUrl: string;
   profession: string;
   socialLinks: SocialMedia[];
+  birthDate: {
+    month: number;
+    year: number;
+  };
+  cvUrl: string;
 }
 
 export interface SocialMedia {
@@ -12,4 +17,7 @@ export interface SocialMedia {
   icon: string;
 }
 
-export type PartialRecord<K extends keyof any, T> = Partial<Record<K, T>>;
+export interface PhotoDetail {
+  imageId: string;
+  title: string;
+}

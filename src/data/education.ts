@@ -1,11 +1,12 @@
-export const educationItems = [
+import { EducationItem } from "@/types/education";
+
+export const educationItems: EducationItem[] = [
   {
+    institution: "Universidad Nacional Experimental del Táchira",
     logoUrl:
       "http://4.bp.blogspot.com/-zjOQNrvFY3U/WB4IiTdq6EI/AAAAAAAAAUE/HE_bkYqhAj8vULilPoKXjnH3HreYnIU-ACK4B/s400/logo_unet.gif",
-    institution: "Universidad Nacional Experimental del Táchira",
     description:
       "I graduated as Cum Laude in December 2020, it was a great honor and experience, I'm sincerely grateful and happy with my university and my professors specifically for teaching me so much!",
-    degree: "Bachelor's degree, Computer Software Engineering",
     period: "2012 - 2020",
     photos: [
       {
@@ -41,9 +42,9 @@ export const educationItems = [
     ],
   },
   {
+    institution: "Platzi",
     logoUrl:
       "https://media.licdn.com/dms/image/C4D0BAQEdL87TMUgWag/company-logo_200_200/0?e=2159024400&v=beta&t=NkHmSn5reOmggy_cCNLcoHh0andWfiNpw6xCySqA9mw",
-    institution: "Platzi",
     description:
       "I decided to invest in myself so I purchased one year subscription in platzi, until now I have completed 35 courses from Javascript and Vue with ease, I'm looking forward to explore different fields and areas of knowledge with platforms that help students to learn new things on demand",
     period: "2020 - 2021",

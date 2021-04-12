@@ -6,7 +6,7 @@
   >
     <template v-slot:activator="{ on, attrs }">
       <expandable-card
-        :thumbnail-url="photoUrl"
+        :thumbnail-url="thumbnailUrl"
         :title="name"
         :description="description"
         :hidden-extra-description="hiddenExtraDescription"
@@ -40,17 +40,22 @@
                 {{ description }}
                 {{ hiddenExtraDescription }}
               </p>
-              <div v-for="area in areas" :key="`${name}-${area.name}`">
-                <v-subheader :class="`px-0 ${area.color}--text subtitle-2`">
-                  {{ area.name }}
+              <div
+                v-for="areaItem in areaItems"
+                :key="`${name}-${areaItem.area.name}`"
+              >
+                <v-subheader
+                  :class="`px-0 ${areaItem.area.color}--text subtitle-2`"
+                >
+                  {{ areaItem.area.name }}
                 </v-subheader>
                 <p>
-                  {{ area.description }}
+                  {{ areaItem.description }}
                 </p>
                 <v-chip
                   small
                   class="mr-2 mb-2"
-                  v-for="technology in area.technologies"
+                  v-for="technology in areaItem.technologies"
                   :key="technology"
                 >
                   {{ technology }}
@@ -70,10 +75,10 @@
                   class="position-relative"
                 >
                   <v-carousel-item
-                    v-for="({ photo }, index) in photos"
+                    v-for="({ photoUrl }, index) in photosWithUrl"
                     :key="`${name}-carousel-photo-${index}`"
                   >
-                    <v-img :src="photo" class="full-height" />
+                    <v-img :src="photoUrl" class="full-height" />
                   </v-carousel-item>
                 </v-carousel>
                 <p class="subtitle-1 pa-3 gray darken-2 ma-0">
@@ -90,9 +95,16 @@
 <script lang="ts">
 import { defineComponent, PropType } from "@vue/composition-api";
 import ExpandableCard from "@/components/core/ExpandableCard.vue";
-import { DateRangeData, PhotoDetail, ProjectArea } from "@/types/project";
 import { BreakpointName } from "vuetify/types/services/breakpoint";
-import { PartialRecord } from "@/types/types";
+import { PartialRecord } from "@/types/generics";
+import { ProfessionAreaItem } from "@/types/experience";
+import { DateRangeData } from "@/types/portfolio";
+import { PhotoDetail } from "@/types/user";
+import buildUrl from "cloudinary-build-url";
+
+interface PhotoWithUrl extends PhotoDetail {
+  photoUrl: string;
+}
 
 export default defineComponent({
   name: "ProjectDetail",
@@ -108,10 +120,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    photoUrl: {
-      type: String,
-      required: true,
-    },
     hiddenExtraDescription: {
       type: String,
       required: true,
@@ -123,8 +131,8 @@ export default defineComponent({
       type: Array as PropType<PhotoDetail[]>,
       required: true,
     },
-    areas: {
-      type: Array as PropType<ProjectArea[]>,
+    areaItems: {
+      type: Array as PropType<ProfessionAreaItem[]>,
       required: true,
     },
     mainTechnologies: {
@@ -155,6 +163,27 @@ export default defineComponent({
         : new Date();
       const startDate = new Date(this.timeRange.startDate);
       return endDate.getTime() - startDate.getTime();
+    },
+    thumbnailUrl(): string {
+      return buildUrl(this.photos[0].imageId, {
+        transformations: {
+          resize: {
+            width: 320,
+          },
+        },
+      });
+    },
+    photosWithUrl(): PhotoWithUrl[] {
+      return this.photos.map((photo) => ({
+        ...photo,
+        photoUrl: buildUrl(photo.imageId, {
+          transformations: {
+            resize: {
+              width: 1280,
+            },
+          },
+        }),
+      }));
     },
   },
 });

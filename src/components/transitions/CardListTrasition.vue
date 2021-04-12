@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import { PartialRecord } from "@/types/types";
+import { PartialRecord } from "@/types/generics";
 import { BreakpointName } from "vuetify/types/services/breakpoint";
 
 export default defineComponent({

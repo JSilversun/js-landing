@@ -1,4 +1,6 @@
-export const user = {
+import { User } from "@/types/user";
+
+export const user: User = {
   profession: "Software Engineer",
   fullName: "Julia Suárez",
   photoUrl:

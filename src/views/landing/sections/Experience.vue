@@ -19,27 +19,31 @@
                   options: { threshold: [0.05] },
                 }"
               >
-                <div v-for="area in areasSummary" :key="area.name" class="py-3">
+                <div
+                  v-for="areaItem in areasItems"
+                  :key="areaItem.area.name"
+                  class="py-3"
+                >
                   <div
-                    :class="`subtitle-1 font-weight-bold ${area.color}--text`"
+                    :class="`subtitle-1 font-weight-bold ${areaItem.area.color}--text`"
                   >
-                    {{ area.name }}
+                    {{ areaItem.area.name }}
                   </div>
                   <div class="py-2">
-                    {{ area.description }}
+                    {{ areaItem.description }}
                   </div>
                   <div class="d-flex">
                     <div
                       class="pr-5 d-flex flex-column justify-center align-center"
-                      v-for="technology in area.technologies"
-                      :key="`${area.name}-${technology.name}`"
+                      v-for="technology in areaItem.technologies"
+                      :key="`${areaItem.name}-${technology.name}`"
                     >
                       <div class="text--secondary py-1 font-weight-bold">
                         {{ technology.name }}
                       </div>
                       <v-progress-circular
                         width="5"
-                        :color="area.color"
+                        :color="areaItem.area.color"
                         :rotate="-90"
                         :size="42"
                         :value="isIntersecting ? technology.progress : 0"
@@ -102,7 +106,7 @@ import SectionTitle from "@/components/core/SectionTitle.vue";
 import ExpandableImage from "@/components/core/ExpandableImage.vue";
 import CardListTransition from "@/components/transitions/CardListTrasition.vue";
 import {
-  areasSummary,
+  areasItems,
   experienceItems,
   experienceSummary,
 } from "@/data/experience";
@@ -117,7 +121,7 @@ export default defineComponent({
   data() {
     return {
       isIntersecting: false,
-      areasSummary,
+      areasItems,
       experienceSummary,
       experienceItems,
     };

@@ -1,18 +1,19 @@
 import { user } from "@/data/user";
 import { getAge } from "@/utils/user";
+import { ProfileItem, ProfileSummary, UserStrength } from "@/types/profile";
 
 const userBirthDate = new Date(
   `${user.birthDate.month}/01/${user.birthDate.year}`
 );
 
-export const profileSummary = {
+export const profileSummary: ProfileSummary = {
   tagline: "I'm one women army!",
   description: `A self-driven software engineer. Able to effectively self-manage
   during independent projects, as well as collaborate in a team
   setting. I always give the best of myself in whatever I do.`,
 };
 
-export const profileItems = [
+export const profileItems: ProfileItem[] = [
   {
     name: "Email",
     value: "ju.threw@gmail.com",
@@ -35,7 +36,7 @@ export const profileItems = [
   },
 ];
 
-export const userStrengths = [
+export const userStrengths: UserStrength[] = [
   {
     icon: "$mdi-function-variant",
     title: "Problem Solver",

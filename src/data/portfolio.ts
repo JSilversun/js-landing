@@ -1,36 +1,33 @@
 import { backend, devOps, frontend } from "@/data/experience";
+import { Project } from "@/types/portfolio";
 
-export const projects = [
+export const projects: Project[] = [
   {
     name: "MarketPlace Photologo",
     timeRange: {
       startDate: "10/24/2018",
       endDate: "12/22/2020",
     },
-    photoUrl:
-      "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
     mainTechnologies: ["Django", "Pytest", "Postgres", "React", "Saleor"],
     photos: [
       {
         title: "Some title 1",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
       {
         title: "Some title 2",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
     ],
-    areas: [
+    areaItems: [
       {
-        ...devOps,
+        area: devOps,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: ["Jenkins"],
       },
       {
-        ...backend,
+        area: backend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: [
@@ -44,8 +41,7 @@ export const projects = [
         ],
       },
       {
-        ...frontend,
-        name: "Frontend",
+        area: frontend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: ["React", "MobX"],
@@ -62,24 +58,20 @@ export const projects = [
       startDate: "03/16/2019",
       endDate: "11/27/2019",
     },
-    photoUrl:
-      "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/projects%2Frank-country%2Frank-country.png?alt=media",
     photos: [
       {
         title: "Some title 1",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
       {
         title: "Some title 2",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
     ],
     mainTechnologies: ["NodeJS", "Loopback 3", "ForestAdmin"],
-    areas: [
+    areaItems: [
       {
-        ...backend,
+        area: backend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: ["NodeJS", "Loopback 3", "ForestAdmin", "REST"],
@@ -96,25 +88,20 @@ export const projects = [
       startDate: "09/30/2019",
       endDate: "08/25/2020",
     },
-    duration: "4m",
-    photoUrl:
-      "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
     photos: [
       {
         title: "Some title 1",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
       {
         title: "Some title 2",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
     ],
     mainTechnologies: ["NodeJS", "Loopback 3", "Passport"],
-    areas: [
+    areaItems: [
       {
-        ...backend,
+        area: backend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: ["NodeJS", "TypeORM", "Inversify", "REST"],
@@ -134,21 +121,17 @@ export const projects = [
     photos: [
       {
         title: "Some title 1",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
       {
         title: "Some title 2",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
     ],
-    photoUrl:
-      "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
     mainTechnologies: ["NodeJS", "Express", "TypeORM", "Bull", "Redis"],
-    areas: [
+    areaItems: [
       {
-        ...backend,
+        area: backend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: [
@@ -175,22 +158,17 @@ export const projects = [
     photos: [
       {
         title: "Some title 1",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
       {
         title: "Some title 2",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
     ],
-    duration: "1y",
-    photoUrl:
-      "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
     mainTechnologies: ["VueJS", "Vuetify", "Hasura", "Firebase"],
-    areas: [
+    areaItems: [
       {
-        ...frontend,
+        area: frontend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: [
@@ -202,7 +180,7 @@ export const projects = [
         ],
       },
       {
-        ...backend,
+        area: backend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: ["NodeJS", "TypeScript", "Hasura", "GraphQL", "Prisma"],
@@ -222,22 +200,17 @@ export const projects = [
     photos: [
       {
         title: "Some title 1",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
       {
         title: "Some title 2",
-        photo:
-          "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
+        imageId: "landing/portfolio/rank-country/photo1",
       },
     ],
-    duration: "1w",
-    photoUrl:
-      "https://mktplc-live.s3.amazonaws.com/__sized__/products/Photologo_Signature_7-thumbnail-540x540.png",
     mainTechnologies: ["VueJS", "Firebase"],
-    areas: [
+    areaItems: [
       {
-        ...frontend,
+        area: frontend,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
         technologies: ["VueJS", "Firebase", "CSS"],

@@ -1,24 +1,31 @@
-export const backend = {
+import {
+  ExperienceItem,
+  ExperienceSummary,
+  ProfessionArea,
+  ProfessionAreaItem,
+} from "@/types/experience";
+
+export const backend: ProfessionArea = {
   name: "Backend",
   color: "cyan",
 };
 
-export const frontend = {
+export const frontend: ProfessionArea = {
   name: "Frontend",
   color: "orange",
 };
 
-export const devOps = {
+export const devOps: ProfessionArea = {
   name: "DevOps",
   color: "light-purple",
 };
 
-export const database = {
+export const database: ProfessionArea = {
   name: "Database",
   color: "light-green",
 };
 
-export const experienceItems = [
+export const experienceItems: ExperienceItem[] = [
   {
     organization: "Tiendas Ciro S. A.",
     period: "2012 - 2020",
@@ -53,9 +60,9 @@ export const experienceItems = [
   },
 ];
 
-export const areasSummary = [
+export const areasItems: ProfessionAreaItem[] = [
   {
-    ...backend,
+    area: backend,
     description:
       "I have built several REST API's, for Python I have used Django and for NodeJS, express and loopback. However I have also built and maintain GraphQL API's using hasura and prisma. Besides I'm full stack I have more experience in the backend than any other area.",
     technologies: [
@@ -78,7 +85,7 @@ export const areasSummary = [
     ],
   },
   {
-    ...frontend,
+    area: frontend,
     description:
       "I'm pretty skilled in the frontend as well using libraries/frameworks like Vue and React, I have built and structure entire frontends using Vue + Vuetify, but for react I have developed specific components using either MobX or Redux.",
     technologies: [
@@ -101,7 +108,7 @@ export const areasSummary = [
     ],
   },
   {
-    ...database,
+    area: database,
     description:
       "As mentioned, I also have modeled relational databases, mostly postgres but some based on MySQL as well, I occasionally code triggers, procedures and views when needed.",
     technologies: [
@@ -117,7 +124,7 @@ export const areasSummary = [
   },
 ];
 
-export const experienceSummary = {
+export const experienceSummary: ExperienceSummary = {
   subtitle: "Having 4 years of experience",
   description: `As a fullstack developer I have worked in almost every
                 department related to web software development, from database
