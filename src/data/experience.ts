@@ -4,6 +4,7 @@ import {
   ProfessionArea,
   ProfessionAreaItem,
 } from "@/types/experience";
+import { buildResizedImageUrl } from "@/utils/image";
 
 export const backend: ProfessionArea = {
   name: "Backend",
@@ -58,7 +59,13 @@ export const experienceItems: ExperienceItem[] = [
       },
     ],
   },
-];
+].map((item) => ({
+  ...item,
+  photos: item.photos.map((photo) => ({
+    ...photo,
+    imageUrl: buildResizedImageUrl(photo.imageId, { width: 320 }),
+  })),
+}));
 
 export const areasItems: ProfessionAreaItem[] = [
   {

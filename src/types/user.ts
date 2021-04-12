@@ -19,5 +19,6 @@ export interface SocialMedia {
 
 export interface PhotoDetail {
   imageId: string;
+  imageUrl: string;
   title: string;
 }

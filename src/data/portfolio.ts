@@ -1,5 +1,6 @@
 import { backend, devOps, frontend } from "@/data/experience";
 import { Project } from "@/types/portfolio";
+import { buildResizedImageUrl } from "@/utils/image";
 
 export const projects: Project[] = [
   {
@@ -221,4 +222,13 @@ export const projects: Project[] = [
     hiddenExtraDescription:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, blanditiis dolores ex, exercitationem harum",
   },
-];
+].map((educationItem) => ({
+  ...educationItem,
+  thumbnailUrl: buildResizedImageUrl(educationItem.photos[0].imageId, {
+    width: 500,
+  }),
+  photos: educationItem.photos.map((photo) => ({
+    ...photo,
+    imageUrl: buildResizedImageUrl(photo.imageId, { width: 800 }),
+  })),
+}));

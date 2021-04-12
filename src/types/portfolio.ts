@@ -13,6 +13,7 @@ export interface DateRange {
 
 export interface Project {
   name: string;
+  thumbnailUrl: string;
   timeRange: DateRangeData;
   mainTechnologies: string[];
   photos: PhotoDetail[];
@@ -28,7 +29,8 @@ export interface Project {
 export interface Post {
   name: string;
   description: string;
-  imageId: string;
+  thumbnailId: string;
+  thumbnailUrl: string;
   hiddenExtraDescription: string;
   tags: string[];
   url: string;

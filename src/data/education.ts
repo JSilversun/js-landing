@@ -1,10 +1,10 @@
 import { EducationItem } from "@/types/education";
+import { buildResizedImageUrl } from "@/utils/image";
 
 export const educationItems: EducationItem[] = [
   {
     institution: "Universidad Nacional Experimental del Táchira",
-    logoUrl:
-      "http://4.bp.blogspot.com/-zjOQNrvFY3U/WB4IiTdq6EI/AAAAAAAAAUE/HE_bkYqhAj8vULilPoKXjnH3HreYnIU-ACK4B/s400/logo_unet.gif",
+    logoImageId: "landing/education/unet/logo",
     description:
       "I graduated as Cum Laude in December 2020, it was a great honor and experience, I'm sincerely grateful and happy with my university and my professors specifically for teaching me so much!",
     period: "2012 - 2020",
@@ -25,8 +25,7 @@ export const educationItems: EducationItem[] = [
   },
   {
     institution: "PluralSight",
-    logoUrl:
-      "https://e7.pngegg.com/pngimages/560/589/png-clipart-farmington-amazon-com-pluralsight-technology-learning-technology-electronics-text-thumbnail.png",
+    logoImageId: "landing/education/pluralsight/logo",
     description:
       "I had a hard time getting used to PluralSight courses however I believe their platform is impressive and I love their tests",
     period: "Aug 2020 - Nov 2020",
@@ -43,8 +42,7 @@ export const educationItems: EducationItem[] = [
   },
   {
     institution: "Platzi",
-    logoUrl:
-      "https://media.licdn.com/dms/image/C4D0BAQEdL87TMUgWag/company-logo_200_200/0?e=2159024400&v=beta&t=NkHmSn5reOmggy_cCNLcoHh0andWfiNpw6xCySqA9mw",
+    logoImageId: "landing/education/platzi/logo",
     description:
       "I decided to invest in myself so I purchased one year subscription in platzi, until now I have completed 35 courses from Javascript and Vue with ease, I'm looking forward to explore different fields and areas of knowledge with platforms that help students to learn new things on demand",
     period: "2020 - 2021",
@@ -59,4 +57,13 @@ export const educationItems: EducationItem[] = [
       },
     ],
   },
-];
+].map((educationItem) => ({
+  ...educationItem,
+  logoUrl: buildResizedImageUrl(educationItem.logoImageId, {
+    width: 50,
+  }),
+  photos: educationItem.photos.map((photo) => ({
+    ...photo,
+    imageUrl: buildResizedImageUrl(photo.imageId, { width: 500 }),
+  })),
+}));

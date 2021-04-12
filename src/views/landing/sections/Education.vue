@@ -17,16 +17,15 @@
                   period,
                   logoUrl,
                   photos,
-                  color = 'primary',
-                } in educationRows"
+                } in educationItems"
                 :key="institution"
               >
                 <template v-slot:icon>
-                  <v-avatar size="32" :color="color">
-                    <img :src="logoUrl" />
+                  <v-avatar size="32" color="gray">
+                    <v-img :src="logoUrl" />
                   </v-avatar>
                 </template>
-                <v-card outlined class="transition-opacity">
+                <v-card outlined>
                   <div class="hoverable-card">
                     <v-card-title> {{ institution }} </v-card-title>
                     <v-card-subtitle>{{ period }}</v-card-subtitle>
@@ -72,7 +71,7 @@ export default defineComponent({
   components: { ExpandableImage, SectionTitle },
   data() {
     return {
-      educationRows: educationItems,
+      educationItems,
     };
   },
   computed: {
@@ -82,8 +81,3 @@ export default defineComponent({
   },
 });
 </script>
-<style>
-.transition-opacity {
-  transition: opacity 400ms;
-}
-</style>

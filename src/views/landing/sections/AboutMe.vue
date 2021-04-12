@@ -118,9 +118,9 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import SectionTitle from "@/components/core/SectionTitle.vue";
-import buildUrl from "cloudinary-build-url";
 import { user } from "@/data/user";
 import { profileItems, profileSummary, userStrengths } from "@/data/profile";
+import { buildResizedImageUrl } from "@/utils/image";
 
 export default defineComponent({
   name: "AboutMe",
@@ -130,12 +130,8 @@ export default defineComponent({
       profileSummary,
       userStrengths,
       profileItems,
-      imageUrl: buildUrl("landing/profile/about_me", {
-        transformations: {
-          resize: {
-            height: 600,
-          },
-        },
+      imageUrl: buildResizedImageUrl("landing/profile/about_me", {
+        height: 600,
       }),
       cvUrl: user.cvUrl,
     };
