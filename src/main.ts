@@ -9,9 +9,7 @@ import "@animxyz/core";
 import VueTypedJs from "vue-typed-js";
 import VueScrollActive from "vue-scrollactive";
 import VueAnimXYZ from "@animxyz/vue";
-import VueMeta from "vue-meta";
 
-Vue.use(VueMeta);
 Vue.use(VueScrollActive);
 Vue.use(VueAnimXYZ);
 Vue.use(VueTypedJs);
