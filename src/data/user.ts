@@ -1,10 +1,10 @@
 import { User } from "@/types/user";
+import { buildResizedImageUrl } from "@/utils/image";
 
 export const user: User = {
   profession: "Software Engineer",
   fullName: "Julia Suárez",
-  photoUrl:
-    "https://avatars.githubusercontent.com/u/26018221?s=460&u=2df34e7d3b42df03dd346440de99a4009b446412&v=4",
+  photoUrl: buildResizedImageUrl("jsilversun", { width: 460 }),
   username: "jsilversun",
   birthDate: {
     month: 1,

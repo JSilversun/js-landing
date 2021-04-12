@@ -19,9 +19,13 @@ import Experience from "@/views/landing/sections/Experience.vue";
 import Portfolio from "@/views/landing/sections/Portfolio.vue";
 import Posts from "@/views/landing/sections/Posts.vue";
 import MainFooter from "@/components/app/Footer.vue";
+import { user } from "@/data/user";
 
 export default defineComponent({
   name: "Landing",
+  metaInfo: {
+    title: user.fullName,
+  },
   components: {
     Home,
     AboutMe,
