@@ -11,7 +11,7 @@
       }"
     >
       <v-row class="full-height">
-        <xyz-transition appear duration="auto" xyz="fade left duration-10">
+        <xyz-transition appear duration="auto" xyz="fade">
           <v-col
             class="d-flex flex-column justify-center"
             cols="10"
