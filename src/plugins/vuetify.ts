@@ -21,6 +21,10 @@ const gray = {
   lighten8: "#E5E5E5",
 };
 
+const lightPurple = {
+  base: "#8F50CE",
+};
+
 const primary = colors.pink;
 const accent = colors.orange;
 
@@ -32,11 +36,13 @@ export default new Vuetify({
         primary,
         accent,
         gray,
+        "light-purple": lightPurple,
       },
       dark: {
         primary,
         accent,
         gray,
+        "light-purple": lightPurple,
       },
     },
     options: {

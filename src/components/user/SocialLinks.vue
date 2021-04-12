@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-bind="$attrs">
     <v-btn
       v-for="{ icon, name, url } of user.socialLinks"
       :key="name"
@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import user from "@/data/user.json";
+import { user } from "@/data/user";
 
 export default defineComponent({
   name: "SocialLinks",

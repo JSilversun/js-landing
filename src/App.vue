@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import Drawer from "@/components/Drawer.vue";
-import AppBar from "@/components/AppBar.vue";
+import Drawer from "@/components/app/Drawer.vue";
+import AppBar from "@/components/app/AppBar.vue";
 
 export default defineComponent({
   name: "App",

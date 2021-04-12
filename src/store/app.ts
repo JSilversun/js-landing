@@ -1,4 +1,4 @@
-import { AppState } from "@/store/vuex";
+import { AppState } from "@/types/vuex";
 
 const getDefaultState = (): AppState => ({
   isExpanded: false,

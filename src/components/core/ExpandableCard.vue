@@ -59,9 +59,6 @@ export default defineComponent({
       default: () => [],
     },
   },
-  data() {
-    return {};
-  },
 });
 </script>
 <style lang="scss">

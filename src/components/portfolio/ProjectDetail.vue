@@ -89,7 +89,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "@vue/composition-api";
-import ExpandableCard from "@/components/ExpandableCard.vue";
+import ExpandableCard from "@/components/core/ExpandableCard.vue";
 import { DateRangeData, PhotoDetail, ProjectArea } from "@/types/project";
 import { BreakpointName } from "vuetify/types/services/breakpoint";
 import { PartialRecord } from "@/types/types";

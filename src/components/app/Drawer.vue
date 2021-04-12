@@ -15,7 +15,7 @@
     <scrollactive
       ref="scrollActive"
       active-class="v-list-item--active"
-      scroll-offset="0"
+      :scroll-offset="0"
       :modify-url="false"
       highlight-first-item
       @itemchanged="onItemActive"
@@ -59,18 +59,17 @@
   </v-navigation-drawer>
 </template>
 <script lang="ts">
-import { mapMutations, mapState } from "vuex";
 import { defineComponent } from "@vue/composition-api";
+import { mapMutations, mapState } from "vuex";
 import Avatar from "@/components/core/Avatar.vue";
-import user from "@/data/user.json";
-import { User } from "@/types/types";
+import { user } from "@/data/user";
 
 export default defineComponent({
   name: "Drawer",
   components: { Avatar },
   data() {
     return {
-      user: user as User,
+      user,
       links: [
         {
           icon: "$mdi-home",

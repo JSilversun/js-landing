@@ -34,18 +34,16 @@
           >
             <v-card class="elevation-0 transparent" outlined>
               <v-card-subtitle class="text-h6 py-2">
-                I'm one women army!
+                {{ profileSummary.tagline }}
               </v-card-subtitle>
               <v-card-text class="subtitle-1">
-                A self-driven software engineer. Able to effectively self-manage
-                during independent projects, as well as collaborate in a team
-                setting. I always give the best of myself in whatever I do.
+                {{ profileSummary.description }}
               </v-card-text>
               <v-card-text class="pb-0">
                 <v-simple-table>
                   <template v-slot:default>
                     <tbody>
-                      <tr v-for="item in profileRows" :key="item.name">
+                      <tr v-for="item in profileItems" :key="item.name">
                         <th>{{ item.name }}</th>
                         <td>{{ item.value }}</td>
                       </tr>
@@ -89,7 +87,7 @@
                 cols="12"
                 sm="6"
                 lg="3"
-                v-for="{ icon, title, description, color } in items"
+                v-for="{ icon, title, description, color } in userStrengths"
                 :key="title"
                 class="xyz-nested"
               >
@@ -118,67 +116,20 @@
   </v-container>
 </template>
 <script lang="ts">
-import SectionTitle from "@/components/SectionTitle.vue";
 import { defineComponent } from "@vue/composition-api";
+import SectionTitle from "@/components/core/SectionTitle.vue";
 import buildUrl from "cloudinary-build-url";
+import { user } from "@/data/user";
+import { profileItems, profileSummary, userStrengths } from "@/data/profile";
 
 export default defineComponent({
   name: "AboutMe",
   components: { SectionTitle },
   data() {
     return {
-      items: [
-        {
-          icon: "$mdi-function-variant",
-          title: "Problem Solver",
-          color: "primary",
-          description:
-            "I come up with innovative solutions to the problems I face",
-        },
-        {
-          icon: "$mdi-code-braces",
-          color: "primary",
-          title: "Tech Enthusiast",
-          description:
-            "I feel comfortable learning to use new languages or tools to improve my workflow",
-        },
-        {
-          icon: "$mdi-bookshelf",
-          color: "primary",
-          title: "Self-taught",
-          description:
-            "I'm curious and I love investing in my learning, I'm constantly learning new things on my own",
-        },
-        {
-          icon: "$mdi-speedometer",
-          title: "Dedicated",
-          color: "primary",
-          description:
-            "I give all my effort to surpass my own limits and be the best version of myself I can be",
-        },
-      ],
-      profileRows: [
-        {
-          name: "Email",
-          value: "ju.threw@gmail.com",
-        },
-        {
-          name: "Age",
-          value: 25,
-        },
-        {
-          name: "Citizenship",
-          value: "Venezuelan/Portguese",
-        },
-        {
-          name: "Location",
-          value: "Táchira, Venezuela",
-        },
-        {
-          name: "Languages",
-          value: "Spanish, English",
-        },
-      ],
+      profileSummary,
+      userStrengths,
+      profileItems,
       imageUrl: buildUrl("landing/profile/about_me", {
         transformations: {
           resize: {
@@ -186,8 +137,7 @@ export default defineComponent({
           },
         },
       }),
-      cvUrl:
-        "https://firebasestorage.googleapis.com/v0/b/personal-c77b7.appspot.com/o/cv.pdf?alt=media",
+      cvUrl: user.cvUrl,
     };
   },
 });

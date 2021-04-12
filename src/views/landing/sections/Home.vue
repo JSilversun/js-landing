@@ -93,9 +93,8 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import user from "@/data/user.json";
-import TransparentImageWave from "@/components/TransparentImageWave.vue";
-import TypingText from "@/components/TypingText.vue";
+import { user } from "@/data/user";
+import TypingText from "@/components/core/TypingText.vue";
 import { useNamespacedMutations } from "vuex-composition-helpers";
 import buildUrl from "cloudinary-build-url";
 
@@ -103,8 +102,6 @@ export default defineComponent({
   name: "Home",
   components: {
     TypingText,
-    TransparentImageWave,
-    ImageWave: TransparentImageWave,
   },
   setup() {
     return {
