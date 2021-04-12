@@ -12,9 +12,13 @@
 import { defineComponent } from "@vue/composition-api";
 import Drawer from "@/components/app/Drawer.vue";
 import AppBar from "@/components/app/AppBar.vue";
+import { user } from "@/data/user";
 
 export default defineComponent({
   name: "App",
+  metaInfo: {
+    title: user.fullName,
+  },
   components: {
     AppBar,
     Drawer,
