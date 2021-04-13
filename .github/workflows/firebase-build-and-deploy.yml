@@ -20,6 +20,9 @@ jobs:
         with:
           name: dist
           path: dist
+        env:
+          VUE_APP_CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_COULD_NAME }}
+          VUE_APP_PAGE_TITLE: ${{ secrets.PAGE_TITLE }}
   deploy:
     name: Deploy
     needs: build
