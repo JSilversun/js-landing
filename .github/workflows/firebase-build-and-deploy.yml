@@ -15,8 +15,8 @@ jobs:
         run: npm install
       - name: Build
         env:
-          VUE_APP_CLOUDINARY_CLOUD_NAME: ${{ env.VUE_APP_CLOUDINARY_CLOUD_NAME }}
-          VUE_APP_PAGE_TITLE: ${{ env.VUE_APP_PAGE_TITLE }}
+          VUE_APP_CLOUDINARY_CLOUD_NAME: ${{ secrets.VUE_APP_CLOUDINARY_CLOUD_NAME }}
+          VUE_APP_PAGE_TITLE: ${{ secrets.VUE_APP_PAGE_TITLE }}
         run: npm run build
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
