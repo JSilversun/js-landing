@@ -13,6 +13,7 @@ export interface DateRange {
 
 export interface Project {
   name: string;
+  url?: string;
   thumbnailUrl: string;
   timeRange: DateRangeData;
   mainTechnologies: string[];

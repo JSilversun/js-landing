@@ -21,7 +21,10 @@
     </template>
     <v-card>
       <v-card-title class="headline d-flex">
-        <p class="ma-0">
+        <a v-if="url" :href="url" target="_blank">
+          {{ name }}
+        </a>
+        <p v-else class="ma-0">
           {{ name }}
         </p>
         <v-spacer />
@@ -75,10 +78,10 @@
                   class="position-relative"
                 >
                   <v-carousel-item
-                    v-for="({ photoUrl }, index) in photosWithUrl"
+                    v-for="({ imageUrl }, index) in photos"
                     :key="`${name}-carousel-photo-${index}`"
                   >
-                    <v-img :src="photoUrl" class="full-height" />
+                    <v-img :src="imageUrl" class="full-height" />
                   </v-carousel-item>
                 </v-carousel>
                 <p class="subtitle-1 pa-3 gray darken-2 ma-0">
@@ -100,11 +103,6 @@ import { PartialRecord } from "@/types/generics";
 import { ProfessionAreaItem } from "@/types/experience";
 import { DateRangeData } from "@/types/portfolio";
 import { PhotoDetail } from "@/types/user";
-import buildUrl from "cloudinary-build-url";
-
-interface PhotoWithUrl extends PhotoDetail {
-  photoUrl: string;
-}
 
 export default defineComponent({
   name: "ProjectDetail",
@@ -124,8 +122,15 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    url: {
+      type: String,
+    },
     timeRange: {
       type: Object as PropType<DateRangeData>,
+    },
+    thumbnailUrl: {
+      type: String,
+      required: true,
     },
     photos: {
       type: Array as PropType<PhotoDetail[]>,
@@ -163,27 +168,6 @@ export default defineComponent({
         : new Date();
       const startDate = new Date(this.timeRange.startDate);
       return endDate.getTime() - startDate.getTime();
-    },
-    thumbnailUrl(): string {
-      return buildUrl(this.photos[0].imageId, {
-        transformations: {
-          resize: {
-            width: 320,
-          },
-        },
-      });
-    },
-    photosWithUrl(): PhotoWithUrl[] {
-      return this.photos.map((photo) => ({
-        ...photo,
-        photoUrl: buildUrl(photo.imageId, {
-          transformations: {
-            resize: {
-              width: 1280,
-            },
-          },
-        }),
-      }));
     },
   },
 });

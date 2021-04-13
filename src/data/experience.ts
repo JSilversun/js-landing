@@ -29,7 +29,7 @@ export const database: ProfessionArea = {
 export const experienceItems: ExperienceItem[] = [
   {
     organization: "Tiendas Ciro S. A.",
-    period: "2012 - 2020",
+    period: "2017 - 2018",
     description:
       "I maintained a PHP legacy system for a local pymes store, I developed security and automatized backup procedures using Amazon AWS 3",
     photos: [
