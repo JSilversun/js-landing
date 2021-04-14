@@ -13,7 +13,7 @@ export const projects: Project[] = [
     description:
       "An ecommerce solution based on saleor (opensource ecommerce project) for digital assets like custom signatures",
     hiddenExtraDescription:
-      "I worked on supporting payment gateways like chargeebee, braintree and paddle maintaining solid unit tests with pytest",
+      "I worked on implementing payment gateways like chargeebee, braintree, paddle and maintaining solid unit tests with pytest",
     mainTechnologies: ["Django", "Pytest", "Postgres", "React", "Saleor"],
     photos: [
       {
@@ -41,7 +41,7 @@ export const projects: Project[] = [
       {
         area: backend,
         description:
-          "Most of the time I worked as a backend developer maintaining SSR views, REST endpoints, models and forms from django. I also implemented a GTM solution for a mostly backend based app dynamically",
+          "Most of the time I worked as a backend developer maintaining SSR views, REST endpoints, models and forms from django. I also implemented a GTM solution for a mostly backend based app dynamically. I implemented webhooks for async payment processing for Paddle",
         technologies: [
           "Django",
           "Pytest",
@@ -50,6 +50,7 @@ export const projects: Project[] = [
           "Chargebee",
           "AWS S3",
           "REST",
+          "Webhooks",
         ],
       },
       {
@@ -98,7 +99,7 @@ export const projects: Project[] = [
       },
       {
         title: "Personal commit contribution",
-        imageId: "landing/portfolio/rank-country/commit_contribution",
+        imageId: "landing/portfolio/rank-country/commit_contribution_a",
       },
     ],
     mainTechnologies: ["NodeJS", "Loopback 3", "ForestAdmin"],
@@ -165,14 +166,14 @@ export const projects: Project[] = [
       {
         area: backend,
         description:
-          "Work on building and maintaining the REST API to perform authorization and authentication for other microservices using passport and signing JWT's as an Certificate Authority",
-        technologies: ["NodeJS", "Loopback 3", "Passport", "REST"],
+          "Work on building and maintaining the REST API to perform authorization and authentication for other microservices using passport and signing JSON Web Tokens as a Certificate Authority across other microservices",
+        technologies: ["NodeJS", "Loopback 3", "Passport", "REST", "JWT"],
       },
       {
         area: frontend,
         description:
-          "Work on refactoring, maintaining and extending several react components as a support developer",
-        technologies: ["React", "Redux", "MaterialUI"],
+          "Work on refactoring, maintaining and extending several react components under responsive design as a Progressive Web Application",
+        technologies: ["React", "React Hooks", "Redux", "MaterialUI", "PWA"],
       },
     ],
   },
@@ -215,6 +216,7 @@ export const projects: Project[] = [
         technologies: [
           "NodeJS",
           "TypeORM",
+          "Typescript",
           "Inversify",
           "Bull",
           "Hasura",
@@ -247,15 +249,27 @@ export const projects: Project[] = [
       },
       {
         title: "Timeline view",
-        imageId: "landing/portfolio/tracker/timeline_view",
+        imageId: "landing/portfolio/tracker/timeline_view_kusc6j",
       },
       {
         title: "Tasks view",
         imageId: "landing/portfolio/tracker/tasks_view",
       },
       {
-        title: "Tasks view",
+        title: "User view",
         imageId: "landing/portfolio/tracker/user_settings",
+      },
+      {
+        title: "Sonar cloud code quality",
+        imageId: "landing/portfolio/tracker/sonar_cloud_backend",
+      },
+      {
+        title: "Frontend commit contribution",
+        imageId: "landing/portfolio/tracker/frontend_contribution",
+      },
+      {
+        title: "Backend commit contribution",
+        imageId: "landing/portfolio/tracker/backend_contribution",
       },
     ],
     mainTechnologies: ["VueJS", "Vuetify", "Hasura", "Firebase"],
@@ -271,13 +285,22 @@ export const projects: Project[] = [
           "Firebase Authentication",
           "ECharts",
           "Apollo",
+          "Jest",
         ],
       },
       {
         area: backend,
         description:
-          "Structure and extend hasura GraphQL API to support several task integration apps like Asana or Jira under OAuth 2.0. Maintaining tests written in Jest with a coverage over 97%",
-        technologies: ["NodeJS", "TypeScript", "Hasura", "GraphQL", "Prisma"],
+          "Structure and extend hasura GraphQL API to support several task integration apps like Asana or Jira under OAuth 2.0. Maintaining tests written in Jest with a coverage over 97%. Work on heavy interaction with third party API's for to way data manipulation using Webhooks",
+        technologies: [
+          "NodeJS",
+          "TypeScript",
+          "Hasura",
+          "GraphQL",
+          "Prisma",
+          "Jest",
+          "Webhooks",
+        ],
       },
     ],
   },
@@ -303,7 +326,8 @@ export const projects: Project[] = [
       },
       {
         title: "Github actions",
-        imageId: "landing/portfolio/landing/github_actions_automatic_deployment",
+        imageId:
+          "landing/portfolio/landing/github_actions_automatic_deployment",
       },
     ],
     mainTechnologies: ["VueJS", "Vuetify", "Firebase", "AnimXYZ"],
@@ -311,8 +335,8 @@ export const projects: Project[] = [
       {
         area: frontend,
         description:
-          "Besides I had worked with Vue and Vuetify before, I was able to learn how to implement complex animations with AnimXYZ and frontend serious optimization over images and icons",
-        technologies: ["VueJS", "Firebase", "CSS", "AnimXYZ"],
+          "Besides I had worked with Vue and Vuetify before, I was able to learn how to implement complex animations with AnimXYZ (besides I kept the landing simple for design purposes) and frontend serious optimization over images and icons",
+        technologies: ["VueJS", "Firebase", "CSS", "AnimXYZ", "Typescript"],
       },
       {
         area: devOps,

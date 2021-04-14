@@ -40,7 +40,7 @@
           <v-col cols="12" md="4">
             <v-card-text>
               <p>
-                {{ description }}
+                {{ description }}.
                 {{ hiddenExtraDescription }}
               </p>
               <div
@@ -72,6 +72,7 @@
                 <v-carousel
                   v-model="activeSlideIndex"
                   cycle
+                  :continuous="false"
                   delimiter-icon="$mdi-minus"
                   :height="carouselHeight"
                   hide-delimiters
@@ -84,8 +85,13 @@
                     <v-img :src="imageUrl" class="full-height" />
                   </v-carousel-item>
                 </v-carousel>
-                <p class="subtitle-1 pa-3 gray darken-2 ma-0">
-                  {{ photos[activeSlideIndex].title }}
+                <p
+                  class="subtitle-1 pa-3 gray darken-2 ma-0 d-flex justify-space-between"
+                >
+                  <span>
+                    {{ photos[activeSlideIndex].title }}
+                  </span>
+                  <span>{{ activeSlideIndex + 1 }} / {{ photos.length }}</span>
                 </p>
               </div>
             </v-card-text>
