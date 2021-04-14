@@ -13,7 +13,7 @@
           <template v-slot:actions>
             <v-btn
               text
-              class="pink--text"
+              class="primary--text"
               :href="post.url"
               target="_blank"
               rel="noreferrer"

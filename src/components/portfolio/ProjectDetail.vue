@@ -26,7 +26,7 @@
       </expandable-card>
     </template>
     <v-card>
-      <v-card-title class="headline d-flex">
+      <v-card-title class="headline d-flex flex-nowrap align-start text-break">
         <a v-if="url" :href="url" target="_blank">
           {{ name }}
         </a>
