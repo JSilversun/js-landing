@@ -30,7 +30,7 @@
           },
           {
             "key": "X-XSS-Protection",
-            "value": 1
+            "value": "1"
           }
         ]
       }
