@@ -161,7 +161,7 @@ export const projects: Project[] = [
           "landing/portfolio/access-manager/access_manager_commit_contribution",
       },
     ],
-    mainTechnologies: ["NodeJS", "Loopback 3", "Passport"],
+    mainTechnologies: ["NodeJS", "Loopback 3", "Passport", "Typescript"],
     areaItems: [
       {
         area: backend,
@@ -207,7 +207,14 @@ export const projects: Project[] = [
           "landing/portfolio/reconciliation/reconciliation_commit_contribution",
       },
     ],
-    mainTechnologies: ["NodeJS", "Express", "TypeORM", "Bull", "Redis"],
+    mainTechnologies: [
+      "NodeJS",
+      "Express",
+      "TypeORM",
+      "Bull",
+      "Redis",
+      "Typescript",
+    ],
     areaItems: [
       {
         area: backend,
@@ -272,7 +279,14 @@ export const projects: Project[] = [
         imageId: "landing/portfolio/tracker/backend_contribution",
       },
     ],
-    mainTechnologies: ["VueJS", "Vuetify", "Hasura", "Firebase"],
+    mainTechnologies: [
+      "VueJS",
+      "Vuetify",
+      "Hasura",
+      "Typescript",
+      "Jest",
+      "Firebase",
+    ],
     areaItems: [
       {
         area: frontend,
@@ -330,7 +344,7 @@ export const projects: Project[] = [
           "landing/portfolio/landing/github_actions_automatic_deployment",
       },
     ],
-    mainTechnologies: ["VueJS", "Vuetify", "Firebase", "AnimXYZ"],
+    mainTechnologies: ["VueJS", "Vuetify", "Firebase", "AnimXYZ", "Typescript"],
     areaItems: [
       {
         area: frontend,
