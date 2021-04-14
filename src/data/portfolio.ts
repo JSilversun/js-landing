@@ -1,6 +1,6 @@
 import { backend, database, devOps, frontend } from "@/data/experience";
 import { Project } from "@/types/portfolio";
-import { buildResizedImageUrl } from "@/utils/image";
+import { buildImageUrl, buildResizedImageUrl } from "@/utils/image";
 
 export const projects: Project[] = [
   {
@@ -367,6 +367,11 @@ export const projects: Project[] = [
   }),
   photos: educationItem.photos.map((photo) => ({
     ...photo,
-    imageUrl: buildResizedImageUrl(photo.imageId, { width: 1200 }),
+    imageUrl: buildImageUrl(photo.imageId, {
+      transformations: {
+        quality: 80,
+        resize: { width: 1200 },
+      },
+    }),
   })),
 }));

@@ -82,7 +82,7 @@
                     v-for="({ imageUrl }, index) in photos"
                     :key="`${name}-carousel-photo-${index}`"
                   >
-                    <v-img :src="imageUrl" class="full-height" />
+                    <base-image :src="imageUrl" class="full-height" contain />
                   </v-carousel-item>
                 </v-carousel>
                 <p
@@ -109,10 +109,12 @@ import { PartialRecord } from "@/types/generics";
 import { ProfessionAreaItem } from "@/types/experience";
 import { DateRangeData } from "@/types/portfolio";
 import { PhotoDetail } from "@/types/user";
+import BaseImage from "@/components/core/BaseImage.vue";
 
 export default defineComponent({
   name: "ProjectDetail",
   components: {
+    BaseImage,
     ExpandableCard,
   },
   props: {

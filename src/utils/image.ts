@@ -6,6 +6,8 @@ setConfig({
   cloudName: process.env.VUE_APP_CLOUDINARY_CLOUD_NAME,
 });
 
+export const buildImageUrl = buildUrl;
+
 export function buildResizedImageUrl(imageId: string, options: Resize): string {
   return buildUrl(imageId, {
     transformations: {

@@ -21,13 +21,12 @@
         </v-btn>
       </v-card-title>
       <v-card-text class="flex-grow-1 d-flex flex-column justify-center">
-        <v-img :src="imageUrl" min-height="80vh" max-height="80vh" contain>
-          <template v-slot:placeholder>
-            <v-row class="fill-height ma-0" align="center" justify="center">
-              <v-progress-circular indeterminate color="primary" />
-            </v-row>
-          </template>
-        </v-img>
+        <base-image
+          :src="imageUrl"
+          min-height="80vh"
+          max-height="80vh"
+          contain
+        />
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -35,9 +34,11 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import buildUrl from "cloudinary-build-url";
+import BaseImage from "@/components/core/BaseImage.vue";
 
 export default defineComponent({
   name: "ExpandableImage",
+  components: { BaseImage },
   props: {
     title: {
       type: String,
