@@ -32,16 +32,18 @@ export default new Vuetify({
   theme: {
     dark: true,
     themes: {
-      light: {
-        primary,
-        accent,
-        gray,
-        "light-purple": lightPurple,
-      },
       dark: {
         primary,
         accent,
+        grey: colors.grey,
         gray,
+        orange: {
+          base: colors.orange.base,
+        },
+        cyan: {
+          base: colors.cyan.base,
+        },
+        "light-green": colors.lightGreen.base,
         "light-purple": lightPurple,
       },
     },

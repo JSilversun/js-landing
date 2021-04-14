@@ -12,28 +12,37 @@
         <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
       </avatar>
     </div>
-    <v-list class="px-4">
-      <v-list-item
-        v-for="{ icon, to, title } in links"
-        class="scrollactive-item"
-        :class="{
-          'v-list-item--active': $route.hash === to,
-        }"
-        :data-destination-hash="to"
-        :href="to"
-        :key="title"
-        :aria-label="title"
-        dense
-      >
-        <v-list-item-icon class="mr-5">
-          <v-icon>{{ icon }}</v-icon>
-        </v-list-item-icon>
+    <scrollactive
+      ref="scrollActive"
+      active-class="v-list-item--active"
+      :scroll-offset="0"
+      :modify-url="false"
+      highlight-first-item
+      @itemchanged="onItemActive"
+    >
+      <v-list class="px-4">
+        <v-list-item
+          v-for="{ icon, to, title } in links"
+          class="scrollactive-item"
+          :class="{
+            'v-list-item--active': $route.hash === to,
+          }"
+          :data-destination-hash="to"
+          :href="to"
+          :key="title"
+          :aria-label="title"
+          dense
+        >
+          <v-list-item-icon class="mr-5">
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
 
-        <v-list-item-content>
-          <v-list-item-title>{{ title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+          <v-list-item-content>
+            <v-list-item-title>{{ title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </scrollactive>
     <template v-slot:append>
       <social-links class="d-flex justify-center my-4" />
     </template>

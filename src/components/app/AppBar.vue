@@ -2,7 +2,7 @@
   <v-app-bar
     app
     style="position: fixed"
-    class="elevation-0"
+    elevation="0"
     :class="`${background}`"
     :hide-on-scroll="$vuetify.breakpoint.mobile"
     short
