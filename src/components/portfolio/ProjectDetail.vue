@@ -13,7 +13,13 @@
         :tags="mainTechnologies"
       >
         <template v-slot:actions>
-          <v-btn text class="primary--text" v-on="on" v-bind="attrs">
+          <v-btn
+            text
+            class="primary--text"
+            v-on="on"
+            v-bind="attrs"
+            aria-label="See details"
+          >
             See details
           </v-btn>
         </template>

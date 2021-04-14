@@ -12,49 +12,30 @@
         <h3 class="subtitle-1 text--secondary">{{ user.profession }}</h3>
       </avatar>
     </div>
-    <scrollactive
-      ref="scrollActive"
-      active-class="v-list-item--active"
-      :scroll-offset="0"
-      :modify-url="false"
-      highlight-first-item
-      @itemchanged="onItemActive"
-    >
-      <v-list class="px-4">
-        <v-list-item
-          v-for="{ icon, to, title } in links"
-          class="scrollactive-item"
-          :class="{
-            'v-list-item--active': $route.hash === to,
-          }"
-          :data-destination-hash="to"
-          :href="to"
-          :key="title"
-          dense
-        >
-          <v-list-item-icon class="mr-5">
-            <v-icon>{{ icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </scrollactive>
-    <template v-slot:append>
-      <div class="d-flex justify-center my-4">
-        <v-btn
-          v-for="{ icon, name, url } of user.socialLinks"
-          :key="name"
-          icon
-          link
-          :href="url"
-          target="_blank"
-        >
+    <v-list class="px-4">
+      <v-list-item
+        v-for="{ icon, to, title } in links"
+        class="scrollactive-item"
+        :class="{
+          'v-list-item--active': $route.hash === to,
+        }"
+        :data-destination-hash="to"
+        :href="to"
+        :key="title"
+        :aria-label="title"
+        dense
+      >
+        <v-list-item-icon class="mr-5">
           <v-icon>{{ icon }}</v-icon>
-        </v-btn>
-      </div>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>{{ title }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <template v-slot:append>
+      <social-links class="d-flex justify-center my-4" />
     </template>
   </v-navigation-drawer>
 </template>
@@ -63,10 +44,11 @@ import { defineComponent } from "@vue/composition-api";
 import { mapMutations, mapState } from "vuex";
 import Avatar from "@/components/core/Avatar.vue";
 import { user } from "@/data/user";
+import SocialLinks from "@/components/user/SocialLinks.vue";
 
 export default defineComponent({
   name: "Drawer",
-  components: { Avatar },
+  components: { Avatar, SocialLinks },
   data() {
     return {
       user,
@@ -127,9 +109,6 @@ export default defineComponent({
       if (!currentItem.dataset.destinationHash) return;
       await this.goToHash(currentItem.dataset.destinationHash);
     },
-  },
-  async mounted() {
-    await this.goToHash(this.links[0].to);
   },
 });
 </script>

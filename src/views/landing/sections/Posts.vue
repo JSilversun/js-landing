@@ -11,7 +11,14 @@
           :tags="post.tags"
         >
           <template v-slot:actions>
-            <v-btn text class="pink--text" :href="post.url" target="_blank">
+            <v-btn
+              text
+              class="pink--text"
+              :href="post.url"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="See details"
+            >
               See details
             </v-btn>
           </template>

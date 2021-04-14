@@ -7,6 +7,8 @@
       link
       :href="url"
       target="_blank"
+      rel="noreferrer"
+      :aria-label="name"
     >
       <v-icon>{{ icon }}</v-icon>
     </v-btn>

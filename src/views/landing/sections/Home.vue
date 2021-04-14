@@ -65,16 +65,7 @@
               </h1>
             </vue-typed-js>
             <div class="mt-4">
-              <v-btn
-                v-for="{ icon, name, url } of user.socialLinks"
-                :key="name"
-                icon
-                link
-                :href="url"
-                target="_blank"
-              >
-                <v-icon>{{ icon }}</v-icon>
-              </v-btn>
+              <social-links />
             </div>
           </v-col>
         </xyz-transition>
@@ -97,10 +88,12 @@ import { user } from "@/data/user";
 import TypingText from "@/components/core/TypingText.vue";
 import { useNamespacedMutations } from "vuex-composition-helpers";
 import buildUrl from "cloudinary-build-url";
+import SocialLinks from "@/components/user/SocialLinks.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
+    SocialLinks,
     TypingText,
   },
   setup() {

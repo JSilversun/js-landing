@@ -42,6 +42,7 @@
                         {{ technology.name }}
                       </div>
                       <v-progress-circular
+                        :aria-label="`${areaItem.area.name} experience level`"
                         width="5"
                         :color="areaItem.area.color"
                         :rotate="-90"

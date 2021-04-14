@@ -7,7 +7,11 @@
     :hide-on-scroll="$vuetify.breakpoint.mobile"
     short
   >
-    <v-app-bar-nav-icon class="primary--text" @click="TOGGLE_DRAWER" />
+    <v-app-bar-nav-icon
+      class="primary--text"
+      @click="TOGGLE_DRAWER"
+      aria-label="Menu"
+    />
   </v-app-bar>
 </template>
 <script lang="ts">

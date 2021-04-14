@@ -58,7 +58,9 @@
                   color="primary"
                   link
                   target="_blank"
+                  rel="noreferrer"
                   :href="cvUrl"
+                  aria-label="Resume"
                 >
                   Resume
                 </v-btn>

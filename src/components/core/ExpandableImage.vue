@@ -8,6 +8,7 @@
       <v-img
         v-bind="{ ...$attrs, ...attrs }"
         v-on="on"
+        :aria-label="title"
         class="cursor-pointer"
         :src="thumbnailUrl"
       />
