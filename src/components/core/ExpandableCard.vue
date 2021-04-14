@@ -97,10 +97,10 @@ export default defineComponent({
 @media #{map-get($display-breakpoints, 'md-only')} {
   .on-hover {
     .extra_info {
-      height: 60px;
+      height: 80px;
     }
     .card-img {
-      height: 140px;
+      height: 120px;
     }
   }
 }
@@ -108,10 +108,10 @@ export default defineComponent({
 @media #{map-get($display-breakpoints, 'lg-and-up')} {
   .on-hover {
     .extra_info {
-      height: 50px;
+      height: 60px;
     }
     .card-img {
-      height: 150px;
+      height: 140px;
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="grey darken-4 pb-10">
     <h1 class="text-center py-5">Portfolio</h1>
-    <v-col cols="12" md="10" class="mx-auto">
+    <v-col cols="12" md="11" xl="10" class="mx-auto">
       <card-list-transition class="row">
         <v-col
           cols="12"
