@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="about_me my-5">
     <section-title>About me</section-title>
-    <xyz-transition appear-visible duration="auto" xyz="fade stagger-6">
+    <xyz-transition appear-visible duration="auto" xyz="fade stagger-4">
       <div>
         <v-row
           :class="{
@@ -80,7 +80,7 @@
             :class="{
               'my-10': $vuetify.breakpoint.mdAndUp,
             }"
-            xyz="delay-10 fade down stagger"
+            xyz="delay-7 fade down stagger"
           >
             <v-row class="mx-auto">
               <v-col
