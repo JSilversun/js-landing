@@ -4,10 +4,7 @@
     v-on="$listeners"
     class="expandable-card rounded-lg full-height d-flex flex-column hoverable-card"
   >
-    <div
-      class="image-container overflow-hidden cursor-pointer"
-      style="height: 200px"
-    >
+    <div class="image-container overflow-hidden" style="height: 200px">
       <v-img class="card-img" :src="thumbnailUrl" />
     </div>
     <div class="expandable-card__body d-flex flex-column flex-grow-1">
@@ -36,10 +33,11 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 import BaseCard from "@/components/core/BaseCard.vue";
+import ExpandableImage from "@/components/core/ExpandableImage.vue";
 
 export default defineComponent({
   name: "ExpandableCard",
-  components: { BaseCard },
+  components: { ExpandableImage, BaseCard },
   props: {
     thumbnailUrl: {
       type: String,

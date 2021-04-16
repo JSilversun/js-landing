@@ -10,7 +10,7 @@ html .v-application .hoverable-card:hover::before{
 
 html .v-application .hoverable-card::before {
   z-index: -1;
-  background: var(--v-gray-darken1);
+  background: var(--v-background-darken2);
   opacity: 0;
   transition: opacity 200ms;
   position: absolute;

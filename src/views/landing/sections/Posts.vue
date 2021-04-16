@@ -5,6 +5,7 @@
       <v-col cols="12" sm="6" md="4" v-for="post in posts" :key="post.name">
         <expandable-card
           :thumbnail-url="post.thumbnailUrl"
+          :image-url="post.imageUrl"
           :title="post.name"
           :description="post.description"
           :hidden-extra-description="post.hiddenExtraDescription"

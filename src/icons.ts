@@ -3,6 +3,7 @@ import {
   mdiBriefcaseVariant,
   mdiClose,
   mdiCodeBraces,
+  mdiDog,
   mdiFunctionVariant,
   mdiGithub,
   mdiGitlab,
@@ -32,4 +33,5 @@ export const ICONS = {
   "mdi-speedometer": mdiSpeedometer,
   "mdi-close": mdiClose,
   "mdi-heart": mdiHeart,
+  "mdi-dog": mdiDog,
 };

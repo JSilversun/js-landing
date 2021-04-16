@@ -15,17 +15,19 @@
     <scrollactive
       ref="scrollActive"
       active-class="v-list-item--active"
-      :scroll-offset="0"
+      :offset="0"
       :modify-url="false"
       highlight-first-item
       @itemchanged="onItemActive"
     >
       <v-list class="px-4">
         <v-list-item
-          v-for="{ icon, to, title } in links"
+          v-for="({ icon, to, title }, index) in links"
           class="scrollactive-item"
           :class="{
-            'v-list-item--active': $route.hash === to,
+            'v-list-item--active': $route.hash
+              ? $route.hash === to
+              : index === 0,
           }"
           :data-destination-hash="to"
           :href="to"
@@ -91,6 +93,11 @@ export default defineComponent({
           icon: "$mdi-view-split-vertical",
           to: "#posts",
           title: "Posts",
+        },
+        {
+          icon: "$mdi-dog",
+          to: "#bloopers",
+          title: "Bloopers",
         },
       ] as { icon: string; to: string; title: string }[],
     };

@@ -6,7 +6,7 @@
     <experience id="experience" class="background darken-5" />
     <portfolio id="portfolio" class="background darken-4" />
     <posts id="posts" class="background darken-5" />
-    <main-footer />
+    <bloopers id="bloopers" class="background darken-4" />
   </v-container>
 </template>
 
@@ -18,7 +18,7 @@ import Education from "@/views/landing/sections/Education.vue";
 import Experience from "@/views/landing/sections/Experience.vue";
 import Portfolio from "@/views/landing/sections/Portfolio.vue";
 import Posts from "@/views/landing/sections/Posts.vue";
-import MainFooter from "@/components/app/Footer.vue";
+import Bloopers from "@/views/landing/sections/Bloopers.vue";
 import { user } from "@/data/user";
 
 export default defineComponent({
@@ -33,7 +33,7 @@ export default defineComponent({
     Experience,
     Portfolio,
     Posts,
-    MainFooter,
+    Bloopers,
   },
 });
 </script>

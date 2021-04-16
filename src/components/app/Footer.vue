@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-10 grey darken-4 text-center">
+  <v-container fluid class="pa-10 text-center">
     <p class="mb-0">
       Made with <v-icon>$mdi-heart</v-icon> by Jsilversun with VueJS + Vuetify
     </p>

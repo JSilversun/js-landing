@@ -25,7 +25,11 @@ import { projects } from "@/data/portfolio";
 
 export default defineComponent({
   name: "Portfolio",
-  components: { CardListTransition, ProjectDetail, ExpandableCard },
+  components: {
+    CardListTransition,
+    ProjectDetail,
+    ExpandableCard,
+  },
   data() {
     return {
       projects,

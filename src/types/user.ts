@@ -22,3 +22,7 @@ export interface PhotoDetail {
   imageUrl: string;
   title: string;
 }
+
+export interface PhotoWithThumbnail extends PhotoDetail {
+  thumbnailUrl: string;
+}

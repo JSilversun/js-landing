@@ -31,7 +31,6 @@ export interface Post {
   name: string;
   description: string;
   thumbnailId: string;
-  thumbnailUrl: string;
   hiddenExtraDescription: string;
   tags: string[];
   url: string;

@@ -6,10 +6,10 @@
   >
     <template v-slot:activator="{ on, attrs }">
       <v-img
-        v-bind="{ ...$attrs, ...attrs }"
+        v-bind="{ ...attrs, ...$attrs }"
         v-on="on"
         :aria-label="title"
-        class="cursor-pointer"
+        :class="`cursor-pointer ${imageClass}`"
         :src="thumbnailUrl"
       />
     </template>
@@ -48,6 +48,10 @@ export default defineComponent({
     imageId: {
       type: String,
       required: true,
+    },
+    imageClass: {
+      type: String,
+      default: "",
     },
   },
   data() {

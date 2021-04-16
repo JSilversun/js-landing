@@ -44,26 +44,6 @@
               I specialize in building web applications. I'm extremely
               passionate about creating maintainable and efficient software
             </p>
-            <vue-typed-js
-              :strings="[
-                'Software Engineer',
-                'Fullstack Developer',
-                'Problem Solver',
-              ]"
-              loop
-              class="d-inline-block"
-              :type-speed="50"
-              :back-speed="30"
-            >
-              <h1
-                :class="{
-                  'text-h4': $vuetify.breakpoint.lgAndUp,
-                  'text-h5': $vuetify.breakpoint.mdAndDown,
-                }"
-              >
-                <span class="font-weight-bold typing" />
-              </h1>
-            </vue-typed-js>
             <div class="mt-4">
               <social-links />
             </div>

@@ -18,7 +18,7 @@ export default defineComponent({
   name: "CardListTransition",
   computed: {
     threshold() {
-      const defaultThreshold = 0.5;
+      const defaultThreshold = 0.3;
       const thresholds: PartialRecord<BreakpointName, number> = {
         xs: 0.1,
         sm: 0.1,

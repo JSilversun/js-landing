@@ -5,7 +5,7 @@ export const posts: Post[] = [
   {
     name: "Pytest beginners guide",
     description:
-      "Practical guide on how to use and setup pytest for unit testing",
+      "Learn how to use pytest to write unit tests in Python and enhance your code quality",
     thumbnailId: "landing/articles/pytest-beginners-guide",
     hiddenExtraDescription:
       "Get to know how use pytest fixtures to keep your unit tests as DRY as possible",
@@ -13,8 +13,9 @@ export const posts: Post[] = [
     url: "https://medium.com/plusteam/pytest-beginners-guide-9fb9451706bf",
   },
   {
-    name: "Hasura GraphQL Engine Practical Guide",
-    description: "Practical guide to build a GraphQL API quickly using hasura",
+    name: "Hasura Practical Guide",
+    description:
+      "Practical guide to build a GraphQL API quickly using hasura using an existing film rental database",
     thumbnailId: "landing/articles/pytest-beginners-guide",
     hiddenExtraDescription:
       "Clone a repository, run a couple of commands and get a GraphQL API running in no time",
@@ -22,12 +23,12 @@ export const posts: Post[] = [
     url: "#",
   },
   {
-    name: "Use prisma to build a group by endpoint",
+    name: "Building your own landing",
     description:
-      "How you build a GraphQL endpoint to group by data in a database table",
+      "A story on the journey of a Software Engineer building and optimizing her own landing page",
     thumbnailId: "landing/articles/pytest-beginners-guide",
     hiddenExtraDescription:
-      "Use nexus to build you GraphQL schema to get your endpoint running",
+      "Learn from image optimization, reducing asset bundle size, testing performance and even how to actually take decent pictures",
     tags: ["NodeJS", "Prisma", "Backend"],
     url: "#",
   },
