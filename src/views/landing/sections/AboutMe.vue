@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="about_me my-5">
+  <v-container fluid class="about_me py-5">
     <section-title>About me</section-title>
     <xyz-transition appear-visible duration="auto" xyz="fade stagger-4">
       <div>
@@ -93,7 +93,7 @@
                 :key="title"
                 class="xyz-nested"
               >
-                <v-card outlined class="rounded-lg full-height hoverable-card">
+                <base-card class="full-height hoverable-card">
                   <v-card-text
                     class="d-flex flex-column justify-center align-center"
                     :class="{
@@ -108,7 +108,7 @@
                       {{ description }}
                     </v-card-text>
                   </v-card-text>
-                </v-card>
+                </base-card>
               </v-col>
             </v-row>
           </v-col>
@@ -119,6 +119,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
+import BaseCard from "@/components/core/BaseCard.vue";
 import SectionTitle from "@/components/core/SectionTitle.vue";
 import { user } from "@/data/user";
 import { profileItems, profileSummary, userStrengths } from "@/data/profile";
@@ -126,7 +127,7 @@ import { buildResizedImageUrl } from "@/utils/image";
 
 export default defineComponent({
   name: "AboutMe",
-  components: { SectionTitle },
+  components: { BaseCard, SectionTitle },
   data() {
     return {
       profileSummary,

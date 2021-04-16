@@ -1,43 +1,45 @@
 <template>
-  <v-hover v-slot="{ hover }">
-    <v-card
-      class="expandable-card rounded-lg full-height d-flex flex-column"
-      outlined
-      :class="{ 'on-hover': hover }"
+  <base-card
+    v-bind="$attrs"
+    v-on="$listeners"
+    class="expandable-card rounded-lg full-height d-flex flex-column hoverable-card"
+  >
+    <div
+      class="image-container overflow-hidden cursor-pointer"
+      style="height: 200px"
     >
-      <v-img max-height="200" class="card-img" :src="thumbnailUrl" />
-      <div class="expandable-card__body d-flex flex-column flex-grow-1">
-        <v-card-title class="pb-1" :class="{ 'primary--text': hover }">
-          {{ title }}
-        </v-card-title>
-        <v-card-text class="pb-0">
-          <p>
-            {{ description }}
-          </p>
-          <p class="extra_info">
-            {{ hiddenExtraDescription }}
-          </p>
+      <v-img class="card-img" :src="thumbnailUrl" />
+    </div>
+    <div class="expandable-card__body d-flex flex-column flex-grow-1">
+      <v-card-title class="expandable-card__title pb-1">
+        {{ title }}
+      </v-card-title>
+      <v-card-text class="pb-0">
+        <p>
+          {{ description }}
+        </p>
+      </v-card-text>
+      <v-spacer />
+      <div class="card-bottom">
+        <v-card-text class="pt-0">
+          <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
+            {{ tag }}
+          </v-chip>
         </v-card-text>
-        <v-spacer />
-        <div class="card-bottom">
-          <v-card-text class="py-0">
-            <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
-              {{ tag }}
-            </v-chip>
-          </v-card-text>
-          <v-card-actions class="justify-end">
-            <slot name="actions"></slot>
-          </v-card-actions>
-        </div>
+        <v-card-actions class="justify-end">
+          <slot name="actions"></slot>
+        </v-card-actions>
       </div>
-    </v-card>
-  </v-hover>
+    </div>
+  </base-card>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
+import BaseCard from "@/components/core/BaseCard.vue";
 
 export default defineComponent({
   name: "ExpandableCard",
+  components: { BaseCard },
   props: {
     thumbnailUrl: {
       type: String,
@@ -63,69 +65,29 @@ export default defineComponent({
 </script>
 <style lang="scss">
 @import "~vuetify/src/styles/settings/_variables";
+
+$animation-duration: 200ms;
+
 .expandable-card__body {
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
-.expandable-card__body::before {
-  z-index: -1;
-  background: var(--v-gray-darken1);
-  opacity: 0;
-  transition: opacity 200ms;
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  margin-top: 0;
-}
-.expandable-card:hover .expandable-card__body::before {
-  opacity: 0.7;
-}
-
-@media #{map-get($display-breakpoints, 'sm-and-down')} {
-  .on-hover {
-    .extra_info {
-      height: 100px;
-    }
-    .card-img {
-      height: 100px;
-    }
-  }
-}
-
-@media #{map-get($display-breakpoints, 'md-only')} {
-  .on-hover {
-    .extra_info {
-      height: 80px;
-    }
-    .card-img {
-      height: 120px;
-    }
-  }
-}
-
-@media #{map-get($display-breakpoints, 'lg-and-up')} {
-  .on-hover {
-    .extra_info {
-      height: 60px;
-    }
-    .card-img {
-      height: 140px;
-    }
-  }
-}
 
 .card-img {
-  height: 200px;
-  transition: height 300ms;
+  transition: all $animation-duration;
 }
-.extra_info {
-  height: 0;
-  opacity: 0;
-  transition: height 300ms, opacity 200ms;
-}
-.on-hover {
+
+.expandable-card:hover {
+  .image_container::before {
+    opacity: 0.7;
+  }
+  .expandable-card__title {
+    color: var(--v-primary-base);
+  }
+  .card-img {
+    transform: scale(1.15);
+  }
   .extra_info {
     opacity: 1;
   }

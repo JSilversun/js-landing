@@ -18,14 +18,14 @@
             class="primary--text"
             v-on="on"
             v-bind="attrs"
-            aria-label="See details"
+            aria-label="Learn more"
           >
-            See details
+            Learn more
           </v-btn>
         </template>
       </expandable-card>
     </template>
-    <v-card>
+    <base-card>
       <v-card-title class="headline d-flex flex-nowrap align-start text-break">
         <a v-if="url" :href="url" target="_blank">
           {{ name }}
@@ -85,6 +85,7 @@
                   class="position-relative"
                 >
                   <v-carousel-item
+                    class="background darken-5"
                     v-for="({ imageUrl }, index) in photos"
                     :key="`${name}-carousel-photo-${index}`"
                   >
@@ -92,7 +93,7 @@
                   </v-carousel-item>
                 </v-carousel>
                 <p
-                  class="subtitle-1 pa-3 gray darken-2 ma-0 d-flex justify-space-between"
+                  class="subtitle-1 pa-3 background darken-3 ma-0 d-flex justify-space-between"
                 >
                   <span>
                     {{ photos[activeSlideIndex].title }}
@@ -104,7 +105,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-card>
+    </base-card>
   </v-dialog>
 </template>
 <script lang="ts">
@@ -116,10 +117,12 @@ import { ProfessionAreaItem } from "@/types/experience";
 import { DateRangeData } from "@/types/portfolio";
 import { PhotoDetail } from "@/types/user";
 import BaseImage from "@/components/core/BaseImage.vue";
+import BaseCard from "@/components/core/BaseCard.vue";
 
 export default defineComponent({
   name: "ProjectDetail",
   components: {
+    BaseCard,
     BaseImage,
     ExpandableCard,
   },

@@ -1,6 +1,6 @@
 <template>
   <xyz-transition appear-visible xyz="fade">
-    <v-container fluid class="grey darken-4">
+    <v-container fluid>
       <section-title>Education</section-title>
       <v-row>
         <v-col cols="12" md="10" offset-md="1">
@@ -25,7 +25,7 @@
                     <v-img :src="logoUrl" />
                   </v-avatar>
                 </template>
-                <v-card outlined>
+                <base-card>
                   <div class="hoverable-card">
                     <v-card-title> {{ institution }} </v-card-title>
                     <v-card-subtitle>{{ period }}</v-card-subtitle>
@@ -51,7 +51,7 @@
                       </v-row>
                     </v-card-text>
                   </div>
-                </v-card>
+                </base-card>
               </v-timeline-item>
             </xyz-transition-group>
           </v-timeline>
@@ -65,10 +65,11 @@ import { defineComponent } from "@vue/composition-api";
 import SectionTitle from "@/components/core/SectionTitle.vue";
 import ExpandableImage from "@/components/core/ExpandableImage.vue";
 import { educationItems } from "@/data/education";
+import BaseCard from "@/components/core/BaseCard.vue";
 
 export default defineComponent({
   name: "Education",
-  components: { ExpandableImage, SectionTitle },
+  components: { BaseCard, ExpandableImage, SectionTitle },
   data() {
     return {
       educationItems,

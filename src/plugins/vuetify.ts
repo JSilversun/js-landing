@@ -5,20 +5,18 @@ import { ICONS } from "@/icons";
 
 Vue.use(Vuetify);
 
-const gray = {
-  darken4: "#121212",
-  darken3: "#212121",
-  darken2: "#303030",
-  darken1: "#424242",
-  base: "#535353",
-  lighten1: "#717171",
-  lighten2: "#888888",
-  lighten3: "#9F9F9F",
-  lighten4: "#D7D7D7",
-  lighten5: "#EDEDED",
-  lighten6: "#E4E4E4",
-  lighten7: "#F5F5F5",
-  lighten8: "#E5E5E5",
+const background = {
+  darken5: "#121212",
+  darken4: "#212121",
+  darken3: "#303030",
+  darken2: "#515151",
+  darken1: "#626262",
+  base: "#7e7e7e",
+  lighten1: "#9e9e9e",
+  lighten2: "#b1b1b1",
+  lighten3: "#cfcfcf",
+  lighten4: "#e1e1e1",
+  lighten5: "#f7f7f7",
 };
 
 const lightPurple = {
@@ -35,8 +33,8 @@ export default new Vuetify({
       dark: {
         primary,
         accent,
+        background: background,
         grey: colors.grey,
-        gray,
         orange: {
           base: colors.orange.base,
         },

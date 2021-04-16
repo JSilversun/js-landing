@@ -60,8 +60,7 @@
           </v-col>
           <v-col cols="12" md="6" class="d-flex flex-column justify-center">
             <card-list-transition>
-              <v-card
-                outlined
+              <base-card
                 class="mb-2 hoverable-card"
                 :key="organization"
                 v-for="{
@@ -93,7 +92,7 @@
                     </v-col>
                   </v-row>
                 </v-card-text>
-              </v-card>
+              </base-card>
             </card-list-transition>
           </v-col>
         </v-row>
@@ -111,10 +110,12 @@ import {
   experienceItems,
   experienceSummary,
 } from "@/data/experience";
+import BaseCard from "@/components/core/BaseCard.vue";
 
 export default defineComponent({
   name: "Experience",
   components: {
+    BaseCard,
     CardListTransition,
     ExpandableImage,
     SectionTitle,
