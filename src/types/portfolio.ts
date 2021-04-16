@@ -24,14 +24,13 @@ export interface Project {
     technologies: string[];
   }[];
   description: string;
-  hiddenExtraDescription: string;
+  additionalDescription: string;
 }
 
 export interface Post {
   name: string;
   description: string;
   thumbnailId: string;
-  hiddenExtraDescription: string;
   tags: string[];
   url: string;
 }

@@ -1,7 +1,7 @@
 <template>
   <v-dialog
     v-model="isOpen"
-    :fullscreen="$vuetify.breakpoint.mobile"
+    :fullscreen="$vuetify.breakpoint.lgAndDown"
     v-bind="$attrs"
   >
     <template v-slot:activator="{ on, attrs }">
@@ -9,7 +9,7 @@
         :thumbnail-url="thumbnailUrl"
         :title="name"
         :description="description"
-        :hidden-extra-description="hiddenExtraDescription"
+        :hidden-extra-description="additionalDescription"
         :tags="mainTechnologies"
       >
         <template v-slot:actions>
@@ -47,7 +47,7 @@
             <v-card-text>
               <p>
                 {{ description }}.
-                {{ hiddenExtraDescription }}
+                {{ additionalDescription }}
               </p>
               <div
                 v-for="areaItem in areaItems"
@@ -135,7 +135,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    hiddenExtraDescription: {
+    additionalDescription: {
       type: String,
       required: true,
     },

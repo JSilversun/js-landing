@@ -2,10 +2,13 @@
   <base-card
     v-bind="$attrs"
     v-on="$listeners"
-    class="expandable-card rounded-lg full-height d-flex flex-column hoverable-card"
+    class="expandable-card full-height d-flex flex-column"
   >
-    <div class="image-container overflow-hidden" style="height: 200px">
-      <v-img class="card-img" :src="thumbnailUrl" />
+    <div class="expandable-card__thumbnail-container">
+      <v-img
+        class="expandable-card__thumbnail full-height"
+        :src="thumbnailUrl"
+      />
     </div>
     <div class="expandable-card__body d-flex flex-column flex-grow-1">
       <v-card-title class="expandable-card__title pb-1">
@@ -18,7 +21,7 @@
       </v-card-text>
       <v-spacer />
       <div class="card-bottom">
-        <v-card-text class="pt-0">
+        <v-card-text class="py-0">
           <v-chip v-for="tag in tags" :key="tag" class="mr-1 mb-1" small>
             {{ tag }}
           </v-chip>
@@ -50,10 +53,6 @@ export default defineComponent({
     description: {
       type: String,
     },
-    hiddenExtraDescription: {
-      type: String,
-      default: "",
-    },
     tags: {
       type: Array,
       default: () => [],
@@ -66,28 +65,53 @@ export default defineComponent({
 
 $animation-duration: 200ms;
 
+@media #{map-get($display-breakpoints, 'md-and-down')} {
+  .expandable-card__thumbnail-container {
+    height: 140px;
+  }
+}
+
+@media #{map-get($display-breakpoints, 'lg-and-up')} {
+  .expandable-card__thumbnail-container {
+    height: 200px;
+  }
+}
+
 .expandable-card__body {
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
 
-.card-img {
+.expandable-card__body::before {
+  z-index: -1;
+  background: var(--v-background-darken2);
+  opacity: 0;
+  transition: opacity 200ms;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+
+.expandable-card__thumbnail-container {
+  overflow: hidden;
+}
+
+.expandable-card__thumbnail {
   transition: all $animation-duration;
 }
 
 .expandable-card:hover {
-  .image_container::before {
+  .expandable-card__body::before {
     opacity: 0.7;
   }
   .expandable-card__title {
     color: var(--v-primary-base);
   }
-  .card-img {
+  .expandable-card__thumbnail {
     transform: scale(1.15);
-  }
-  .extra_info {
-    opacity: 1;
   }
 }
 </style>

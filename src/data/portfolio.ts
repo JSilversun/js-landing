@@ -12,7 +12,7 @@ export const projects: Project[] = [
     },
     description:
       "An ecommerce solution based on saleor (opensource ecommerce project) for digital assets like custom signatures",
-    hiddenExtraDescription:
+    additionalDescription:
       "I worked on implementing payment gateways like chargeebee, braintree, paddle and maintaining solid unit tests with pytest",
     mainTechnologies: ["Django", "Pytest", "Postgres", "React", "Saleor"],
     photos: [
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     url: "https://rankcountry.com/",
     description:
       "Country ranking app supporting dynamic data internationalization, categorization and GIS location",
-    hiddenExtraDescription:
+    additionalDescription:
       "I worked only as a backend developer of a REST API using loopback 3, sequelize and customized a dynamic dashboard using Forest Admin",
     timeRange: {
       startDate: "03/16/2019",
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     name: "Endeavour Mining - Access Manager",
     description:
       "Permission management service to administrate authorization and authentication over related microservices",
-    hiddenExtraDescription:
+    additionalDescription:
       "Worked on the backend to build a REST API using loopback 3 and support the frontend development on react",
     timeRange: {
       startDate: "09/30/2019",
@@ -161,7 +161,13 @@ export const projects: Project[] = [
           "landing/portfolio/access-manager/access_manager_commit_contribution",
       },
     ],
-    mainTechnologies: ["NodeJS", "Loopback 3", "Passport", "Typescript"],
+    mainTechnologies: [
+      "NodeJS",
+      "Loopback 3",
+      "Passport",
+      "React",
+      "Typescript",
+    ],
     areaItems: [
       {
         area: backend,
@@ -181,7 +187,7 @@ export const projects: Project[] = [
     name: "Endeavour Mining - Reconciliation",
     description:
       "Reporting and visualization tool to analyze mining operations performance across time",
-    hiddenExtraDescription:
+    additionalDescription:
       "I worked as backend developer to maintain a REST API in charge to perform complex CSV/Excel files processing and storing data",
     timeRange: {
       startDate: "01/17/2020",
@@ -239,7 +245,7 @@ export const projects: Project[] = [
     url: "https://tracker.plusteam.tech/",
     description:
       "Time tracking and employee monitoring internal software with task management integrations",
-    hiddenExtraDescription:
+    additionalDescription:
       "Develop and maintain most of the frontend using Vue and Vuetify, build serverless endpoints using firebase functions to extend a GraphQL API",
     timeRange: {
       startDate: "12/29/2019",
@@ -323,7 +329,7 @@ export const projects: Project[] = [
     url: "https://github.com/JSilversun/js-landing",
     description:
       "Professional landing hand build and optimized by hand using Vue and Vuetify",
-    hiddenExtraDescription:
+    additionalDescription:
       "Setup automatic deployments with github and firebase and image optimizations with cloundinary",
     timeRange: {
       startDate: "03/21/2021",

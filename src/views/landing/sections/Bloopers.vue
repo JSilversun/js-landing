@@ -28,7 +28,10 @@
         </v-slide-group>
 
         <v-expand-transition>
-          <v-sheet v-if="activePhotoIndex != null" class="mx-2 mt-2 transparent">
+          <v-sheet
+            v-if="activePhotoIndex != null"
+            class="mx-2 mt-2 transparent"
+          >
             <v-carousel
               v-model="activePhotoIndex"
               :continuous="false"
