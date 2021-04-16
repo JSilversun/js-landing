@@ -18,9 +18,9 @@
               :href="post.url"
               target="_blank"
               rel="noreferrer"
-              aria-label="Learn more"
+              aria-label="See post"
             >
-              Learn more
+              See post
             </v-btn>
           </template>
         </expandable-card>
