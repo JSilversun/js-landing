@@ -14,9 +14,10 @@ export const posts: Post[] = [
     name: "Hasura Practical Guide",
     description:
       "Practical guide to build a GraphQL API quickly using hasura using an existing film rental database",
-    thumbnailId: "landing/articles/pytest-beginners-guide",
+    thumbnailId: "landing/articles/hasura-practical-guide",
     tags: ["Hasura", "GraphQL", "Backend", "Postgres"],
-    url: "#",
+    url:
+      "https://medium.com/plusteam/hasura-graphql-practical-guide-4fe438f2079a",
   },
   {
     name: "Building your own landing",
