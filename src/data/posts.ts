@@ -23,9 +23,9 @@ export const posts: Post[] = [
     name: "Building your own landing",
     description:
       "A story on the journey of a Software Engineer building and optimizing her own landing page",
-    thumbnailId: "landing/articles/pytest-beginners-guide",
-    tags: ["NodeJS", "Prisma", "Backend"],
-    url: "#",
+    thumbnailId: "landing/articles/build-your-landing",
+    tags: ["Landing", "Optimization", "Vue", "Vuetify"],
+    url: "https://jsilversun.medium.com/building-your-landing-99db1ceeb0cf",
   },
 ].map((post) => ({
   ...post,
