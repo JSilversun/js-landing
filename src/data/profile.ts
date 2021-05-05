@@ -71,12 +71,12 @@ export const userStrengths: UserStrength[] = [
 export const photos: PhotoWithThumbnail[] = [
   {
     title:
-      "Feeling like coding on the floor, it reminds me of my university days",
+      "An engineer in her natural habitat (Because like, who doesn't code on the floor?)",
     imageId: "landing/profile/more_about_me/photo3",
   },
   {
     title:
-      "The hero photo took me like 100 attempts and now my hair refuses to obey me",
+      "The hero photo took me like 200 attempts and now my hair refuses to obey me",
     imageId: "landing/profile/more_about_me/photo5",
   },
   {
