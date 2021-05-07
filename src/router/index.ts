@@ -10,18 +10,12 @@ const routes: Array<RouteConfig> = [
     name: "landing",
     component: Landing,
   },
-  {
-    path: "/",
-    name: "footer",
-    component: () =>
-      import(/* webpackChunkName: "landing" */ "../components/app/Footer.vue"),
-  },
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
-
-export default router;
+export function createRouter(): VueRouter {
+  return new VueRouter({
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes,
+  });
+}

@@ -52,10 +52,11 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import { mapMutations, mapState } from "vuex";
+import { mapState } from "vuex";
 import Avatar from "@/components/core/Avatar.vue";
 import { user } from "@/data/user";
 import SocialLinks from "@/components/user/SocialLinks.vue";
+import { useNamespacedMutations } from "vuex-composition-helpers";
 
 export default defineComponent({
   name: "Drawer",
@@ -102,6 +103,11 @@ export default defineComponent({
       ] as { icon: string; to: string; title: string }[],
     };
   },
+  setup() {
+    return {
+      ...useNamespacedMutations("app", ["TOGGLE_DRAWER"]),
+    };
+  },
   computed: {
     ...mapState("app", ["isExpanded"]),
     drawer() {
@@ -109,7 +115,6 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapMutations("app", ["TOGGLE_DRAWER"]),
     setDrawer(isExpanded: boolean) {
       if (this.isExpanded === isExpanded) return;
       this.TOGGLE_DRAWER();
