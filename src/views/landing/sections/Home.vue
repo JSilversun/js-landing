@@ -23,24 +23,11 @@
             style="z-index: 1"
           >
             <span class="text-h6 py-2"> Hey there! </span>
-            <h2
-              class="font-weight-bold"
-              :class="{
-                'text-h2': $vuetify.breakpoint.lgAndUp,
-                'text-h3': $vuetify.breakpoint.mdOnly,
-                'text-h4': $vuetify.breakpoint.smAndDown,
-              }"
-            >
+            <h2 class="font-weight-bold text-lg-h2 text-md-h3 text-sm-h4">
               I'm
               <span class="primary--text"> {{ user.fullName }} </span>
             </h2>
-            <p
-              class="py-4 mb-0"
-              :class="{
-                'text-h6': $vuetify.breakpoint.mdAndUp,
-                'subtitle-1': $vuetify.breakpoint.smAndDown,
-              }"
-            >
+            <p class="py-4 mb-0 text-md-h6 text-sm-subtitle-1">
               I specialize in building web applications. I'm extremely
               passionate about creating maintainable and efficient software
             </p>
@@ -55,12 +42,7 @@
               :type-speed="50"
               :back-speed="30"
             >
-              <h1
-                :class="{
-                  'text-h4': $vuetify.breakpoint.lgAndUp,
-                  'text-h5': $vuetify.breakpoint.mdAndDown,
-                }"
-              >
+              <h1 class="text-lg-h4 text-h5">
                 <span class="font-weight-bold typing" />
               </h1>
             </vue-typed-js>
